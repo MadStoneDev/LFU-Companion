@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import SplashScreen from "./src/Screens/SplashScreen";
+import HomeScreen from "./src/Screens/HomeScreen";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   // States
   const [loading, setLoading] = useState(true);
 
   setTimeout(() => {
-    // setLoading(false);
+    setLoading(false);
   }, 1500);
 
   return (
@@ -17,9 +22,15 @@ export default function App() {
       {loading ? (
         <SplashScreen />
       ) : (
-        <View style={styles.container}>
-          <Text>Open up App.js to start working on your app!</Text>
-        </View>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              name={"Home"}
+              component={HomeScreen}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
       )}
     </SafeAreaProvider>
   );
