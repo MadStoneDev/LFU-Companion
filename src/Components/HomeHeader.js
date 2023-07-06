@@ -18,6 +18,8 @@ const HomeHeader = ({ navigation }) => {
   const [totalZCoins, setTotalZCoins] = useState(0);
   const [totalDiamonds, setTotalDiamonds] = useState(0);
 
+  console.log(navigation);
+
   return (
     <View style={styles.header}>
       <ImageBackground
