@@ -1,6 +1,9 @@
-import { Button, TextInput } from "react-native-paper";
-import { ScrollView, StyleSheet, View } from "react-native";
 import { useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+
+import StatInput from "../Components/StatInput";
+import { cleanUpNumber } from "../Helpers/CleanUps";
 
 const DiamondsScreen = () => {
   const [diamonds50, setDiamonds50] = useState("0");
@@ -9,38 +12,53 @@ const DiamondsScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+      <StatInput
         label={"50 Diamonds"}
-        value={diamonds20}
-        placeholder={"eg. 3"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setDiamonds50(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
+        value={diamonds50}
+        onChangeValue={(text) => {
+          setDiamonds50(cleanUpNumber(text));
+        }}
+        icon={
+          <FontAwesome
+            style={{ position: "absolute", left: 10, top: 19 }}
+            name="diamond"
+            size={15}
+            color="black"
+          />
+        }
+      />
 
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+      <StatInput
         label={"20 Diamonds"}
         value={diamonds20}
-        placeholder={"eg. 2"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setDiamonds20(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
+        onChangeValue={(text) => {
+          setDiamonds20(cleanUpNumber(text));
+        }}
+        icon={
+          <FontAwesome
+            style={{ position: "absolute", left: 10, top: 19 }}
+            name="diamond"
+            size={15}
+            color="black"
+          />
+        }
+      />
 
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+      <StatInput
         label={"10 Diamonds"}
         value={diamonds10}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setDiamonds10(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
+        onChangeValue={(text) => {
+          setDiamonds10(cleanUpNumber(text));
+        }}
+        icon={
+          <FontAwesome
+            style={{ position: "absolute", left: 10, top: 19 }}
+            name="diamond"
+            size={15}
+            color="black"
+          />
+        }
+      />
       <View style={{ height: 50 }}></View>
     </ScrollView>
   );
@@ -67,10 +85,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-  },
-  statInput: {
-    marginBottom: 10,
-    height: 40,
   },
 });
 

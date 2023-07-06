@@ -1,6 +1,9 @@
 import { Button, TextInput } from "react-native-paper";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useState } from "react";
+import { cleanUpNumber } from "../Helpers/CleanUps";
+import { FontAwesome5 } from "@expo/vector-icons";
+import StatInput from "../Components/StatInput";
 
 const WarehouseScreen = () => {
   const [mainStone, setMainStone] = useState("0");
@@ -10,51 +13,69 @@ const WarehouseScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <View>
-        <TextInput
-          style={styles.statInput}
-          mode={"outlined"}
-          label={"Stone in Warehouse"}
-          value={mainStone}
-          placeholder={"eg. 1"}
-          activeOutlineColor={"#47656d"}
-          onChangeText={(text) => setMainStone(text.replace(/[^0-9]/g, ""))}
-          keyboardType="numeric"
-        ></TextInput>
-      </View>
+      <StatInput
+        label={"1 in Warehouse"}
+        value={mainStone}
+        onChangeValue={(text) => {
+          setMainStone(cleanUpNumber(text));
+        }}
+        icon={
+          <FontAwesome5
+            style={{ position: "absolute", left: 10, top: 20 }}
+            name="warehouse"
+            size={13}
+            color="black"
+          />
+        }
+      />
 
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+      <StatInput
         label={"Iron in Warehouse"}
         value={mainIron}
-        placeholder={"eg. 1"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setMainIron(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
+        onChangeValue={(text) => {
+          setMainIron(cleanUpNumber(text));
+        }}
+        icon={
+          <FontAwesome5
+            style={{ position: "absolute", left: 10, top: 20 }}
+            name="warehouse"
+            size={13}
+            color="black"
+          />
+        }
+      />
 
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
-        label={"Z Coins in Warehouse"}
+      <StatInput
+        label={"ZCoins in Warehouse"}
         value={mainZCoins}
-        placeholder={"eg. 1"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setMainZCoins(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
+        onChangeValue={(text) => {
+          setMainZCoins(cleanUpNumber(text));
+        }}
+        icon={
+          <FontAwesome5
+            style={{ position: "absolute", left: 10, top: 20 }}
+            name="warehouse"
+            size={13}
+            color="black"
+          />
+        }
+      />
 
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+      <StatInput
         label={"Diamonds in Warehouse"}
         value={mainDiamonds}
-        placeholder={"eg. 1"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setMainDiamonds(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
+        onChangeValue={(text) => {
+          setMainDiamonds(cleanUpNumber(text));
+        }}
+        icon={
+          <FontAwesome5
+            style={{ position: "absolute", left: 10, top: 20 }}
+            name="warehouse"
+            size={13}
+            color="black"
+          />
+        }
+      />
       <View style={{ height: 50 }}></View>
     </ScrollView>
   );
@@ -81,10 +102,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-  },
-  statInput: {
-    marginBottom: 10,
-    height: 40,
   },
 });
 

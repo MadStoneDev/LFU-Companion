@@ -1,7 +1,15 @@
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { useState } from "react";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Pressable, Text, StyleSheet, View } from "react-native";
+import {
+  Pressable,
+  Text,
+  StyleSheet,
+  View,
+  TouchableWithoutFeedback,
+} from "react-native";
+import { ActivityIndicator } from "react-native-paper";
+
 import {
   Entypo,
   FontAwesome,
@@ -135,6 +143,47 @@ const StatsScreen = ({ navigation }) => {
           }}
         />
       </Tabs.Navigator>
+
+      <TouchableWithoutFeedback
+        onPress={() => {
+          setSaving(true);
+          setTimeout(() => {
+            setSaving(false);
+          }, 1500);
+        }}
+      >
+        <View
+          style={[
+            styles.saveButton,
+            saving
+              ? { borderWidth: 3, borderColor: "transparent" }
+              : { borderWidth: 3, borderColor: "#d35322" },
+          ]}
+        >
+          {saving ? (
+            <View>
+              <Text
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  right: 60,
+                  width: 100,
+                  textAlign: "right",
+                  fontStyle: "italic",
+                  fontSize: 14,
+                  color: "#d35322",
+                }}
+              >
+                Saving...
+              </Text>
+
+              <ActivityIndicator size={40} color={"#d35322"} />
+            </View>
+          ) : (
+            <FontAwesome5 name="save" size={30} color="#d35322" />
+          )}
+        </View>
+      </TouchableWithoutFeedback>
     </SafeAreaView>
   );
 };
@@ -171,8 +220,6 @@ const styles = StyleSheet.create({
     right: 20,
     width: 50,
     aspectRatio: 1,
-    borderWidth: 3,
-    borderColor: "#d35322",
     borderRadius: 99999,
   },
 });

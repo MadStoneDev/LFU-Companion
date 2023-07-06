@@ -1,6 +1,9 @@
 import { Button, TextInput } from "react-native-paper";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useState } from "react";
+import StatInput from "../Components/StatInput";
+import { cleanUpNumber } from "../Helpers/CleanUps";
+import { Entypo, FontAwesome5 } from "@expo/vector-icons";
 
 const StoneScreen = () => {
   const [stone5000, setStone5000] = useState("0");
@@ -14,86 +17,134 @@ const StoneScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+      <StatInput
         label={"5000 Stone Chest"}
         value={stone5000}
-        placeholder={"eg. 1"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setStone5000(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setStone5000(cleanUpNumber(text));
+        }}
+        icon={
+          <Entypo
+            style={{ position: "absolute", left: 10, top: 20 }}
+            name="basecamp"
+            size={15}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"1000 Stone Chest"}
         value={stone1000}
-        placeholder={"eg. 2"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setStone1000(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setStone1000(cleanUpNumber(text));
+        }}
+        icon={
+          <Entypo
+            style={{ position: "absolute", left: 10, top: 20 }}
+            name="basecamp"
+            size={15}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"500 Stone Chest"}
         value={stone500}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setStone500(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setStone500(cleanUpNumber(text));
+        }}
+        icon={
+          <Entypo
+            style={{ position: "absolute", left: 10, top: 20 }}
+            name="basecamp"
+            size={15}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"150 Stone Chest"}
         value={stone150}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setStone150(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setStone150(cleanUpNumber(text));
+        }}
+        icon={
+          <Entypo
+            style={{ position: "absolute", left: 10, top: 20 }}
+            name="basecamp"
+            size={15}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"50 Stone Chest"}
         value={stone50}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setStone50(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setStone50(cleanUpNumber(text));
+        }}
+        icon={
+          <Entypo
+            style={{ position: "absolute", left: 10, top: 20 }}
+            name="basecamp"
+            size={15}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"10 Stone Chest"}
         value={stone10}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setStone10(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setStone10(cleanUpNumber(text));
+        }}
+        icon={
+          <Entypo
+            style={{ position: "absolute", left: 10, top: 20 }}
+            name="basecamp"
+            size={15}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"5 Stone Chest"}
         value={stone5}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setStone5(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setStone5(cleanUpNumber(text));
+        }}
+        icon={
+          <Entypo
+            style={{ position: "absolute", left: 10, top: 20 }}
+            name="basecamp"
+            size={15}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"2 Stone Chest"}
         value={stone2}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setStone2(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
+        onChangeValue={(text) => {
+          setStone2(cleanUpNumber(text));
+        }}
+        icon={
+          <Entypo
+            style={{ position: "absolute", left: 10, top: 20 }}
+            name="basecamp"
+            size={15}
+            color="black"
+          />
+        }
+      />
+
       <View style={{ height: 50 }}></View>
     </ScrollView>
   );
@@ -120,10 +171,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-  },
-  statInput: {
-    marginBottom: 10,
-    height: 40,
   },
 });
 

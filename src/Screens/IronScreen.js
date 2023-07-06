@@ -1,6 +1,9 @@
 import { Button, TextInput } from "react-native-paper";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useState } from "react";
+import { cleanUpNumber } from "../Helpers/CleanUps";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
+import StatInput from "../Components/StatInput";
 
 const IronScreen = () => {
   const [iron600, setIron600] = useState("0");
@@ -13,76 +16,118 @@ const IronScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+      <StatInput
         label={"600 Iron Chest"}
         value={iron600}
-        placeholder={"eg. 1"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setIron600(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setIron600(cleanUpNumber(text));
+        }}
+        icon={
+          <MaterialCommunityIcons
+            style={{ position: "absolute", left: 10, top: 16 }}
+            name="gold"
+            size={20}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"300 Iron Chest"}
         value={iron300}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setIron300(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setIron300(cleanUpNumber(text));
+        }}
+        icon={
+          <MaterialCommunityIcons
+            style={{ position: "absolute", left: 10, top: 16 }}
+            name="gold"
+            size={20}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"100 Iron Chest"}
         value={iron100}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setIron100(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setIron100(cleanUpNumber(text));
+        }}
+        icon={
+          <MaterialCommunityIcons
+            style={{ position: "absolute", left: 10, top: 16 }}
+            name="gold"
+            size={20}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"30 Iron Chest"}
         value={iron30}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setIron30(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setIron30(cleanUpNumber(text));
+        }}
+        icon={
+          <MaterialCommunityIcons
+            style={{ position: "absolute", left: 10, top: 16 }}
+            name="gold"
+            size={20}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"6 Iron Chest"}
         value={iron6}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setIron6(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setIron6(cleanUpNumber(text));
+        }}
+        icon={
+          <MaterialCommunityIcons
+            style={{ position: "absolute", left: 10, top: 16 }}
+            name="gold"
+            size={20}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"3 Iron Chest"}
         value={iron3}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setIron3(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
-      <TextInput
-        style={styles.statInput}
-        mode={"outlined"}
+        onChangeValue={(text) => {
+          setIron3(cleanUpNumber(text));
+        }}
+        icon={
+          <MaterialCommunityIcons
+            style={{ position: "absolute", left: 10, top: 16 }}
+            name="gold"
+            size={20}
+            color="black"
+          />
+        }
+      />
+
+      <StatInput
         label={"2 Iron Chest"}
         value={iron2}
-        placeholder={"eg. 5"}
-        activeOutlineColor={"#47656d"}
-        onChangeText={(text) => setIron2(text.replace(/[^0-9]/g, ""))}
-        keyboardType="numeric"
-      ></TextInput>
+        onChangeValue={(text) => {
+          setIron2(cleanUpNumber(text));
+        }}
+        icon={
+          <MaterialCommunityIcons
+            style={{ position: "absolute", left: 10, top: 16 }}
+            name="gold"
+            size={20}
+            color="black"
+          />
+        }
+      />
+
       <View style={{ height: 50 }}></View>
     </ScrollView>
   );
@@ -109,10 +154,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-  },
-  statInput: {
-    marginBottom: 10,
-    height: 40,
   },
 });
 
