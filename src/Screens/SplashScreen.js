@@ -23,7 +23,7 @@ const SplashScreen = () => {
         }}
         source={require("../../assets/images/logo.png")}
       />
-      <ActivityIndicator size="large" color="#02C3B1" />
+      <ActivityIndicator size="large" color="#d35322" />
     </SafeAreaView>
   );
 };
