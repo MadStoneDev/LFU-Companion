@@ -65,9 +65,11 @@ const HomeScreen = ({ navigation }) => {
         ListEmptyComponent={HomeEmptyItem}
       />
 
-      <View style={styles.addButton}>
-        <FontAwesome name="plus-circle" size={40} color="#d35322" />
-      </View>
+      {data.length > 2 ? null : (
+        <View style={styles.addButton}>
+          <FontAwesome name="plus-circle" size={40} color="#d35322" />
+        </View>
+      )}
 
       <StatusBar style="auto" />
     </SafeAreaView>
