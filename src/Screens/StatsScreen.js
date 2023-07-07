@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -23,10 +23,17 @@ import IronScreen from "./IronScreen";
 import StoneScreen from "./StoneScreen";
 import WarehouseScreen from "./WarehouseScreen";
 import { processKeys } from "../Helpers/CleanUps";
+import fileManager from "../Helpers/FileManager";
 
 const Tabs = createMaterialTopTabNavigator();
 
-const StatsScreen = ({ navigation }) => {
+const StatsScreen = ({
+  navigation,
+  setTotalStone,
+  setTotalIron,
+  setTotalZCoins,
+  setTotalDiamonds,
+}) => {
   //  States
   const [saving, setSaving] = useState(false);
 
@@ -72,6 +79,59 @@ const StatsScreen = ({ navigation }) => {
     diamonds20: 0,
     diamonds10: 0,
   });
+
+  const loadStats = async () => {
+    return await fileManager.loadData();
+  };
+
+  useEffect(() => {
+    loadStats().then((r) => {
+      setWarehouseStats({
+        ...warehouseStats,
+        stone: r.stone,
+        iron: r.iron,
+        zCoins: r.zCoins,
+        diamonds: r.diamonds,
+      });
+
+      setStoneStats({
+        ...stoneStats,
+        stone5000: r.stone5000,
+        stone1000: r.stone1000,
+        stone500: r.stone500,
+        stone150: r.stone150,
+        stone50: r.stone50,
+        stone10: r.stone10,
+        stone5: r.stone5,
+        stone2: r.stone2,
+      });
+
+      setIronStats({
+        iron600: r.iron600,
+        iron300: r.iron300,
+        iron100: r.iron100,
+        iron30: r.iron30,
+        iron6: r.iron6,
+        iron3: r.iron3,
+        iron2: r.iron2,
+      });
+
+      setZCoinsStats({
+        zCoins500: r.zCoins500,
+        zCoins100: r.zCoins100,
+        zCoins50: r.zCoins50,
+        zCoins15: r.zCoins15,
+        zCoins5: r.zCoins5,
+        zCoins1: r.zCoins1,
+      });
+
+      setDiamondStats({
+        diamonds50: r.diamonds50,
+        diamonds20: r.diamonds20,
+        diamonds10: r.diamonds10,
+      });
+    });
+  }, []);
 
   return (
     <SafeAreaView style={styles.screenWrap}>
@@ -166,11 +226,34 @@ const StatsScreen = ({ navigation }) => {
       </Tabs.Navigator>
 
       <TouchableWithoutFeedback
-        onPress={() => {
+        onPress={async () => {
           setSaving(true);
+
+          const data = {
+            ...warehouseStats,
+            ...stoneStats,
+            ...ironStats,
+            ...zCoinsStats,
+            ...diamondStats,
+          };
+
+          await fileManager
+            .saveData(data)
+            .then((r) => {
+              console.log(r);
+            })
+            .catch((e) => console.log(e));
+
+          // await fileManager.loadData().then((res) => {
+          //   setTotalStone(fileManager.getTotalStone());
+          //   setTotalIron(fileManager.getTotalIron());
+          //   setTotalZCoins(fileManager.getTotalZCoins());
+          //   setTotalDiamonds(fileManager.getTotalDiamonds());
+          // });
+
           setTimeout(() => {
             setSaving(false);
-          }, 1500);
+          }, 500);
         }}
       >
         <View

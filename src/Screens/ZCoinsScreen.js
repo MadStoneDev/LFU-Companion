@@ -25,7 +25,7 @@ const ZCoinsScreen = ({ stats, setStats }) => {
               }));
             }}
             icon={
-              stats[key] < 1 ? null : (
+              stats[key].toString().length < 1 ? null : (
                 <FontAwesome5
                   style={{ position: "absolute", left: 10, top: 20 }}
                   name="coins"

@@ -25,7 +25,7 @@ const DiamondsScreen = ({ stats, setStats }) => {
               }));
             }}
             icon={
-              stats[key] < 1 ? null : (
+              stats[key].toString().length < 1 ? null : (
                 <FontAwesome
                   style={{ position: "absolute", left: 10, top: 19 }}
                   name="diamond"

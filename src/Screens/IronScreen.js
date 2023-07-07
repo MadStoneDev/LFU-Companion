@@ -25,7 +25,7 @@ const IronScreen = ({ stats, setStats }) => {
               }));
             }}
             icon={
-              stats[key] < 1 ? null : (
+              stats[key].toString().length < 1 ? null : (
                 <MaterialCommunityIcons
                   style={{ position: "absolute", left: 10, top: 16 }}
                   name="gold"

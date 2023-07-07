@@ -1,9 +1,15 @@
 import { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ActivityIndicator, Image } from "react-native";
+import fileManager from "../Helpers/FileManager";
 
 const SplashScreen = () => {
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fileManager.createDirectory().then(() => {
+      fileManager.deleteFile().then((r) => console.log(r));
+      fileManager.createSaveFile().then((r) => console.log(r));
+    });
+  }, []);
 
   return (
     <SafeAreaView

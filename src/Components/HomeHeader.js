@@ -6,17 +6,32 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import SingleStat from "./SingleStat";
+import fileManager from "../Helpers/FileManager";
 
 const HomeHeader = ({ navigation }) => {
   // States
   const [refreshingStats, setRefreshingStats] = useState(false);
+
   const [totalStone, setTotalStone] = useState(0);
   const [totalIron, setTotalIron] = useState(0);
   const [totalZCoins, setTotalZCoins] = useState(0);
   const [totalDiamonds, setTotalDiamonds] = useState(0);
+
+  const loadStats = async () => {
+    return await fileManager.loadData();
+  };
+
+  useEffect(() => {
+    loadStats().then((res) => {
+      setTotalStone(fileManager.getTotalStone());
+      setTotalIron(fileManager.getTotalIron());
+      setTotalZCoins(fileManager.getTotalZCoins());
+      setTotalDiamonds(fileManager.getTotalDiamonds());
+    });
+  }, []);
 
   return (
     <View style={styles.header}>
@@ -45,7 +60,14 @@ const HomeHeader = ({ navigation }) => {
           </View>
 
           <TouchableWithoutFeedback
-            onPress={() => navigation.navigate("Statistics")}
+            onPress={() =>
+              navigation.navigate("Statistics", {
+                setTotalStone,
+                setTotalIron,
+                setTotalZCoins,
+                setTotalDiamonds,
+              })
+            }
           >
             <View
               style={{
@@ -55,9 +77,6 @@ const HomeHeader = ({ navigation }) => {
                 bottom: 15,
               }}
             >
-              {refreshingStats ? (
-                <ActivityIndicator size={"small"} color={"#02C3B1"} />
-              ) : null}
               <FontAwesome name="pencil-square" size={30} color="white" />
             </View>
           </TouchableWithoutFeedback>

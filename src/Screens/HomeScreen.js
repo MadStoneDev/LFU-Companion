@@ -10,8 +10,9 @@ import {
 import HomeHeader from "../Components/HomeHeader";
 import HomeRenderItem from "../Components/HomeRenderItem";
 import HomeEmptyItem from "../Components/HomeEmptyItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
+import fileManager from "../Helpers/FileManager";
 
 const HomeScreen = ({ navigation }) => {
   // Change this to your own data source

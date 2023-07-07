@@ -14,7 +14,7 @@ const StatInput = ({ label, value, onChangeValue, icon = null }) => {
         contentStyle={{ top: 2, paddingLeft: 40 }}
         mode={"outlined"}
         label={label}
-        value={value}
+        value={value?.toString()}
         placeholder={"eg. 3"}
         activeOutlineColor={"#47656d"}
         onChangeText={onChangeHandler}

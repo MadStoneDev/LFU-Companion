@@ -30,7 +30,7 @@ const StoneScreen = ({ stats, setStats }) => {
               }));
             }}
             icon={
-              stats[key] < 1 ? null : (
+              stats[key].toString().length < 1 ? null : (
                 <Entypo
                   style={{ position: "absolute", left: 10, top: 20 }}
                   name="basecamp"
