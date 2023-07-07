@@ -2,10 +2,10 @@ import { Button, TextInput } from "react-native-paper";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useState } from "react";
 import StatInput from "../Components/StatInput";
-import { cleanUpNumber } from "../Helpers/CleanUps";
+import { capitalise, cleanUpNumber, processKeys } from "../Helpers/CleanUps";
 import { Entypo, FontAwesome5 } from "@expo/vector-icons";
 
-const StoneScreen = () => {
+const StoneScreen = ({ stats, setStats }) => {
   const [stone5000, setStone5000] = useState("0");
   const [stone1000, setStone1000] = useState("0");
   const [stone500, setStone500] = useState("0");
@@ -17,133 +17,31 @@ const StoneScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <StatInput
-        label={"5000 Stone Chest"}
-        value={stone5000}
-        onChangeValue={(text) => {
-          setStone5000(cleanUpNumber(text));
-        }}
-        icon={
-          <Entypo
-            style={{ position: "absolute", left: 10, top: 20 }}
-            name="basecamp"
-            size={15}
-            color="black"
+      {Object.keys(stats).map((key) => {
+        return (
+          <StatInput
+            key={key}
+            label={processKeys(key)}
+            value={stats[key]}
+            onChangeValue={(text) => {
+              setStats((stats) => ({
+                ...stats,
+                [key]: cleanUpNumber(text),
+              }));
+            }}
+            icon={
+              stats[key] < 1 ? null : (
+                <Entypo
+                  style={{ position: "absolute", left: 10, top: 20 }}
+                  name="basecamp"
+                  size={15}
+                  color="black"
+                />
+              )
+            }
           />
-        }
-      />
-
-      <StatInput
-        label={"1000 Stone Chest"}
-        value={stone1000}
-        onChangeValue={(text) => {
-          setStone1000(cleanUpNumber(text));
-        }}
-        icon={
-          <Entypo
-            style={{ position: "absolute", left: 10, top: 20 }}
-            name="basecamp"
-            size={15}
-            color="black"
-          />
-        }
-      />
-
-      <StatInput
-        label={"500 Stone Chest"}
-        value={stone500}
-        onChangeValue={(text) => {
-          setStone500(cleanUpNumber(text));
-        }}
-        icon={
-          <Entypo
-            style={{ position: "absolute", left: 10, top: 20 }}
-            name="basecamp"
-            size={15}
-            color="black"
-          />
-        }
-      />
-
-      <StatInput
-        label={"150 Stone Chest"}
-        value={stone150}
-        onChangeValue={(text) => {
-          setStone150(cleanUpNumber(text));
-        }}
-        icon={
-          <Entypo
-            style={{ position: "absolute", left: 10, top: 20 }}
-            name="basecamp"
-            size={15}
-            color="black"
-          />
-        }
-      />
-
-      <StatInput
-        label={"50 Stone Chest"}
-        value={stone50}
-        onChangeValue={(text) => {
-          setStone50(cleanUpNumber(text));
-        }}
-        icon={
-          <Entypo
-            style={{ position: "absolute", left: 10, top: 20 }}
-            name="basecamp"
-            size={15}
-            color="black"
-          />
-        }
-      />
-
-      <StatInput
-        label={"10 Stone Chest"}
-        value={stone10}
-        onChangeValue={(text) => {
-          setStone10(cleanUpNumber(text));
-        }}
-        icon={
-          <Entypo
-            style={{ position: "absolute", left: 10, top: 20 }}
-            name="basecamp"
-            size={15}
-            color="black"
-          />
-        }
-      />
-
-      <StatInput
-        label={"5 Stone Chest"}
-        value={stone5}
-        onChangeValue={(text) => {
-          setStone5(cleanUpNumber(text));
-        }}
-        icon={
-          <Entypo
-            style={{ position: "absolute", left: 10, top: 20 }}
-            name="basecamp"
-            size={15}
-            color="black"
-          />
-        }
-      />
-
-      <StatInput
-        label={"2 Stone Chest"}
-        value={stone2}
-        onChangeValue={(text) => {
-          setStone2(cleanUpNumber(text));
-        }}
-        icon={
-          <Entypo
-            style={{ position: "absolute", left: 10, top: 20 }}
-            name="basecamp"
-            size={15}
-            color="black"
-          />
-        }
-      />
+        );
+      })}
 
       <View style={{ height: 50 }}></View>
     </ScrollView>

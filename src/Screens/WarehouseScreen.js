@@ -1,11 +1,11 @@
 import { Button, TextInput } from "react-native-paper";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useState } from "react";
-import { cleanUpNumber } from "../Helpers/CleanUps";
+import { capitalise, cleanUpNumber } from "../Helpers/CleanUps";
 import { FontAwesome5 } from "@expo/vector-icons";
 import StatInput from "../Components/StatInput";
 
-const WarehouseScreen = () => {
+const WarehouseScreen = ({ stats, setStats }) => {
   const [mainStone, setMainStone] = useState("0");
   const [mainIron, setMainIron] = useState("0");
   const [mainZCoins, setMainZCoins] = useState("0");
@@ -13,69 +13,31 @@ const WarehouseScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <StatInput
-        label={"1 in Warehouse"}
-        value={mainStone}
-        onChangeValue={(text) => {
-          setMainStone(cleanUpNumber(text));
-        }}
-        icon={
-          <FontAwesome5
-            style={{ position: "absolute", left: 10, top: 20 }}
-            name="warehouse"
-            size={13}
-            color="black"
+      {Object.keys(stats).map((key) => {
+        return (
+          <StatInput
+            key={key}
+            label={capitalise(key) + " in Warehouse"}
+            value={stats[key]}
+            onChangeValue={(text) => {
+              setStats((stats) => ({
+                ...stats,
+                [key]: cleanUpNumber(text),
+              }));
+            }}
+            icon={
+              stats[key] < 1 ? null : (
+                <FontAwesome5
+                  style={{ position: "absolute", left: 10, top: 20 }}
+                  name="warehouse"
+                  size={13}
+                  color="black"
+                />
+              )
+            }
           />
-        }
-      />
-
-      <StatInput
-        label={"Iron in Warehouse"}
-        value={mainIron}
-        onChangeValue={(text) => {
-          setMainIron(cleanUpNumber(text));
-        }}
-        icon={
-          <FontAwesome5
-            style={{ position: "absolute", left: 10, top: 20 }}
-            name="warehouse"
-            size={13}
-            color="black"
-          />
-        }
-      />
-
-      <StatInput
-        label={"ZCoins in Warehouse"}
-        value={mainZCoins}
-        onChangeValue={(text) => {
-          setMainZCoins(cleanUpNumber(text));
-        }}
-        icon={
-          <FontAwesome5
-            style={{ position: "absolute", left: 10, top: 20 }}
-            name="warehouse"
-            size={13}
-            color="black"
-          />
-        }
-      />
-
-      <StatInput
-        label={"Diamonds in Warehouse"}
-        value={mainDiamonds}
-        onChangeValue={(text) => {
-          setMainDiamonds(cleanUpNumber(text));
-        }}
-        icon={
-          <FontAwesome5
-            style={{ position: "absolute", left: 10, top: 20 }}
-            name="warehouse"
-            size={13}
-            color="black"
-          />
-        }
-      />
+        );
+      })}
       <View style={{ height: 50 }}></View>
     </ScrollView>
   );

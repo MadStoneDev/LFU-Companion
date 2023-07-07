@@ -1,64 +1,43 @@
 import { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import StatInput from "../Components/StatInput";
-import { cleanUpNumber } from "../Helpers/CleanUps";
+import { cleanUpNumber, processKeys } from "../Helpers/CleanUps";
 
-const DiamondsScreen = () => {
+const DiamondsScreen = ({ stats, setStats }) => {
   const [diamonds50, setDiamonds50] = useState("0");
   const [diamonds20, setDiamonds20] = useState("0");
   const [diamonds10, setDiamonds10] = useState("0");
 
   return (
     <ScrollView style={styles.container}>
-      <StatInput
-        label={"50 Diamonds"}
-        value={diamonds50}
-        onChangeValue={(text) => {
-          setDiamonds50(cleanUpNumber(text));
-        }}
-        icon={
-          <FontAwesome
-            style={{ position: "absolute", left: 10, top: 19 }}
-            name="diamond"
-            size={15}
-            color="black"
+      {Object.keys(stats).map((key) => {
+        return (
+          <StatInput
+            key={key}
+            label={processKeys(key)}
+            value={stats[key]}
+            onChangeValue={(text) => {
+              setStats((stats) => ({
+                ...stats,
+                [key]: cleanUpNumber(text),
+              }));
+            }}
+            icon={
+              stats[key] < 1 ? null : (
+                <FontAwesome
+                  style={{ position: "absolute", left: 10, top: 19 }}
+                  name="diamond"
+                  size={15}
+                  color="black"
+                />
+              )
+            }
           />
-        }
-      />
+        );
+      })}
 
-      <StatInput
-        label={"20 Diamonds"}
-        value={diamonds20}
-        onChangeValue={(text) => {
-          setDiamonds20(cleanUpNumber(text));
-        }}
-        icon={
-          <FontAwesome
-            style={{ position: "absolute", left: 10, top: 19 }}
-            name="diamond"
-            size={15}
-            color="black"
-          />
-        }
-      />
-
-      <StatInput
-        label={"10 Diamonds"}
-        value={diamonds10}
-        onChangeValue={(text) => {
-          setDiamonds10(cleanUpNumber(text));
-        }}
-        icon={
-          <FontAwesome
-            style={{ position: "absolute", left: 10, top: 19 }}
-            name="diamond"
-            size={15}
-            color="black"
-          />
-        }
-      />
       <View style={{ height: 50 }}></View>
     </ScrollView>
   );

@@ -22,18 +22,22 @@ import ZCoinsScreen from "./ZCoinsScreen";
 import IronScreen from "./IronScreen";
 import StoneScreen from "./StoneScreen";
 import WarehouseScreen from "./WarehouseScreen";
+import { processKeys } from "../Helpers/CleanUps";
 
 const Tabs = createMaterialTopTabNavigator();
 
 const StatsScreen = ({ navigation }) => {
   //  States
   const [saving, setSaving] = useState(false);
-  const [data, setData] = useState({
-    // replace this with loaded data
-    mainStone: 0,
-    mainIron: 0,
-    mainZCoins: 0,
-    mainDiamonds: 0,
+
+  const [warehouseStats, setWarehouseStats] = useState({
+    stone: 0,
+    iron: 0,
+    zCoins: 0,
+    diamonds: 0,
+  });
+
+  const [stoneStats, setStoneStats] = useState({
     stone5000: 0,
     stone1000: 0,
     stone500: 0,
@@ -42,28 +46,32 @@ const StatsScreen = ({ navigation }) => {
     stone10: 0,
     stone5: 0,
     stone2: 0,
+  });
+
+  const [ironStats, setIronStats] = useState({
+    iron600: 0,
     iron300: 0,
     iron100: 0,
     iron30: 0,
     iron6: 0,
     iron3: 0,
     iron2: 0,
+  });
+
+  const [zCoinsStats, setZCoinsStats] = useState({
     zCoins500: 0,
     zCoins100: 0,
     zCoins50: 0,
     zCoins15: 0,
     zCoins5: 0,
     zCoins1: 0,
+  });
+
+  const [diamondStats, setDiamondStats] = useState({
     diamonds50: 0,
     diamonds20: 0,
     diamonds10: 0,
   });
-
-  const handleChange = (handle, value) => {
-    const tempData = data;
-    tempData[handle] = value;
-    setData(tempData);
-  };
 
   return (
     <SafeAreaView style={styles.screenWrap}>
@@ -99,7 +107,12 @@ const StatsScreen = ({ navigation }) => {
       >
         <Tabs.Screen
           name={"Warehouse"}
-          component={WarehouseScreen}
+          children={() => (
+            <WarehouseScreen
+              stats={warehouseStats}
+              setStats={setWarehouseStats}
+            />
+          )}
           options={{
             tabBarIcon: (focused) => (
               <FontAwesome5 name="warehouse" size={13} color="black" />
@@ -108,7 +121,9 @@ const StatsScreen = ({ navigation }) => {
         />
         <Tabs.Screen
           name={"Stone Chests"}
-          component={StoneScreen}
+          children={() => (
+            <StoneScreen stats={stoneStats} setStats={setStoneStats} />
+          )}
           options={{
             tabBarIcon: (focused) => (
               <Entypo name="basecamp" size={15} color="black" />
@@ -117,7 +132,9 @@ const StatsScreen = ({ navigation }) => {
         />
         <Tabs.Screen
           name={"Iron Chests"}
-          component={IronScreen}
+          children={() => (
+            <IronScreen stats={ironStats} setStats={setIronStats} />
+          )}
           options={{
             tabBarIcon: (focused) => (
               <MaterialCommunityIcons name="gold" size={20} color="black" />
@@ -126,7 +143,9 @@ const StatsScreen = ({ navigation }) => {
         />
         <Tabs.Screen
           name={"Z Coins Chests"}
-          component={ZCoinsScreen}
+          children={() => (
+            <ZCoinsScreen stats={zCoinsStats} setStats={setZCoinsStats} />
+          )}
           options={{
             tabBarIcon: (focused) => (
               <FontAwesome5 name="coins" size={15} color="black" />
@@ -135,7 +154,9 @@ const StatsScreen = ({ navigation }) => {
         />
         <Tabs.Screen
           name={"Diamonds Chest"}
-          component={DiamondsScreen}
+          children={() => (
+            <DiamondsScreen stats={diamondStats} setStats={setDiamondStats} />
+          )}
           options={{
             tabBarIcon: (focused) => (
               <FontAwesome name="diamond" size={15} color="black" />
