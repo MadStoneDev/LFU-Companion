@@ -11,7 +11,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import SingleStat from "./SingleStat";
 import fileManager from "../Helpers/FileManager";
 
-const HomeHeader = ({ navigation }) => {
+const HomeHeader = ({ props, navigation }) => {
   // States
   const [refreshingStats, setRefreshingStats] = useState(false);
 
@@ -24,13 +24,22 @@ const HomeHeader = ({ navigation }) => {
     return await fileManager.loadData();
   };
 
-  useEffect(() => {
+  const updateStats = () => {
     loadStats().then((res) => {
       setTotalStone(fileManager.getTotalStone());
       setTotalIron(fileManager.getTotalIron());
       setTotalZCoins(fileManager.getTotalZCoins());
       setTotalDiamonds(fileManager.getTotalDiamonds());
     });
+  };
+
+  useEffect(() => {
+    console.log(props);
+    updateStats();
+  }, []);
+
+  useEffect(() => {
+    updateStats();
   }, []);
 
   return (
@@ -62,10 +71,10 @@ const HomeHeader = ({ navigation }) => {
           <TouchableWithoutFeedback
             onPress={() =>
               navigation.navigate("Statistics", {
-                setTotalStone,
-                setTotalIron,
-                setTotalZCoins,
-                setTotalDiamonds,
+                stoneData: totalStone,
+                ironData: totalIron,
+                zCoinsData: totalZCoins,
+                diamondsData: totalDiamonds,
               })
             }
           >

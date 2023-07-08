@@ -27,15 +27,14 @@ import fileManager from "../Helpers/FileManager";
 
 const Tabs = createMaterialTopTabNavigator();
 
-const StatsScreen = ({
-  navigation,
-  setTotalStone,
-  setTotalIron,
-  setTotalZCoins,
-  setTotalDiamonds,
-}) => {
+const StatsScreen = ({ route, navigation }) => {
   //  States
   const [saving, setSaving] = useState(false);
+
+  const [totalStone, setTotalStone] = useState(route.params.stoneData);
+  const [totalIron, setTotalIron] = useState(route.params.ironData);
+  const [totalZCoins, setTotalZCoins] = useState(route.params.zCoinsData);
+  const [totalDiamonds, setTotalDiamonds] = useState(route.params.diamondsData);
 
   const [warehouseStats, setWarehouseStats] = useState({
     stone: 0,
@@ -136,7 +135,16 @@ const StatsScreen = ({
   return (
     <SafeAreaView style={styles.screenWrap}>
       <View style={styles.header}>
-        <Pressable onPress={() => navigation.goBack()}>
+        <Pressable
+          onPress={() =>
+            navigation.navigate("Home", {
+              stoneData: totalStone,
+              ironData: totalIron,
+              zCoinsData: totalZCoins,
+              diamondsData: totalDiamonds,
+            })
+          }
+        >
           <Ionicons name="arrow-back-sharp" size={24} color="black" />
         </Pressable>
 
@@ -244,12 +252,14 @@ const StatsScreen = ({
             })
             .catch((e) => console.log(e));
 
-          // await fileManager.loadData().then((res) => {
-          //   setTotalStone(fileManager.getTotalStone());
-          //   setTotalIron(fileManager.getTotalIron());
-          //   setTotalZCoins(fileManager.getTotalZCoins());
-          //   setTotalDiamonds(fileManager.getTotalDiamonds());
-          // });
+          await fileManager.loadData().then((res) => {
+            console.log(res);
+          });
+
+          setTotalStone(fileManager.getTotalStone());
+          setTotalIron(fileManager.getTotalIron());
+          setTotalZCoins(fileManager.getTotalZCoins());
+          setTotalDiamonds(fileManager.getTotalDiamonds());
 
           setTimeout(() => {
             setSaving(false);
