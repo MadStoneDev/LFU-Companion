@@ -1,20 +1,21 @@
 import {
-  ActivityIndicator,
   ImageBackground,
   Text,
   TouchableWithoutFeedback,
   StyleSheet,
   View,
 } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { observer } from "mobx-react";
 
 import SingleStat from "./SingleStat";
 import resourceStore from "../Helpers/ResourceStore";
+import { useState } from "react";
+import { Modal, Portal, Provider, TextInput } from "react-native-paper";
 
-const HomeHeader = observer(({ props, navigation }) => {
+const HomeHeader = observer(({ navigation, modalVisible }) => {
   // MobX
-  const { getTotalAmount } = resourceStore;
+  const { username, getTotalAmount } = resourceStore;
 
   const stoneTotal = getTotalAmount("stone");
   const ironTotal = getTotalAmount("iron");
@@ -22,48 +23,64 @@ const HomeHeader = observer(({ props, navigation }) => {
   const diamondTotal = getTotalAmount("diamonds");
 
   return (
-    <View style={styles.header}>
-      <ImageBackground
-        source={require("../../assets/images/Header-Background.jpg")}
-        resizeMode="cover"
-        style={styles.headerImage}
-      >
-        <View style={styles.headerPanel}>
-          <Text style={styles.greeting}>Hi Edmodantes</Text>
-          <View>
-            <Text
-              style={{
-                marginTop: 15,
-                marginBottom: 5,
-                fontSize: 16,
-                color: "white",
-              }}
-            >
-              Current Statistics:
-            </Text>
-            <SingleStat data={stoneTotal} description={"Stone"} />
-            <SingleStat data={ironTotal} description={"Iron"} />
-            <SingleStat data={zCoinTotal} description={"Z Coins"} />
-            <SingleStat data={diamondTotal} description={"Diamonds"} />
-          </View>
-
-          <TouchableWithoutFeedback
-            onPress={() => navigation.navigate("Statistics")}
-          >
-            <View
-              style={{
-                position: "absolute",
-                flexDirection: "row",
-                right: 20,
-                bottom: 15,
-              }}
-            >
-              <FontAwesome name="pencil-square" size={30} color="white" />
+    <Provider>
+      <View style={styles.header}>
+        <ImageBackground
+          source={require("../../assets/images/Header-Background.jpg")}
+          resizeMode="cover"
+          style={styles.headerImage}
+        >
+          <View style={styles.headerPanel}>
+            <View>
+              <Text style={styles.greeting}>Hi {username}</Text>
+              <TouchableWithoutFeedback onPress={() => modalVisible(true)}>
+                <View
+                  style={{
+                    position: "absolute",
+                    flexDirection: "row",
+                    right: 0,
+                    bottom: 0,
+                  }}
+                >
+                  <FontAwesome name="pencil-square" size={30} color="white" />
+                </View>
+              </TouchableWithoutFeedback>
             </View>
-          </TouchableWithoutFeedback>
-        </View>
-      </ImageBackground>
-    </View>
+            <View>
+              <Text
+                style={{
+                  marginTop: 15,
+                  marginBottom: 5,
+                  fontSize: 16,
+                  color: "white",
+                }}
+              >
+                Current Statistics:
+              </Text>
+              <SingleStat data={stoneTotal} description={"Stone"} />
+              <SingleStat data={ironTotal} description={"Iron"} />
+              <SingleStat data={zCoinTotal} description={"Z Coins"} />
+              <SingleStat data={diamondTotal} description={"Diamonds"} />
+            </View>
+
+            <TouchableWithoutFeedback
+              onPress={() => navigation.navigate("Statistics")}
+            >
+              <View
+                style={{
+                  position: "absolute",
+                  flexDirection: "row",
+                  right: 20,
+                  bottom: 15,
+                }}
+              >
+                <FontAwesome name="pencil-square" size={30} color="white" />
+              </View>
+            </TouchableWithoutFeedback>
+          </View>
+        </ImageBackground>
+      </View>
+    </Provider>
   );
 });
 

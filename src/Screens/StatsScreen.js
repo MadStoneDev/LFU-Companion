@@ -22,7 +22,7 @@ import ZCoinsScreen from "./ZCoinsScreen";
 import IronScreen from "./IronScreen";
 import StoneScreen from "./StoneScreen";
 import WarehouseScreen from "./WarehouseScreen";
-import fileManager from "../Helpers/FileManager";
+import fileManager, { saveDataToFile } from "../Helpers/FileManager";
 import resourceStore from "../Helpers/ResourceStore";
 
 const Tabs = createMaterialTopTabNavigator();
@@ -44,7 +44,15 @@ const StatsScreen = ({ route, navigation }) => {
   return (
     <SafeAreaView style={styles.screenWrap}>
       <View style={styles.header}>
-        <Pressable onPress={() => navigation.goBack()}>
+        <Pressable
+          onPress={() => {
+            saveDataToFile(resourceStore).then(() => {
+              console.log("Data saved");
+            });
+
+            navigation.goBack();
+          }}
+        >
           <Ionicons name="arrow-back-sharp" size={24} color="black" />
         </Pressable>
 

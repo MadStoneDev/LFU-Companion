@@ -11,10 +11,17 @@ import HomeHeader from "../Components/HomeHeader";
 import HomeRenderItem from "../Components/HomeRenderItem";
 import HomeEmptyItem from "../Components/HomeEmptyItem";
 import { useEffect, useState } from "react";
-import { FontAwesome } from "@expo/vector-icons";
-import fileManager from "../Helpers/FileManager";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import fileManager, { saveDataToFile } from "../Helpers/FileManager";
+import { Modal, Portal, Provider, TextInput } from "react-native-paper";
+import resourceStore from "../Helpers/ResourceStore";
 
 const HomeScreen = ({ navigation }) => {
+  const { username } = resourceStore;
+  // States
+  const [visible, setVisible] = useState(false);
+  const [usernameValue, setUsernameValue] = useState(username);
+
   // Change this to your own data source
   const data = [
     {
@@ -55,23 +62,67 @@ const HomeScreen = ({ navigation }) => {
     // },
   ];
 
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        data={data}
-        renderItem={(item) => {
-          return <HomeRenderItem data={item} navigation={navigation} />;
-        }}
-        ListHeaderComponent={<HomeHeader navigation={navigation} />}
-        ListEmptyComponent={HomeEmptyItem}
-      />
+      <Provider>
+        <Portal>
+          <Modal
+            visible={visible}
+            onDismiss={hideModal}
+            contentContainerStyle={{
+              backgroundColor: "white",
+              margin: 20,
+              padding: 20,
+              borderRadius: 10,
+            }}
+          >
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
+            >
+              <TextInput
+                style={{ flex: 1, height: 35, padding: 0 }}
+                label={"Username"}
+                mode={"outlined"}
+                activeOutlineColor={"#d35322"}
+                outlineColor={"#d35322"}
+                value={usernameValue}
+                onChangeText={(text) => setUsernameValue(text)}
+              />
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  resourceStore.updateUsername(usernameValue);
+                  saveDataToFile(resourceStore).then(() => {
+                    console.log("Saved");
+                  });
+                  hideModal();
+                }}
+              >
+                <Ionicons name="checkbox-sharp" size={30} color="#d35322" />
+              </TouchableWithoutFeedback>
+            </View>
+          </Modal>
+        </Portal>
 
-      {data.length > 2 ? null : (
-        <View style={styles.addButton}>
-          <FontAwesome name="plus-circle" size={40} color="#d35322" />
-        </View>
-      )}
+        <FlatList
+          data={data}
+          renderItem={(item) => {
+            return <HomeRenderItem data={item} navigation={navigation} />;
+          }}
+          ListHeaderComponent={
+            <HomeHeader navigation={navigation} modalVisible={setVisible} />
+          }
+          ListEmptyComponent={HomeEmptyItem}
+        />
 
+        {data.length > 2 ? null : (
+          <View style={styles.addButton}>
+            <FontAwesome name="plus-circle" size={40} color="#d35322" />
+          </View>
+        )}
+      </Provider>
       <StatusBar style="auto" />
     </SafeAreaView>
   );

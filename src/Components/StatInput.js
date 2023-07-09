@@ -1,5 +1,4 @@
 import { TextInput } from "react-native-paper";
-import { FontAwesome } from "@expo/vector-icons";
 import { StyleSheet, View } from "react-native";
 
 const StatInput = ({ label, value, onChangeValue, icon = null }) => {
