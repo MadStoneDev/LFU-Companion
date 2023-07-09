@@ -1,6 +1,8 @@
 import { makeObservable, observable, action, computed } from "mobx";
 
 class ResourceStore {
+  username = "";
+
   stone = {
     warehouse: 0,
     chests: {
@@ -58,10 +60,16 @@ class ResourceStore {
       iron: observable,
       zCoins: observable,
       diamonds: observable,
+      username: observable,
+      updateUsername: action,
       updateWarehouseQuantity: action,
       updateChestQuantity: action,
       getTotalAmount: computed,
     });
+  }
+
+  updateUsername(username) {
+    this.username = username;
   }
 
   updateWarehouseQuantity(resourceType, amount) {

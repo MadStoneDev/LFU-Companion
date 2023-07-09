@@ -1,14 +1,17 @@
 import { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ActivityIndicator, Image } from "react-native";
-import { checkAndCreateFile, loadDataFromFile } from "../Helpers/FileManager";
+import {
+  checkAndCreateFile,
+  loadDataFromFile,
+  saveDataToFile,
+} from "../Helpers/FileManager";
 import resourceStore from "../Helpers/ResourceStore";
 import * as FileSystem from "expo-file-system";
+import { usernames } from "../Helpers/usernames";
 
 const SplashScreen = () => {
   useEffect(() => {
-    console.log(FileSystem.documentDirectory);
-
     const loadAndCheckFile = async () => {
       await checkAndCreateFile();
       const data = await loadDataFromFile();
@@ -55,6 +58,14 @@ const SplashScreen = () => {
             data.diamonds.chests[quantity]
           );
         });
+
+        if (resourceStore.username === "") {
+          resourceStore.updateUsername(
+            usernames[Math.floor(Math.random() * usernames.length - 1)]
+          );
+
+          await saveDataToFile(resourceStore);
+        }
       }
     };
 

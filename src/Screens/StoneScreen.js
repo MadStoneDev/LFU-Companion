@@ -23,7 +23,6 @@ const StoneScreen = observer(() => {
       {Object.entries(stone.chests)
         .reverse()
         .map(([quantity, amount]) => {
-          console.log(stone.chests);
           return (
             <StatInput
               key={quantity}

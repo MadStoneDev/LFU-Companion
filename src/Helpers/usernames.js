@@ -1,0 +1,17 @@
+export const usernames = [
+  "UndeadHunter",
+  "ZombieSlayer",
+  "CorpseEater",
+  "BrainMuncher",
+  "RottingFlesh",
+  "GhoulGamer",
+  "InfectedSurvivor",
+  "WalkingDeadFan",
+  "FleshFeaster",
+  "ApocalypseHero",
+  "ZombifiedZapper",
+  "RottenCorpse",
+  "UndeadEnthusiast",
+  "LurchingLurker",
+  "ZombieWhisperer",
+];
