@@ -1,4 +1,5 @@
 import * as FileSystem from "expo-file-system";
+import resourceStore from "./ResourceStore";
 
 const filePath = `${FileSystem.documentDirectory}/resourcesData.json`;
 
@@ -8,6 +9,8 @@ const checkAndCreateFile = async () => {
 
     if (!fileInfo.exists) {
       await FileSystem.writeAsStringAsync(filePath, "{}");
+
+      await saveDataToFile(resourceStore);
       console.log("File created successfully");
     }
   } catch (err) {
@@ -18,8 +21,7 @@ const checkAndCreateFile = async () => {
 const loadDataFromFile = async () => {
   try {
     const fileContent = await FileSystem.readAsStringAsync(filePath);
-    const data = JSON.parse(fileContent);
-    return data;
+    return JSON.parse(fileContent);
   } catch (err) {
     console.error("Error reading file:", err);
     return null;
@@ -28,7 +30,6 @@ const loadDataFromFile = async () => {
 
 const saveDataToFile = async (data) => {
   const jsonString = JSON.stringify(data);
-
   try {
     await FileSystem.writeAsStringAsync(filePath, jsonString);
     console.log("Data saved successfully");
@@ -37,4 +38,18 @@ const saveDataToFile = async (data) => {
   }
 };
 
-export { checkAndCreateFile, loadDataFromFile, saveDataToFile };
+const deleteDataFromFile = async () => {
+  try {
+    await FileSystem.deleteAsync(filePath);
+    console.log("Data deleted successfully");
+  } catch (err) {
+    console.error("Error deleting data:", err);
+  }
+};
+
+export {
+  checkAndCreateFile,
+  loadDataFromFile,
+  saveDataToFile,
+  deleteDataFromFile,
+};

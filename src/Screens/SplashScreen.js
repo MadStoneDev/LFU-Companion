@@ -3,69 +3,81 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ActivityIndicator, Image } from "react-native";
 import {
   checkAndCreateFile,
+  deleteDataFromFile,
   loadDataFromFile,
   saveDataToFile,
 } from "../Helpers/FileManager";
 import resourceStore from "../Helpers/ResourceStore";
-import * as FileSystem from "expo-file-system";
 import { usernames } from "../Helpers/usernames";
 
 const SplashScreen = () => {
   useEffect(() => {
     const loadAndCheckFile = async () => {
+      await deleteDataFromFile();
       await checkAndCreateFile();
       const data = await loadDataFromFile();
 
-      const { stone, iron, zCoins, diamonds } = resourceStore;
+      const { stone, iron, zCoins, diamonds, username } = resourceStore;
 
       if (data) {
-        resourceStore.updateWarehouseQuantity("stone", data.stone.warehouse);
-        resourceStore.updateWarehouseQuantity("iron", data.iron.warehouse);
-        resourceStore.updateWarehouseQuantity("zCoins", data.zCoins.warehouse);
+        resourceStore.updateWarehouseQuantity(
+          "stone",
+          parseInt(data.stone.warehouse, 10)
+        );
+        resourceStore.updateWarehouseQuantity(
+          "iron",
+          parseInt(data.iron.warehouse, 10)
+        );
+        resourceStore.updateWarehouseQuantity(
+          "zCoins",
+          parseInt(data.zCoins.warehouse, 10)
+        );
         resourceStore.updateWarehouseQuantity(
           "diamonds",
-          data.diamonds.warehouse
+          parseInt(data.diamonds.warehouse, 10)
         );
 
-        Object.entries(stone.chests).map((quantity) => {
+        Object.entries(stone.chests).map(([quantity]) => {
           resourceStore.updateChestQuantity(
             "stone",
             quantity,
-            data.stone.chests[quantity]
+            parseInt(data.stone.chests[quantity], 10)
           );
         });
 
-        Object.entries(iron.chests).map((quantity) => {
+        Object.entries(iron.chests).map(([quantity]) => {
           resourceStore.updateChestQuantity(
             "iron",
             quantity,
-            data.iron.chests[quantity]
+            parseInt(data.iron.chests[quantity], 10)
           );
         });
 
-        Object.entries(zCoins.chests).map((quantity) => {
+        Object.entries(zCoins.chests).map(([quantity]) => {
           resourceStore.updateChestQuantity(
             "zCoins",
             quantity,
-            data.zCoins.chests[quantity]
+            parseInt(data.zCoins.chests[quantity], 10)
           );
         });
 
-        Object.entries(diamonds.chests).map((quantity) => {
+        Object.entries(diamonds.chests).map(([quantity]) => {
           resourceStore.updateChestQuantity(
             "diamonds",
             quantity,
-            data.diamonds.chests[quantity]
+            parseInt(data.diamonds.chests[quantity], 10)
           );
         });
 
-        if (resourceStore.username === "") {
-          resourceStore.updateUsername(
-            usernames[Math.floor(Math.random() * usernames.length - 1)]
-          );
+        resourceStore.updateUsername(username);
+      }
 
-          await saveDataToFile(resourceStore);
-        }
+      if (!username || username.length === 0) {
+        resourceStore.updateUsername(
+          usernames[Math.floor(Math.random() * usernames.length - 1)]
+        );
+
+        await saveDataToFile(resourceStore);
       }
     };
 
