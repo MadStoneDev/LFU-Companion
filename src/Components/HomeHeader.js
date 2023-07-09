@@ -6,12 +6,10 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import { useEffect, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { observer } from "mobx-react";
 
 import SingleStat from "./SingleStat";
-import fileManager from "../Helpers/FileManager";
 import resourceStore from "../Helpers/ResourceStore";
 
 const HomeHeader = observer(({ props, navigation }) => {
@@ -20,30 +18,8 @@ const HomeHeader = observer(({ props, navigation }) => {
 
   const stoneTotal = getTotalAmount("stone");
   const ironTotal = getTotalAmount("iron");
-  const zCoinTotal = getTotalAmount("zCoin");
-  const diamondTotal = getTotalAmount("diamond");
-
-  const loadStats = async () => {
-    return await fileManager.loadData();
-  };
-
-  const updateStats = () => {
-    loadStats().then((res) => {
-      // setTotalStone(fileManager.getTotalStone());
-      // setTotalIron(fileManager.getTotalIron());
-      // setTotalZCoins(fileManager.getTotalZCoins());
-      // setTotalDiamonds(fileManager.getTotalDiamonds());
-    });
-  };
-
-  useEffect(() => {
-    console.log(props);
-    updateStats();
-  }, []);
-
-  useEffect(() => {
-    updateStats();
-  }, []);
+  const zCoinTotal = getTotalAmount("zCoins");
+  const diamondTotal = getTotalAmount("diamonds");
 
   return (
     <View style={styles.header}>

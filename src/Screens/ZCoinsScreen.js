@@ -25,28 +25,31 @@ const ZCoinsScreen = observer(() => {
 
   return (
     <ScrollView style={styles.container}>
-      {Object.entries(zCoins.chests).map((quantity, amount) => {
-        return (
-          <StatInput
-            key={quantity}
-            label={quantity + " ZCoins Chest"}
-            value={amount.toString()}
-            onChangeValue={(text) => {
-              handleChestsChange("zCoins, quantity", cleanUpNumber(text));
-            }}
-            icon={
-              amount.toString().length < 1 ? null : (
-                <FontAwesome5
-                  style={{ position: "absolute", left: 10, top: 20 }}
-                  name="coins"
-                  size={15}
-                  color="black"
-                />
-              )
-            }
-          />
-        );
-      })}
+      {Object.entries(zCoins.chests)
+        .reverse()
+        .map(([quantity, amount]) => {
+          return (
+            <StatInput
+              key={quantity}
+              label={quantity + " ZCoins Chest"}
+              value={amount.toString()}
+              onChangeValue={(text) => {
+                if (text.length < 1) text = 0;
+                handleChestsChange("zCoins", quantity, cleanUpNumber(text));
+              }}
+              icon={
+                amount.toString().length < 1 ? null : (
+                  <FontAwesome5
+                    style={{ position: "absolute", left: 10, top: 20 }}
+                    name="coins"
+                    size={15}
+                    color="black"
+                  />
+                )
+              }
+            />
+          );
+        })}
 
       <View style={{ height: 50 }}></View>
     </ScrollView>

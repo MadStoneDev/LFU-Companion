@@ -1,13 +1,65 @@
 import { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ActivityIndicator, Image } from "react-native";
-import fileManager from "../Helpers/FileManager";
+import { checkAndCreateFile, loadDataFromFile } from "../Helpers/FileManager";
+import resourceStore from "../Helpers/ResourceStore";
+import * as FileSystem from "expo-file-system";
 
 const SplashScreen = () => {
   useEffect(() => {
-    fileManager.createDirectory().then(() => {
-      fileManager.deleteFile().then((r) => console.log(r));
-      fileManager.createSaveFile().then((r) => console.log(r));
+    console.log(FileSystem.documentDirectory);
+
+    const loadAndCheckFile = async () => {
+      await checkAndCreateFile();
+      const data = await loadDataFromFile();
+
+      const { stone, iron, zCoins, diamonds } = resourceStore;
+
+      if (data) {
+        resourceStore.updateWarehouseQuantity("stone", data.stone.warehouse);
+        resourceStore.updateWarehouseQuantity("iron", data.iron.warehouse);
+        resourceStore.updateWarehouseQuantity("zCoins", data.zCoins.warehouse);
+        resourceStore.updateWarehouseQuantity(
+          "diamonds",
+          data.diamonds.warehouse
+        );
+
+        Object.entries(stone.chests).map((quantity) => {
+          resourceStore.updateChestQuantity(
+            "stone",
+            quantity,
+            data.stone.chests[quantity]
+          );
+        });
+
+        Object.entries(iron.chests).map((quantity) => {
+          resourceStore.updateChestQuantity(
+            "iron",
+            quantity,
+            data.iron.chests[quantity]
+          );
+        });
+
+        Object.entries(zCoins.chests).map((quantity) => {
+          resourceStore.updateChestQuantity(
+            "zCoins",
+            quantity,
+            data.zCoins.chests[quantity]
+          );
+        });
+
+        Object.entries(diamonds.chests).map((quantity) => {
+          resourceStore.updateChestQuantity(
+            "diamonds",
+            quantity,
+            data.diamonds.chests[quantity]
+          );
+        });
+      }
+    };
+
+    loadAndCheckFile().then(() => {
+      console.log("File loaded");
     });
   }, []);
 

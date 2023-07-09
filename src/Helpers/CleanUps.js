@@ -1,4 +1,6 @@
 const cleanUpNumber = (value) => {
+  if (value === 0) return 0;
+
   let num;
 
   // Remove Leading Zeroes

@@ -19,9 +19,10 @@ const WarehouseScreen = observer(() => {
       <StatInput
         label={"Stone in Warehouse"}
         value={stone.warehouse.toString()}
-        onChangeValue={(text) =>
-          handleWarehouseChange("stone", cleanUpNumber(text))
-        }
+        onChangeValue={(text) => {
+          if (text.length < 1) return;
+          handleWarehouseChange("stone", cleanUpNumber(text));
+        }}
         icon={
           stone.warehouse.toString().length < 1 ? null : (
             <FontAwesome5
@@ -37,9 +38,10 @@ const WarehouseScreen = observer(() => {
       <StatInput
         label={"Iron in Warehouse"}
         value={iron.warehouse.toString()}
-        onChangeValue={(text) =>
-          handleWarehouseChange("iron", cleanUpNumber(text))
-        }
+        onChangeValue={(text) => {
+          if (text.length < 1) return;
+          handleWarehouseChange("iron", cleanUpNumber(text));
+        }}
         icon={
           iron.warehouse.toString().length < 1 ? null : (
             <FontAwesome5
@@ -55,9 +57,10 @@ const WarehouseScreen = observer(() => {
       <StatInput
         label={"ZCoins in Warehouse"}
         value={zCoins.warehouse.toString()}
-        onChangeValue={(text) =>
-          handleWarehouseChange("zCoins", cleanUpNumber(text))
-        }
+        onChangeValue={(text) => {
+          if (text.length < 1) return;
+          handleWarehouseChange("zCoins", cleanUpNumber(text));
+        }}
         icon={
           zCoins.warehouse.toString().length < 1 ? null : (
             <FontAwesome5
@@ -73,9 +76,10 @@ const WarehouseScreen = observer(() => {
       <StatInput
         label={"Diamonds in Warehouse"}
         value={diamonds.warehouse.toString()}
-        onChangeValue={(text) =>
-          handleWarehouseChange("diamonds", cleanUpNumber(text))
-        }
+        onChangeValue={(text) => {
+          if (text.length < 1) return;
+          handleWarehouseChange("diamonds", cleanUpNumber(text));
+        }}
         icon={
           diamonds.warehouse.toString().length < 1 ? null : (
             <FontAwesome5
@@ -94,10 +98,9 @@ const WarehouseScreen = observer(() => {
 });
 
 const styles = StyleSheet.create({
-  screenWrap: {
+  container: {
     flex: 1,
-    marginBottom: 10,
-    backgroundColor: "white",
+    padding: 20,
   },
 });
 

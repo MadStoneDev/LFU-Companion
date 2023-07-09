@@ -79,9 +79,10 @@ class ResourceStore {
 
       const chestKeys = Object.keys(chests);
       const totalFromChests = chestKeys.reduce((total, chest) => {
+        const chestQuantity = Number(chest);
         const chestAmount = chests[chest];
 
-        return total + chestAmount;
+        return total + chestQuantity * chestAmount;
       }, 0);
 
       return warehouse + totalFromChests;
