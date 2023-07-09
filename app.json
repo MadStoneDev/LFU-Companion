@@ -2,6 +2,7 @@
   "expo": {
     "name": "LFToolbox",
     "slug": "LFToolbox",
+    "owner": "omdesti",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +22,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.OMDESTI.LFToolbox"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9d10aa85-c883-4b34-a4ae-58084e8650ec"
+      }
     }
   }
 }
