@@ -24,6 +24,7 @@ import StoneScreen from "./StoneScreen";
 import WarehouseScreen from "./WarehouseScreen";
 import { processKeys } from "../Helpers/CleanUps";
 import fileManager from "../Helpers/FileManager";
+import resourceStore from "../Helpers/ResourceStore";
 
 const Tabs = createMaterialTopTabNavigator();
 
@@ -35,6 +36,16 @@ const StatsScreen = ({ route, navigation }) => {
   const [totalIron, setTotalIron] = useState(route.params.ironData);
   const [totalZCoins, setTotalZCoins] = useState(route.params.zCoinsData);
   const [totalDiamonds, setTotalDiamonds] = useState(route.params.diamondsData);
+
+  const { stone, iron, zCoins, diamonds } = resourceStore;
+
+  const handleWarehouseChange = (resourceType, amount) => {
+    resourceStore.updateWarehouseQuantity(resourceType, amount);
+  };
+
+  const handleChestChange = (resourceType, quantity, amount) => {
+    resourceStore.updateChestQuantity(resourceType, quantity, amount);
+  };
 
   const [warehouseStats, setWarehouseStats] = useState({
     stone: 0,

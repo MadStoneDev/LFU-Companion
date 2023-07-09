@@ -8,17 +8,20 @@ import {
 } from "react-native";
 import { useEffect, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
+import { observer } from "mobx-react";
+
 import SingleStat from "./SingleStat";
 import fileManager from "../Helpers/FileManager";
+import resourceStore from "../Helpers/ResourceStore";
 
 const HomeHeader = ({ props, navigation }) => {
-  // States
-  const [refreshingStats, setRefreshingStats] = useState(false);
+  // MobX
+  const { getTotalAmount } = resourceStore;
 
-  const [totalStone, setTotalStone] = useState(0);
-  const [totalIron, setTotalIron] = useState(0);
-  const [totalZCoins, setTotalZCoins] = useState(0);
-  const [totalDiamonds, setTotalDiamonds] = useState(0);
+  const stoneTotal = getTotalAmount("stone");
+  const ironTotal = getTotalAmount("iron");
+  const zCoinTotal = getTotalAmount("zCoin");
+  const diamondTotal = getTotalAmount("diamond");
 
   const loadStats = async () => {
     return await fileManager.loadData();
@@ -26,10 +29,10 @@ const HomeHeader = ({ props, navigation }) => {
 
   const updateStats = () => {
     loadStats().then((res) => {
-      setTotalStone(fileManager.getTotalStone());
-      setTotalIron(fileManager.getTotalIron());
-      setTotalZCoins(fileManager.getTotalZCoins());
-      setTotalDiamonds(fileManager.getTotalDiamonds());
+      // setTotalStone(fileManager.getTotalStone());
+      // setTotalIron(fileManager.getTotalIron());
+      // setTotalZCoins(fileManager.getTotalZCoins());
+      // setTotalDiamonds(fileManager.getTotalDiamonds());
     });
   };
 
@@ -62,21 +65,14 @@ const HomeHeader = ({ props, navigation }) => {
             >
               Current Statistics:
             </Text>
-            <SingleStat data={totalStone} description={"Stone"} />
-            <SingleStat data={totalIron} description={"Iron"} />
-            <SingleStat data={totalZCoins} description={"Z Coins"} />
-            <SingleStat data={totalDiamonds} description={"Diamonds"} />
+            <SingleStat data={stoneTotal} description={"Stone"} />
+            <SingleStat data={ironTotal} description={"Iron"} />
+            <SingleStat data={zCoinTotal} description={"Z Coins"} />
+            <SingleStat data={diamondTotal} description={"Diamonds"} />
           </View>
 
           <TouchableWithoutFeedback
-            onPress={() =>
-              navigation.navigate("Statistics", {
-                stoneData: totalStone,
-                ironData: totalIron,
-                zCoinsData: totalZCoins,
-                diamondsData: totalDiamonds,
-              })
-            }
+            onPress={() => navigation.navigate("Statistics")}
           >
             <View
               style={{
