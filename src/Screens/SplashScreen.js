@@ -13,7 +13,7 @@ import { usernames } from "../Helpers/usernames";
 const SplashScreen = () => {
   useEffect(() => {
     const loadAndCheckFile = async () => {
-      await deleteDataFromFile();
+      // await deleteDataFromFile();
       await checkAndCreateFile();
       const data = await loadDataFromFile();
 
