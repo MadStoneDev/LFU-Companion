@@ -22,7 +22,6 @@ import ZCoinsScreen from "./ZCoinsScreen";
 import IronScreen from "./IronScreen";
 import StoneScreen from "./StoneScreen";
 import WarehouseScreen from "./WarehouseScreen";
-import { processKeys } from "../Helpers/CleanUps";
 import fileManager from "../Helpers/FileManager";
 import resourceStore from "../Helpers/ResourceStore";
 
@@ -200,9 +199,7 @@ const StatsScreen = ({ route, navigation }) => {
         />
         <Tabs.Screen
           name={"Stone Chests"}
-          children={() => (
-            <StoneScreen stats={stoneStats} setStats={setStoneStats} />
-          )}
+          component={StoneScreen}
           options={{
             tabBarIcon: (focused) => (
               <Entypo name="basecamp" size={15} color="black" />
@@ -211,9 +208,7 @@ const StatsScreen = ({ route, navigation }) => {
         />
         <Tabs.Screen
           name={"Iron Chests"}
-          children={() => (
-            <IronScreen stats={ironStats} setStats={setIronStats} />
-          )}
+          component={IronScreen}
           options={{
             tabBarIcon: (focused) => (
               <MaterialCommunityIcons name="gold" size={20} color="black" />
@@ -222,9 +217,7 @@ const StatsScreen = ({ route, navigation }) => {
         />
         <Tabs.Screen
           name={"Z Coins Chests"}
-          children={() => (
-            <ZCoinsScreen stats={zCoinsStats} setStats={setZCoinsStats} />
-          )}
+          component={ZCoinsScreen}
           options={{
             tabBarIcon: (focused) => (
               <FontAwesome5 name="coins" size={15} color="black" />
@@ -233,9 +226,7 @@ const StatsScreen = ({ route, navigation }) => {
         />
         <Tabs.Screen
           name={"Diamonds Chest"}
-          children={() => (
-            <DiamondsScreen stats={diamondStats} setStats={setDiamondStats} />
-          )}
+          component={DiamondsScreen}
           options={{
             tabBarIcon: (focused) => (
               <FontAwesome name="diamond" size={15} color="black" />
@@ -244,71 +235,71 @@ const StatsScreen = ({ route, navigation }) => {
         />
       </Tabs.Navigator>
 
-      <TouchableWithoutFeedback
-        onPress={async () => {
-          setSaving(true);
+      {/*<TouchableWithoutFeedback*/}
+      {/*  onPress={async () => {*/}
+      {/*    setSaving(true);*/}
 
-          const data = {
-            ...warehouseStats,
-            ...stoneStats,
-            ...ironStats,
-            ...zCoinsStats,
-            ...diamondStats,
-          };
+      {/*    const data = {*/}
+      {/*      ...warehouseStats,*/}
+      {/*      ...stoneStats,*/}
+      {/*      ...ironStats,*/}
+      {/*      ...zCoinsStats,*/}
+      {/*      ...diamondStats,*/}
+      {/*    };*/}
 
-          await fileManager
-            .saveData(data)
-            .then((r) => {
-              console.log(r);
-            })
-            .catch((e) => console.log(e));
+      {/*    await fileManager*/}
+      {/*      .saveData(data)*/}
+      {/*      .then((r) => {*/}
+      {/*        console.log(r);*/}
+      {/*      })*/}
+      {/*      .catch((e) => console.log(e));*/}
 
-          await fileManager.loadData().then((res) => {
-            console.log(res);
-          });
+      {/*    await fileManager.loadData().then((res) => {*/}
+      {/*      console.log(res);*/}
+      {/*    });*/}
 
-          setTotalStone(fileManager.getTotalStone());
-          setTotalIron(fileManager.getTotalIron());
-          setTotalZCoins(fileManager.getTotalZCoins());
-          setTotalDiamonds(fileManager.getTotalDiamonds());
+      {/*    setTotalStone(fileManager.getTotalStone());*/}
+      {/*    setTotalIron(fileManager.getTotalIron());*/}
+      {/*    setTotalZCoins(fileManager.getTotalZCoins());*/}
+      {/*    setTotalDiamonds(fileManager.getTotalDiamonds());*/}
 
-          setTimeout(() => {
-            setSaving(false);
-          }, 500);
-        }}
-      >
-        <View
-          style={[
-            styles.saveButton,
-            saving
-              ? { borderWidth: 3, borderColor: "transparent" }
-              : { borderWidth: 3, borderColor: "#d35322" },
-          ]}
-        >
-          {saving ? (
-            <View>
-              <Text
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  right: 60,
-                  width: 100,
-                  textAlign: "right",
-                  fontStyle: "italic",
-                  fontSize: 14,
-                  color: "#d35322",
-                }}
-              >
-                Saving...
-              </Text>
+      {/*    setTimeout(() => {*/}
+      {/*      setSaving(false);*/}
+      {/*    }, 500);*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  <View*/}
+      {/*    style={[*/}
+      {/*      styles.saveButton,*/}
+      {/*      saving*/}
+      {/*        ? { borderWidth: 3, borderColor: "transparent" }*/}
+      {/*        : { borderWidth: 3, borderColor: "#d35322" },*/}
+      {/*    ]}*/}
+      {/*  >*/}
+      {/*    {saving ? (*/}
+      {/*      <View>*/}
+      {/*        <Text*/}
+      {/*          style={{*/}
+      {/*            position: "absolute",*/}
+      {/*            bottom: 0,*/}
+      {/*            right: 60,*/}
+      {/*            width: 100,*/}
+      {/*            textAlign: "right",*/}
+      {/*            fontStyle: "italic",*/}
+      {/*            fontSize: 14,*/}
+      {/*            color: "#d35322",*/}
+      {/*          }}*/}
+      {/*        >*/}
+      {/*          Saving...*/}
+      {/*        </Text>*/}
 
-              <ActivityIndicator size={40} color={"#d35322"} />
-            </View>
-          ) : (
-            <FontAwesome5 name="save" size={30} color="#d35322" />
-          )}
-        </View>
-      </TouchableWithoutFeedback>
+      {/*        <ActivityIndicator size={40} color={"#d35322"} />*/}
+      {/*      </View>*/}
+      {/*    ) : (*/}
+      {/*      <FontAwesome5 name="save" size={30} color="#d35322" />*/}
+      {/*    )}*/}
+      {/*  </View>*/}
+      {/*</TouchableWithoutFeedback>*/}
     </SafeAreaView>
   );
 };

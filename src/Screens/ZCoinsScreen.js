@@ -4,28 +4,38 @@ import { useState } from "react";
 import { cleanUpNumber, processKeys } from "../Helpers/CleanUps";
 import {
   Entypo,
+  FontAwesome,
   FontAwesome5,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import StatInput from "../Components/StatInput";
+import { observer } from "mobx-react";
+import resourceStore from "../Helpers/ResourceStore";
 
-const ZCoinsScreen = ({ stats, setStats }) => {
+const ZCoinsScreen = observer(() => {
+  const { zCoins } = resourceStore;
+
+  const handleChestsChange = (resourceType, quantity, value) => {
+    resourceStore.updateChestQuantity(
+      resourceType,
+      quantity,
+      parseInt(value, 10)
+    );
+  };
+
   return (
     <ScrollView style={styles.container}>
-      {Object.keys(stats).map((key) => {
+      {Object.entries(zCoins.chests).map((quantity, amount) => {
         return (
           <StatInput
-            key={key}
-            label={processKeys(key)}
-            value={stats[key]}
+            key={quantity}
+            label={quantity + " ZCoins Chest"}
+            value={amount.toString()}
             onChangeValue={(text) => {
-              setStats((stats) => ({
-                ...stats,
-                [key]: cleanUpNumber(text),
-              }));
+              handleChestsChange("zCoins, quantity", cleanUpNumber(text));
             }}
             icon={
-              stats[key].toString().length < 1 ? null : (
+              amount.toString().length < 1 ? null : (
                 <FontAwesome5
                   style={{ position: "absolute", left: 10, top: 20 }}
                   name="coins"
@@ -41,25 +51,9 @@ const ZCoinsScreen = ({ stats, setStats }) => {
       <View style={{ height: 50 }}></View>
     </ScrollView>
   );
-};
+});
 
 const styles = StyleSheet.create({
-  screenWrap: {
-    flex: 1,
-    backgroundColor: "white",
-  },
-  header: {
-    paddingVertical: 20,
-    paddingHorizontal: 15,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    backgroundColor: "#b5c1c5",
-  },
-  headerTitle: {
-    marginLeft: 30,
-    fontSize: 20,
-  },
   container: {
     flex: 1,
     padding: 20,

@@ -8,24 +8,33 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import StatInput from "../Components/StatInput";
+import resourceStore from "../Helpers/ResourceStore";
+import { observer } from "mobx-react";
 
-const IronScreen = ({ stats, setStats }) => {
+const IronScreen = observer(() => {
+  const { iron } = resourceStore;
+
+  const handleChestsChange = (resourceType, quantity, value) => {
+    resourceStore.updateChestQuantity(
+      resourceType,
+      quantity,
+      parseInt(value, 10)
+    );
+  };
+
   return (
     <ScrollView style={styles.container}>
-      {Object.keys(stats).map((key) => {
+      {Object.entries(iron.chests).map((quantity, amount) => {
         return (
           <StatInput
-            key={key}
-            label={processKeys(key)}
-            value={stats[key]}
+            key={quantity}
+            label={quantity + " Iron Chest"}
+            value={amount.toString()}
             onChangeValue={(text) => {
-              setStats((stats) => ({
-                ...stats,
-                [key]: cleanUpNumber(text),
-              }));
+              handleChestsChange("iron, quantity", cleanUpNumber(text));
             }}
             icon={
-              stats[key].toString().length < 1 ? null : (
+              amount.toString().length < 1 ? null : (
                 <MaterialCommunityIcons
                   style={{ position: "absolute", left: 10, top: 16 }}
                   name="gold"
@@ -41,26 +50,9 @@ const IronScreen = ({ stats, setStats }) => {
       <View style={{ height: 50 }}></View>
     </ScrollView>
   );
-};
+});
 
 const styles = StyleSheet.create({
-  screenWrap: {
-    flex: 1,
-    marginBottom: 10,
-    backgroundColor: "white",
-  },
-  header: {
-    paddingVertical: 20,
-    paddingHorizontal: 15,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    backgroundColor: "#b5c1c5",
-  },
-  headerTitle: {
-    marginLeft: 30,
-    fontSize: 20,
-  },
   container: {
     flex: 1,
     padding: 20,

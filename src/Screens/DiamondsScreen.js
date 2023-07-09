@@ -49,23 +49,6 @@ const DiamondsScreen = observer(() => {
 });
 
 const styles = StyleSheet.create({
-  screenWrap: {
-    flex: 1,
-    marginBottom: 10,
-    backgroundColor: "white",
-  },
-  header: {
-    paddingVertical: 20,
-    paddingHorizontal: 15,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    backgroundColor: "#b5c1c5",
-  },
-  headerTitle: {
-    marginLeft: 30,
-    fontSize: 20,
-  },
   container: {
     flex: 1,
     padding: 20,
