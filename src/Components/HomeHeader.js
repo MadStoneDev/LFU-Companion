@@ -14,7 +14,7 @@ import SingleStat from "./SingleStat";
 import fileManager from "../Helpers/FileManager";
 import resourceStore from "../Helpers/ResourceStore";
 
-const HomeHeader = ({ props, navigation }) => {
+const HomeHeader = observer(({ props, navigation }) => {
   // MobX
   const { getTotalAmount } = resourceStore;
 
@@ -89,7 +89,7 @@ const HomeHeader = ({ props, navigation }) => {
       </ImageBackground>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

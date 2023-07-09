@@ -30,7 +30,7 @@ class ResourceStore {
     },
   };
 
-  zcoins = {
+  zCoins = {
     warehouse: 0,
     chests: {
       1000: 0,
@@ -56,7 +56,7 @@ class ResourceStore {
     makeObservable(this, {
       stone: observable,
       iron: observable,
-      zcoins: observable,
+      zCoins: observable,
       diamonds: observable,
       updateWarehouseQuantity: action,
       updateChestQuantity: action,

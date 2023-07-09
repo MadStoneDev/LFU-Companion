@@ -1,31 +1,36 @@
 import { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
+import { observer } from "mobx-react";
 
 import StatInput from "../Components/StatInput";
 import { cleanUpNumber, processKeys } from "../Helpers/CleanUps";
+import resourceStore from "../Helpers/ResourceStore";
 
-const DiamondsScreen = ({ stats, setStats }) => {
-  const [diamonds50, setDiamonds50] = useState("0");
-  const [diamonds20, setDiamonds20] = useState("0");
-  const [diamonds10, setDiamonds10] = useState("0");
+const DiamondsScreen = observer(() => {
+  const { diamonds } = resourceStore;
+
+  const handleChestsChange = (resourceType, quantity, value) => {
+    resourceStore.updateChestQuantity(
+      resourceType,
+      quantity,
+      parseInt(value, 10)
+    );
+  };
 
   return (
     <ScrollView style={styles.container}>
-      {Object.keys(stats).map((key) => {
+      {Object.entries(diamonds.chests).map((quantity, amount) => {
         return (
           <StatInput
-            key={key}
-            label={processKeys(key)}
-            value={stats[key]}
+            key={quantity}
+            label={quantity + " Diamond Chest"}
+            value={amount.toString()}
             onChangeValue={(text) => {
-              setStats((stats) => ({
-                ...stats,
-                [key]: cleanUpNumber(text),
-              }));
+              handleChestsChange("diamonds, quantity", cleanUpNumber(text));
             }}
             icon={
-              stats[key].toString().length < 1 ? null : (
+              amount.toString().length < 1 ? null : (
                 <FontAwesome
                   style={{ position: "absolute", left: 10, top: 19 }}
                   name="diamond"
@@ -41,7 +46,7 @@ const DiamondsScreen = ({ stats, setStats }) => {
       <View style={{ height: 50 }}></View>
     </ScrollView>
   );
-};
+});
 
 const styles = StyleSheet.create({
   screenWrap: {
