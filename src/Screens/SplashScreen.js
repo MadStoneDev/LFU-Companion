@@ -81,9 +81,9 @@ const SplashScreen = () => {
       }
     };
 
-    loadAndCheckFile().then(() => {
-      console.log("File loaded");
-    });
+    // loadAndCheckFile().then(() => {
+    //   console.log("File loaded");
+    // });
   }, []);
 
   return (
