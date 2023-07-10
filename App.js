@@ -8,6 +8,16 @@ import SplashScreen from "./src/Screens/SplashScreen";
 import HomeScreen from "./src/Screens/HomeScreen";
 import StatsScreen from "./src/Screens/StatsScreen";
 
+import * as Sentry from "@sentry/react-native";
+import BuildingScreen from "./src/Screens/BuildingScreen";
+
+// Sentry.init({
+//   dsn: "https://fabaa650eabd4833a0f4cd8eea438ccf@o4505502003625984.ingest.sentry.io/4505502019747840",
+//   // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+//   // We recommend adjusting this value in production.
+//   tracesSampleRate: 1.0,
+// });
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -33,6 +43,11 @@ export default function App() {
             <Stack.Screen
               name={"Statistics"}
               component={StatsScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name={"Building"}
+              component={BuildingScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

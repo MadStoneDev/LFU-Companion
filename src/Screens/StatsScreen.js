@@ -1,14 +1,6 @@
-import { useEffect, useState } from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  Pressable,
-  Text,
-  StyleSheet,
-  View,
-  TouchableWithoutFeedback,
-} from "react-native";
-import { ActivityIndicator } from "react-native-paper";
+import { Pressable, Text, StyleSheet, View } from "react-native";
 
 import {
   Entypo,
@@ -17,30 +9,19 @@ import {
   Ionicons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
+
 import DiamondsScreen from "./DiamondsScreen";
 import ZCoinsScreen from "./ZCoinsScreen";
 import IronScreen from "./IronScreen";
 import StoneScreen from "./StoneScreen";
 import WarehouseScreen from "./WarehouseScreen";
-import fileManager, { saveDataToFile } from "../Helpers/FileManager";
+
 import resourceStore from "../Helpers/ResourceStore";
+import { saveDataToFile } from "../Helpers/FileManager";
 
 const Tabs = createMaterialTopTabNavigator();
 
-const StatsScreen = ({ route, navigation }) => {
-  //  States
-  const [saving, setSaving] = useState(false);
-
-  const { stone, iron, zCoins, diamonds } = resourceStore;
-
-  const handleWarehouseChange = (resourceType, amount) => {
-    resourceStore.updateWarehouseQuantity(resourceType, amount);
-  };
-
-  const handleChestChange = (resourceType, quantity, amount) => {
-    resourceStore.updateChestQuantity(resourceType, quantity, amount);
-  };
-
+const StatsScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.screenWrap}>
       <View style={styles.header}>
@@ -127,72 +108,6 @@ const StatsScreen = ({ route, navigation }) => {
           }}
         />
       </Tabs.Navigator>
-
-      {/*<TouchableWithoutFeedback*/}
-      {/*  onPress={async () => {*/}
-      {/*    setSaving(true);*/}
-
-      {/*    const data = {*/}
-      {/*      ...warehouseStats,*/}
-      {/*      ...stoneStats,*/}
-      {/*      ...ironStats,*/}
-      {/*      ...zCoinsStats,*/}
-      {/*      ...diamondStats,*/}
-      {/*    };*/}
-
-      {/*    await fileManager*/}
-      {/*      .saveData(data)*/}
-      {/*      .then((r) => {*/}
-      {/*        console.log(r);*/}
-      {/*      })*/}
-      {/*      .catch((e) => console.log(e));*/}
-
-      {/*    await fileManager.loadData().then((res) => {*/}
-      {/*      console.log(res);*/}
-      {/*    });*/}
-
-      {/*    setTotalStone(fileManager.getTotalStone());*/}
-      {/*    setTotalIron(fileManager.getTotalIron());*/}
-      {/*    setTotalZCoins(fileManager.getTotalZCoins());*/}
-      {/*    setTotalDiamonds(fileManager.getTotalDiamonds());*/}
-
-      {/*    setTimeout(() => {*/}
-      {/*      setSaving(false);*/}
-      {/*    }, 500);*/}
-      {/*  }}*/}
-      {/*>*/}
-      {/*  <View*/}
-      {/*    style={[*/}
-      {/*      styles.saveButton,*/}
-      {/*      saving*/}
-      {/*        ? { borderWidth: 3, borderColor: "transparent" }*/}
-      {/*        : { borderWidth: 3, borderColor: "#d35322" },*/}
-      {/*    ]}*/}
-      {/*  >*/}
-      {/*    {saving ? (*/}
-      {/*      <View>*/}
-      {/*        <Text*/}
-      {/*          style={{*/}
-      {/*            position: "absolute",*/}
-      {/*            bottom: 0,*/}
-      {/*            right: 60,*/}
-      {/*            width: 100,*/}
-      {/*            textAlign: "right",*/}
-      {/*            fontStyle: "italic",*/}
-      {/*            fontSize: 14,*/}
-      {/*            color: "#d35322",*/}
-      {/*          }}*/}
-      {/*        >*/}
-      {/*          Saving...*/}
-      {/*        </Text>*/}
-
-      {/*        <ActivityIndicator size={40} color={"#d35322"} />*/}
-      {/*      </View>*/}
-      {/*    ) : (*/}
-      {/*      <FontAwesome5 name="save" size={30} color="#d35322" />*/}
-      {/*    )}*/}
-      {/*  </View>*/}
-      {/*</TouchableWithoutFeedback>*/}
     </SafeAreaView>
   );
 };

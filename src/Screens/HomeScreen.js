@@ -25,12 +25,12 @@ const HomeScreen = ({ navigation }) => {
 
   // Change this to your own data source
   const data = [
-    {
-      id: 1,
-      title: "Building #1",
-      progress: 85,
-      theme: "#f8c820",
-    },
+    // {
+    //   id: 1,
+    //   title: "Building #1",
+    //   progress: 85,
+    //   theme: "#f8c820",
+    // },
     // {
     //   id: 2,
     //   title: "Building #2",
@@ -129,9 +129,13 @@ const HomeScreen = ({ navigation }) => {
         />
 
         {data.length > 0 ? null : (
-          <View style={styles.addButton}>
-            <FontAwesome name="plus-circle" size={40} color="#d35322" />
-          </View>
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate("Building", { mode: "new" })}
+          >
+            <View style={styles.addButton}>
+              <FontAwesome name="plus-circle" size={40} color="#d35322" />
+            </View>
+          </TouchableWithoutFeedback>
         )}
       </Provider>
       <StatusBar backgroundColor="black" barStyle="light-content" />
@@ -152,7 +156,6 @@ const styles = StyleSheet.create({
     right: 20,
     width: 50,
     aspectRatio: 1,
-    borderWidth: 3,
     borderColor: "#d35322",
     borderRadius: 99999,
   },
