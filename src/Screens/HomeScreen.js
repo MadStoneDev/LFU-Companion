@@ -15,6 +15,7 @@ import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { saveDataToFile } from "../Helpers/FileManager";
 import { Modal, Portal, Provider, TextInput } from "react-native-paper";
 import resourceStore from "../Helpers/ResourceStore";
+import HomeFooterItem from "../Components/HomeFooterItem";
 
 const HomeScreen = ({ navigation }) => {
   const { username } = resourceStore;
@@ -30,18 +31,18 @@ const HomeScreen = ({ navigation }) => {
       progress: 85,
       theme: "#f8c820",
     },
-    {
-      id: 2,
-      title: "Building #2",
-      progress: 35,
-      theme: "#c6005f",
-    },
-    {
-      id: 3,
-      title: "Building #3",
-      progress: 22,
-      theme: "#4792ed",
-    },
+    // {
+    //   id: 2,
+    //   title: "Building #2",
+    //   progress: 35,
+    //   theme: "#c6005f",
+    // },
+    // {
+    //   id: 3,
+    //   title: "Building #3",
+    //   progress: 22,
+    //   theme: "#4792ed",
+    // },
     // {
     //   id: 4,
     //   title: "Building #4",
@@ -122,9 +123,12 @@ const HomeScreen = ({ navigation }) => {
             <HomeHeader navigation={navigation} modalVisible={setVisible} />
           }
           ListEmptyComponent={HomeEmptyItem}
+          // ListFooterComponent={
+          //   data.length > 0 && data.length < 2 ? <HomeFooterItem /> : null
+          // }
         />
 
-        {data.length > 2 ? null : (
+        {data.length > 0 ? null : (
           <View style={styles.addButton}>
             <FontAwesome name="plus-circle" size={40} color="#d35322" />
           </View>
