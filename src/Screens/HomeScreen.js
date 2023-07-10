@@ -96,6 +96,8 @@ const HomeScreen = ({ navigation }) => {
                   resourceStore.updateUsername(usernameValue);
                   saveDataToFile(resourceStore).then(() => {
                     console.log("Saved");
+
+                    console.log(resourceStore);
                   });
                   hideModal();
                 }}

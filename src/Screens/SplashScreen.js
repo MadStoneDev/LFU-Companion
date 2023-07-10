@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ActivityIndicator, Image } from "react-native";
+import { ActivityIndicator, Button, Image } from "react-native";
 import {
   checkAndCreateFile,
   deleteDataFromFile,
@@ -17,7 +17,7 @@ const SplashScreen = () => {
       await checkAndCreateFile();
       const data = await loadDataFromFile();
 
-      const { stone, iron, zCoins, diamonds, username } = resourceStore;
+      const { stone, iron, zCoins, diamonds } = resourceStore;
 
       if (data) {
         resourceStore.updateWarehouseQuantity(
@@ -69,21 +69,21 @@ const SplashScreen = () => {
           );
         });
 
-        resourceStore.updateUsername(username);
+        console.log("Username: ", data.username);
+        resourceStore.updateUsername(data.username);
       }
 
-      if (!username || username.length === 0) {
+      if (!data.username || data.username.length === 0) {
         resourceStore.updateUsername(
           usernames[Math.floor(Math.random() * usernames.length - 1)]
         );
-
-        await saveDataToFile(resourceStore);
       }
+      await saveDataToFile(resourceStore);
     };
 
-    // loadAndCheckFile().then(() => {
-    //   console.log("File loaded");
-    // });
+    loadAndCheckFile().then(() => {
+      console.log("File loaded");
+    });
   }, []);
 
   return (
@@ -104,6 +104,7 @@ const SplashScreen = () => {
         }}
         source={require("../../assets/images/logo.png")}
       />
+
       <ActivityIndicator size="large" color="#d35322" />
     </SafeAreaView>
   );
