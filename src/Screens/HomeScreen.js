@@ -1,18 +1,18 @@
 import {
   FlatList,
-  SafeAreaView,
   StatusBar,
   Text,
   TouchableWithoutFeedback,
   StyleSheet,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import HomeHeader from "../Components/HomeHeader";
 import HomeRenderItem from "../Components/HomeRenderItem";
 import HomeEmptyItem from "../Components/HomeEmptyItem";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
-import fileManager, { saveDataToFile } from "../Helpers/FileManager";
+import { saveDataToFile } from "../Helpers/FileManager";
 import { Modal, Portal, Provider, TextInput } from "react-native-paper";
 import resourceStore from "../Helpers/ResourceStore";
 
@@ -83,7 +83,12 @@ const HomeScreen = ({ navigation }) => {
               style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
             >
               <TextInput
-                style={{ flex: 1, height: 35, padding: 0 }}
+                style={{
+                  flex: 1,
+                  height: 35,
+                  padding: 0,
+                  backgroundColor: "white",
+                }}
                 label={"Username"}
                 mode={"outlined"}
                 activeOutlineColor={"#d35322"}
@@ -125,7 +130,7 @@ const HomeScreen = ({ navigation }) => {
           </View>
         )}
       </Provider>
-      <StatusBar style="auto" />
+      <StatusBar backgroundColor="black" barStyle="light-content" />
     </SafeAreaView>
   );
 };
