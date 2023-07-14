@@ -80,21 +80,19 @@ class ResourceStore {
     this[resourceType].chests[quantity] = parseInt(amount, 10);
   }
 
-  get getTotalAmount() {
-    return (resourceType) => {
-      const resource = this[resourceType];
-      const { warehouse, chests } = resource;
+  getTotalAmount(resourceType) {
+    const resource = this[resourceType];
+    const { warehouse, chests } = resource;
 
-      const chestKeys = Object.keys(chests);
-      const totalFromChests = chestKeys.reduce((total, chest) => {
-        const chestQuantity = Number(chest);
-        const chestAmount = chests[chest];
+    const chestKeys = Object.keys(chests);
+    const totalFromChests = chestKeys.reduce((total, chest) => {
+      const chestQuantity = Number(chest);
+      const chestAmount = chests[chest];
 
-        return total + chestQuantity * chestAmount;
-      }, 0);
+      return total + chestQuantity * chestAmount;
+    }, 0);
 
-      return warehouse + totalFromChests;
-    };
+    return warehouse + totalFromChests;
   }
 }
 

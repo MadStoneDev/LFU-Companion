@@ -5,13 +5,12 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { observer } from "mobx-react";
 
 import SingleStat from "./SingleStat";
 import resourceStore from "../Helpers/ResourceStore";
-import { useState } from "react";
-import { Modal, Portal, Provider, TextInput } from "react-native-paper";
+import { Provider } from "react-native-paper";
 
 const HomeHeader = observer(({ navigation, modalVisible }) => {
   // MobX
