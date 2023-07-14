@@ -6,11 +6,12 @@ class BuildingStore {
   // {id, name, icon, stoneRequired, ironRequired, zCoinsRequired, diamondsRequired}
   buildings = [];
 
+  // Weightings last updated: 14.07.2023
   weightings = {
-    stone: 0.5,
-    iron: 0.5,
+    stone: 1,
+    iron: 1,
     zCoins: 1,
-    diamonds: 25,
+    diamonds: 5,
   };
 
   constructor() {

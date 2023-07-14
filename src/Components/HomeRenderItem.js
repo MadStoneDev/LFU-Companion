@@ -16,7 +16,6 @@ const HomeRenderItem = ({ data, navigation }) => {
     >
       <View style={styles.card}>
         <View style={styles.cardTop}>
-          {/*<View style={styles.cardIcon}></View>*/}
           <View style={styles.cardDesc}>
             <Text style={styles.title}>{item.title}</Text>
             <Text style={styles.subtitle}>Progress: {item.progress}%</Text>
