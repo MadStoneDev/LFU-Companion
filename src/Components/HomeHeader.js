@@ -1,8 +1,8 @@
 import {
   ImageBackground,
+  StyleSheet,
   Text,
   TouchableWithoutFeedback,
-  StyleSheet,
   View,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
@@ -14,12 +14,8 @@ import { Provider } from "react-native-paper";
 
 const HomeHeader = observer(({ navigation, modalVisible }) => {
   // MobX
-  const { username, getTotalAmount } = resourceStore;
-
-  const stoneTotal = getTotalAmount("stone");
-  const ironTotal = getTotalAmount("iron");
-  const zCoinTotal = getTotalAmount("zCoins");
-  const diamondTotal = getTotalAmount("diamonds");
+  const { username, totalStone, totalIron, totalZCoins, totalDiamonds } =
+    resourceStore;
 
   return (
     <Provider>
@@ -56,10 +52,10 @@ const HomeHeader = observer(({ navigation, modalVisible }) => {
               >
                 Current Statistics:
               </Text>
-              <SingleStat data={stoneTotal} description={"Stone"} />
-              <SingleStat data={ironTotal} description={"Iron"} />
-              <SingleStat data={zCoinTotal} description={"Z Coins"} />
-              <SingleStat data={diamondTotal} description={"Diamonds"} />
+              <SingleStat data={totalStone} description={"Stone"} />
+              <SingleStat data={totalIron} description={"Iron"} />
+              <SingleStat data={totalZCoins} description={"Z Coins"} />
+              <SingleStat data={totalDiamonds} description={"Diamonds"} />
             </View>
 
             <TouchableWithoutFeedback

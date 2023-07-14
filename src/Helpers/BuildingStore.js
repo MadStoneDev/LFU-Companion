@@ -3,8 +3,18 @@ import resourceStore from "./ResourceStore";
 
 class BuildingStore {
   // Sample Building Data
-  // {id, name, icon, stoneRequired, ironRequired, zCoinsRequired, diamondsRequired}
-  buildings = [];
+  // {id, name, colour, stoneRequired, ironRequired, zCoinsRequired, diamondsRequired}
+  buildings = [
+    {
+      id: 1,
+      name: "Building #1",
+      colour: "blue",
+      stoneRequired: 30000,
+      ironRequired: 20000,
+      zCoinsRequired: 45000,
+      diamondsRequired: 5700,
+    },
+  ];
 
   // Weightings last updated: 14.07.2023
   weightings = {
@@ -18,13 +28,16 @@ class BuildingStore {
     makeObservable(this, {
       buildings: observable,
       weightings: observable,
-      addNew: action,
+      addNewBuilding: action,
+      getBuildingProgress: computed,
     });
   }
 
   addNewBuilding(
-    icon,
+    // icon,
+    id,
     name,
+    colour,
     stoneRequired,
     ironRequired,
     zCoinsRequired,
@@ -33,8 +46,10 @@ class BuildingStore {
     // create a random id
 
     this.buildings.push({
-      icon,
+      // icon,
+      id,
       name,
+      colour,
       stoneRequired,
       ironRequired,
       zCoinsRequired,
@@ -42,35 +57,37 @@ class BuildingStore {
     });
   }
 
-  getBuildingProgress(building) {
-    const acquiredStone = resourceStore.getTotalAmount("stone");
-    const acquiredIron = resourceStore.getTotalAmount("iron");
-    const acquiredZCoins = resourceStore.getTotalAmount("zCoins");
-    const acquiredDiamonds = resourceStore.getTotalAmount("diamonds");
+  get getBuildingProgress() {
+    return (building) => {
+      const acquiredStone = resourceStore.totalStone;
+      const acquiredIron = resourceStore.totalIron;
+      const acquiredZCoins = resourceStore.totalZCoins;
+      const acquiredDiamonds = resourceStore.totalDiamonds;
 
-    const cappedStone = Math.min(acquiredStone, building.stoneRequired);
-    const cappedIron = Math.min(acquiredIron, building.ironRequired);
-    const cappedZCoins = Math.min(acquiredZCoins, building.zCoinsRequired);
-    const cappedDiamonds = Math.min(
-      acquiredDiamonds,
-      building.diamondsRequired
-    );
+      const cappedStone = Math.min(acquiredStone, building.stoneRequired);
+      const cappedIron = Math.min(acquiredIron, building.ironRequired);
+      const cappedZCoins = Math.min(acquiredZCoins, building.zCoinsRequired);
+      const cappedDiamonds = Math.min(
+        acquiredDiamonds,
+        building.diamondsRequired
+      );
 
-    const weightedStone = this.weightings.stone * cappedStone;
-    const weightedIron = this.weightings.iron * cappedIron;
-    const weightedZCoins = this.weightings.zCoins * cappedZCoins;
-    const weightedDiamonds = this.weightings.diamonds * cappedDiamonds;
+      const weightedStone = this.weightings.stone * cappedStone;
+      const weightedIron = this.weightings.iron * cappedIron;
+      const weightedZCoins = this.weightings.zCoins * cappedZCoins;
+      const weightedDiamonds = this.weightings.diamonds * cappedDiamonds;
 
-    const totalRequired =
-      this.weightings.stone * building.stoneRequired +
-      this.weightings.iron * building.ironRequired +
-      this.weightings.zCoins * building.zCoinsRequired +
-      this.weightings.diamonds * building.diamondsRequired;
+      const totalRequired =
+        this.weightings.stone * building.stoneRequired +
+        this.weightings.iron * building.ironRequired +
+        this.weightings.zCoins * building.zCoinsRequired +
+        this.weightings.diamonds * building.diamondsRequired;
 
-    const totalAcquired =
-      weightedStone + weightedIron + weightedZCoins + weightedDiamonds;
+      const totalAcquired =
+        weightedStone + weightedIron + weightedZCoins + weightedDiamonds;
 
-    return Math.min(totalAcquired / totalRequired, 1);
+      return Math.floor(Math.min(totalAcquired / totalRequired, 1) * 100);
+    };
   }
 }
 

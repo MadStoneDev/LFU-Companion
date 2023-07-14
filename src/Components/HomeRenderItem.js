@@ -1,9 +1,10 @@
 import { Text, TouchableWithoutFeedback, StyleSheet, View } from "react-native";
+import buildingStore from "../Helpers/BuildingStore";
+import { observer } from "mobx-react";
 
-const HomeRenderItem = ({ data, navigation }) => {
+const HomeRenderItem = observer(({ data, navigation }) => {
   const item = data.item;
-
-  let progressStr = item.progress + "%";
+  let progressStr = buildingStore.getBuildingProgress(item) + "%";
 
   return (
     <TouchableWithoutFeedback
@@ -17,15 +18,15 @@ const HomeRenderItem = ({ data, navigation }) => {
       <View style={styles.card}>
         <View style={styles.cardTop}>
           <View style={styles.cardDesc}>
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.subtitle}>Progress: {item.progress}%</Text>
+            <Text style={styles.title}>{item.name}</Text>
+            <Text style={styles.subtitle}>Progress: {progressStr}</Text>
             <View style={styles.progressWrapper}>
               <View
                 style={[
                   styles.progressBar,
                   {
                     width: progressStr,
-                    backgroundColor: item.theme,
+                    backgroundColor: item.colour,
                   },
                 ]}
               ></View>
@@ -35,7 +36,7 @@ const HomeRenderItem = ({ data, navigation }) => {
       </View>
     </TouchableWithoutFeedback>
   );
-};
+});
 
 const styles = StyleSheet.create({
   card: {

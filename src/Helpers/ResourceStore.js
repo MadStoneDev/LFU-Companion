@@ -64,7 +64,10 @@ class ResourceStore {
       updateUsername: action,
       updateWarehouseQuantity: action,
       updateChestQuantity: action,
-      getTotalAmount: computed,
+      totalStone: computed,
+      totalIron: computed,
+      totalZCoins: computed,
+      totalDiamonds: computed,
     });
   }
 
@@ -80,19 +83,40 @@ class ResourceStore {
     this[resourceType].chests[quantity] = parseInt(amount, 10);
   }
 
-  getTotalAmount(resourceType) {
-    const resource = this[resourceType];
-    const { warehouse, chests } = resource;
+  get totalStone() {
+    let total = this.stone.warehouse;
+    Object.keys(this.stone.chests).forEach((key) => {
+      total += key * this.stone.chests[key];
+    });
 
-    const chestKeys = Object.keys(chests);
-    const totalFromChests = chestKeys.reduce((total, chest) => {
-      const chestQuantity = Number(chest);
-      const chestAmount = chests[chest];
+    return total;
+  }
 
-      return total + chestQuantity * chestAmount;
-    }, 0);
+  get totalIron() {
+    let total = this.iron.warehouse;
+    Object.keys(this.iron.chests).forEach((key) => {
+      total += key * this.iron.chests[key];
+    });
 
-    return warehouse + totalFromChests;
+    return total;
+  }
+
+  get totalZCoins() {
+    let total = this.zCoins.warehouse;
+    Object.keys(this.zCoins.chests).forEach((key) => {
+      total += key * this.zCoins.chests[key];
+    });
+
+    return total;
+  }
+
+  get totalDiamonds() {
+    let total = this.diamonds.warehouse;
+    Object.keys(this.diamonds.chests).forEach((key) => {
+      total += key * this.diamonds.chests[key];
+    });
+
+    return total;
   }
 }
 

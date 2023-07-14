@@ -15,6 +15,7 @@ import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { saveDataToFile } from "../Helpers/FileManager";
 import { Modal, Portal, Provider, TextInput } from "react-native-paper";
 import resourceStore from "../Helpers/ResourceStore";
+import buildingStore from "../Helpers/BuildingStore";
 import HomeFooterItem from "../Components/HomeFooterItem";
 
 const HomeScreen = ({ navigation }) => {
@@ -22,6 +23,8 @@ const HomeScreen = ({ navigation }) => {
   // States
   const [visible, setVisible] = useState(false);
   const [usernameValue, setUsernameValue] = useState(username);
+
+  const { buildings } = buildingStore;
 
   // Change this to your own data source
   const data = [
@@ -115,7 +118,7 @@ const HomeScreen = ({ navigation }) => {
         </Portal>
 
         <FlatList
-          data={data}
+          data={buildings}
           renderItem={(item) => {
             return <HomeRenderItem data={item} navigation={navigation} />;
           }}
