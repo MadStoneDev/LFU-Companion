@@ -1,11 +1,11 @@
 import {
-  Pressable,
   Text,
   TextInput,
   StyleSheet,
   View,
   ScrollView,
   TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { saveDataToFile } from "../Helpers/FileManager";
@@ -16,20 +16,21 @@ import {
   FontAwesome5,
   Ionicons,
   MaterialCommunityIcons,
-  MaterialIcons,
 } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
-import BuildingTitle from "../Components/BuildingTitle";
 import paints from "../Helpers/paints";
-import PaintChip from "../Components/PaintChip";
 import {
   TextInput as PaperTextInput,
   Modal,
   Portal,
   Provider,
 } from "react-native-paper";
+import buildingStore from "../Helpers/BuildingStore";
+import { saveDataToBuildingFile } from "../Helpers/BuildingsFileManager";
 
 const BuildingScreen = ({ navigation, route }) => {
+  const { mode, buildingItem } = route.params;
+
   // States
   const [buildingName, setBuildingName] = useState("Building Name");
   const [stoneRequired, setStoneRequired] = useState(0);
@@ -38,10 +39,39 @@ const BuildingScreen = ({ navigation, route }) => {
   const [diamondsRequired, setDiamondsRequired] = useState(0);
   const [showColour, setShowColour] = useState(false);
   const [showChangeName, setShowChangeName] = useState(false);
+  const [selectedPaint, setSelectedPaint] = useState(null);
 
-  const { mode } = route.params;
+  const handleSelectPaint = (paint) => {
+    setSelectedPaint(paint);
+  };
 
-  useEffect(() => {}, []);
+  const randomPaint = () => {
+    return paints[Math.floor(Math.random() * paints.length)];
+  };
+
+  const setPaint = () => {
+    if (mode === "new") {
+      // Select a random paint
+      setSelectedPaint(randomPaint());
+    } else {
+      setSelectedPaint(
+        paints.includes(buildingItem.colour)
+          ? buildingItem.colour
+          : randomPaint()
+      );
+    }
+  };
+
+  useEffect(() => {
+    setPaint();
+
+    if (mode === "edit") {
+      setStoneRequired(buildingItem.stoneRequired);
+      setIronRequired(buildingItem.ironRequired);
+      setZCoinsRequired(buildingItem.zCoinsRequired);
+      setDiamondsRequired(buildingItem.diamondsRequired);
+    }
+  }, []);
 
   return (
     <Provider>
@@ -52,14 +82,52 @@ const BuildingScreen = ({ navigation, route }) => {
             onDismiss={() => setShowColour(false)}
             contentContainerStyle={{
               backgroundColor: "white",
-              margin: 20,
-              padding: 20,
+              marginHorizontal: 30,
+              padding: 10,
               borderRadius: 10,
             }}
           >
             <View
-              style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
-            ></View>
+              style={{
+                flexDirection: "row",
+                flexWrap: "wrap",
+                justifyContent: "space-between",
+              }}
+            >
+              {paints.map((paint) => (
+                <TouchableWithoutFeedback
+                  key={paint}
+                  onPress={() => handleSelectPaint(paint)}
+                >
+                  <View
+                    style={{
+                      marginHorizontal: 10,
+                      marginVertical: 15,
+                      width: 45,
+                      height: 45,
+                      borderRadius: 10,
+                      borderColor: paint,
+                      borderWidth: paint === selectedPaint ? 2 : 0,
+                      overflow: "hidden",
+                    }}
+                  >
+                    <View
+                      style={[
+                        {
+                          backgroundColor: paint,
+                          top: -30,
+                          left: -30,
+                          width: 60,
+                          aspectRatio: 1,
+
+                          transform: [{ rotate: "45deg" }],
+                        },
+                      ]}
+                    />
+                  </View>
+                </TouchableWithoutFeedback>
+              ))}
+            </View>
           </Modal>
 
           <Modal
@@ -67,7 +135,7 @@ const BuildingScreen = ({ navigation, route }) => {
             onDismiss={() => setShowChangeName(false)}
             contentContainerStyle={{
               backgroundColor: "white",
-              margin: 20,
+              margin: 30,
               padding: 20,
               borderRadius: 10,
             }}
@@ -101,16 +169,46 @@ const BuildingScreen = ({ navigation, route }) => {
         </Portal>
 
         <View style={styles.container}>
-          <View style={[{ backgroundColor: "red" }, styles.colourTab]} />
-          <Text
-            style={{ position: "absolute", top: 20, left: 35, color: "red" }}
+          <TouchableWithoutFeedback
+            onPress={() => {
+              Keyboard.dismiss();
+              setShowColour(true);
+            }}
           >
-            Change Colour
-          </Text>
-          <ScrollView>
+            <View>
+              <View
+                style={{
+                  top: -35,
+                  left: -35,
+                  width: 70,
+                  aspectRatio: 1,
+
+                  backgroundColor: selectedPaint,
+
+                  transform: [{ rotate: "45deg" }],
+                }}
+              />
+              <Text
+                style={{
+                  position: "absolute",
+                  top: 20,
+                  left: 35,
+                  color: selectedPaint,
+                }}
+              >
+                Change Colour
+              </Text>
+            </View>
+          </TouchableWithoutFeedback>
+
+          <ScrollView style={{ width: "100%" }}>
             <View style={{ marginHorizontal: 30, justifyContent: "center" }}>
               <Text style={styles.headerTitle}>{buildingName}</Text>
-              <TouchableWithoutFeedback onPress={() => setShowChangeName(true)}>
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  setShowChangeName(true);
+                }}
+              >
                 <View style={{ position: "absolute", top: 20, right: 0 }}>
                   <FontAwesome name="pencil-square" size={30} color="black" />
                 </View>
@@ -131,7 +229,10 @@ const BuildingScreen = ({ navigation, route }) => {
                   style={styles.resourceInput}
                   placeholder={"Stone Required"}
                   value={stoneRequired.toString()}
-                  onChangeText={(text) => setStoneRequired(parseInt(text))}
+                  keyboardType={"number-pad"}
+                  onChangeText={(text) =>
+                    setStoneRequired(isNaN(parseInt(text)) ? 0 : parseInt(text))
+                  }
                 />
               </View>
 
@@ -146,7 +247,10 @@ const BuildingScreen = ({ navigation, route }) => {
                   style={styles.resourceInput}
                   placeholder={"Iron Required"}
                   value={ironRequired.toString()}
-                  onChangeText={(text) => setIronRequired(parseInt(text))}
+                  keyboardType={"number-pad"}
+                  onChangeText={(text) =>
+                    setIronRequired(isNaN(parseInt(text)) ? 0 : parseInt(text))
+                  }
                 />
               </View>
 
@@ -162,7 +266,12 @@ const BuildingScreen = ({ navigation, route }) => {
                   style={styles.resourceInput}
                   placeholder={"zCoins Required"}
                   value={zCoinsRequired.toString()}
-                  onChangeText={(text) => setZCoinsRequired(parseInt(text))}
+                  keyboardType={"number-pad"}
+                  onChangeText={(text) =>
+                    setZCoinsRequired(
+                      isNaN(parseInt(text)) ? 0 : parseInt(text)
+                    )
+                  }
                 />
               </View>
 
@@ -178,7 +287,12 @@ const BuildingScreen = ({ navigation, route }) => {
                   style={styles.resourceInput}
                   placeholder={"Diamonds Required"}
                   value={diamondsRequired.toString()}
-                  onChangeText={(text) => setDiamondsRequired(parseInt(text))}
+                  keyboardType={"number-pad"}
+                  onChangeText={(text) =>
+                    setDiamondsRequired(
+                      isNaN(parseInt(text)) ? 0 : parseInt(text)
+                    )
+                  }
                 />
               </View>
 
@@ -189,7 +303,33 @@ const BuildingScreen = ({ navigation, route }) => {
                   alignItems: "flex-end",
                 }}
               >
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback
+                  onPress={async () => {
+                    if (mode === "new") {
+                      buildingStore.addNewBuilding(
+                        buildingName,
+                        selectedPaint,
+                        stoneRequired,
+                        ironRequired,
+                        zCoinsRequired,
+                        diamondsRequired
+                      );
+                    } else {
+                      buildingStore.updateBuilding(
+                        buildingItem.id,
+                        buildingName,
+                        selectedPaint,
+                        stoneRequired,
+                        ironRequired,
+                        zCoinsRequired,
+                        diamondsRequired
+                      );
+                    }
+
+                    await saveDataToBuildingFile(buildingStore);
+                    navigation.navigate("Home");
+                  }}
+                >
                   <Text
                     style={{
                       padding: 7,
@@ -268,19 +408,12 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    alignItems: "flex-start",
     paddingBottom: 10,
     backgroundColor: "white",
     borderRadius: 20,
     overflow: "hidden",
     elevation: 8,
-  },
-  colourTab: {
-    top: -35,
-    left: -35,
-    width: 70,
-    aspectRatio: 1,
-
-    transform: [{ rotate: "45deg" }],
   },
   resourceInput: {
     marginBottom: 30,

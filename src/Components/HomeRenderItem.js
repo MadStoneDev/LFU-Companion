@@ -5,7 +5,10 @@ import { ScaleDecorator } from "react-native-draggable-flatlist/src/components/C
 
 const HomeRenderItem = observer(({ data, navigation }) => {
   const thisItem = data.item;
-  let progressStr = buildingStore.progresses[thisItem.id] + "%";
+  let progressStr =
+    (isNaN(buildingStore.progresses[thisItem.id])
+      ? 0
+      : buildingStore.progresses[thisItem.id]) + "%";
 
   return (
     <ScaleDecorator>
@@ -15,6 +18,7 @@ const HomeRenderItem = observer(({ data, navigation }) => {
         disabled={data.isActive}
         onPress={() =>
           navigation.navigate("Building", {
+            mode: "edit",
             buildingItem: thisItem,
           })
         }

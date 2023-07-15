@@ -10,13 +10,19 @@ import {
 import resourceStore from "../Helpers/ResourceStore";
 import { usernames } from "../Helpers/usernames";
 import buildingStore from "../Helpers/BuildingStore";
+import {
+  checkAndCreateBuildingFile,
+  loadDataFromBuildingFile,
+} from "../Helpers/BuildingsFileManager";
 
 const SplashScreen = () => {
   useEffect(() => {
     const loadAndCheckFile = async () => {
       // await deleteDataFromFile();
       await checkAndCreateFile();
+      await checkAndCreateBuildingFile();
       const data = await loadDataFromFile();
+      const buildingData = await loadDataFromBuildingFile();
 
       const { stone, iron, zCoins, diamonds } = resourceStore;
 
@@ -79,6 +85,13 @@ const SplashScreen = () => {
           usernames[Math.floor(Math.random() * usernames.length - 1)]
         );
       }
+
+      if (buildingData) {
+        buildingStore.updateBuilding(buildingData.buildings);
+        buildingStore.clearBuildingProgress();
+        buildingStore.getBuildingProgress();
+      }
+
       await saveDataToFile(resourceStore);
     };
 

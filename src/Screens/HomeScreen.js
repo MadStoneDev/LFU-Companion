@@ -16,8 +16,9 @@ import resourceStore from "../Helpers/ResourceStore";
 import buildingStore from "../Helpers/BuildingStore";
 import DraggableFlatList from "react-native-draggable-flatlist";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { observer } from "mobx-react";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = observer(({ navigation }) => {
   // Data
   const { username } = resourceStore;
   const { buildings } = buildingStore;
@@ -82,7 +83,7 @@ const HomeScreen = ({ navigation }) => {
 
         <GestureHandlerRootView style={{ flex: 1 }}>
           <DraggableFlatList
-            data={buildingsValue}
+            data={buildings}
             keyExtractor={(item) => item.id.toString()}
             renderItem={(item) => {
               return <HomeRenderItem data={item} navigation={navigation} />;
@@ -92,8 +93,8 @@ const HomeScreen = ({ navigation }) => {
             }
             ListEmptyComponent={HomeEmptyItem}
             onDragEnd={(data) => {
-              buildingStore.updateBuildings(data.data);
-              setBuildingsValue(data.data);
+              buildingStore.updateAllBuildings(data.data);
+              // setBuildingsValue(data.data);
             }}
           />
         </GestureHandlerRootView>
@@ -112,7 +113,7 @@ const HomeScreen = ({ navigation }) => {
         {/*  // }*/}
         {/*/>*/}
 
-        {buildings.length > 0 ? null : (
+        {buildings.length > 1 ? null : (
           <TouchableWithoutFeedback
             onPress={() => navigation.navigate("Building", { mode: "new" })}
           >
@@ -125,7 +126,7 @@ const HomeScreen = ({ navigation }) => {
       <StatusBar backgroundColor="black" barStyle="light-content" />
     </SafeAreaView>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

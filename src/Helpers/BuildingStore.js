@@ -1,5 +1,5 @@
-import { action, computed, makeObservable, observable } from "mobx";
-import { v4 as uuidv4 } from "uuid";
+import { action, makeObservable, observable } from "mobx";
+import "react-native-get-random-values";
 import resourceStore from "./ResourceStore";
 
 class BuildingStore {
@@ -23,7 +23,8 @@ class BuildingStore {
       weightings: observable,
       progresses: observable,
       addNewBuilding: action,
-      updateBuildings: action,
+      updateBuilding: action,
+      updateAllBuildings: action,
       clearBuildingProgress: action,
       getBuildingProgress: action,
     });
@@ -40,7 +41,8 @@ class BuildingStore {
   ) {
     // create a random id
 
-    const id = uuidv4();
+    const id = this.generateID(name);
+    console.log(id);
 
     this.buildings.push({
       // icon,
@@ -54,16 +56,37 @@ class BuildingStore {
     });
   }
 
+  updateBuilding(
+    // icon,
+    id,
+    name,
+    colour,
+    stoneRequired,
+    ironRequired,
+    zCoinsRequired,
+    diamondsRequired
+  ) {
+    const index = this.buildings.findIndex((building) => building.id === id);
+
+    if (index !== -1) {
+      this.buildings[index] = {
+        ...this.buildings[index],
+        name,
+        colour,
+        stoneRequired,
+        ironRequired,
+        zCoinsRequired,
+        diamondsRequired,
+      };
+    }
+  }
+
   clearBuildingProgress() {
     this.progresses = {};
   }
 
-  updateBuildings(data) {
-    console.log("Before");
-    console.log(this.buildings);
+  updateAllBuildings(data) {
     Object.assign(this.buildings, data);
-    console.log("After");
-    console.log(this.buildings);
   }
 
   getBuildingProgress() {
@@ -113,6 +136,158 @@ class BuildingStore {
       acquiredZCoins = Math.max(0, acquiredZCoins - requiredZCoins);
       acquiredDiamonds = Math.max(0, acquiredDiamonds - requiredDiamonds);
     }
+  }
+
+  generateID(buildingName) {
+    return `${this.stringToBase26(buildingName)}-${this.stringToBase26(
+      this.getRandomWord()
+    )}-${this.stringToBase26(Date.now().toString())}`;
+  }
+
+  stringToBase26(str, length = 5) {
+    const base26Chars =
+      "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    let base26Array = [];
+    let base26String = "";
+    let remainder = 0;
+    let currentDiv = 100000000000000000 + Math.random() * 999999999999999999;
+
+    while (currentDiv > 0) {
+      remainder = Math.floor(currentDiv % length);
+      currentDiv = Math.floor(currentDiv / length);
+      base26Array.unshift(remainder);
+    }
+
+    for (const item of base26Array) {
+      base26String += base26Chars[item];
+    }
+
+    if (base26String.length < length) {
+      for (let i = base26String.length; i < length; i++) {
+        base26String +=
+          base26Chars[Math.floor(Math.random() * base26Chars.length)];
+      }
+    }
+
+    return base26String.substring(0, length);
+  }
+
+  getRandomWord() {
+    const zombieWords = [
+      "undead",
+      "zombie",
+      "apocalypse",
+      "outbreak",
+      "infection",
+      "survival",
+      "horde",
+      "walker",
+      "infected",
+      "bite",
+      "flesh",
+      "decay",
+      "doomsday",
+      "cataclysm",
+      "devastation",
+      "wasteland",
+      "ruins",
+      "desolation",
+      "mutation",
+      "pandemic",
+      "plague",
+      "epidemic",
+      "endurance",
+      "cannibal",
+      "revenant",
+      "rot",
+      "ruination",
+      "ghoul",
+      "decay",
+      "crawlers",
+      "corpse",
+      "dystopia",
+      "ghastly",
+      "apocalyptic",
+      "gruesome",
+      "horror",
+      "infestation",
+      "nightmare",
+      "peril",
+      "ravage",
+      "savage",
+      "scavenge",
+      "screams",
+      "undying",
+      "wicked",
+      "zombified",
+      "abandoned",
+      "aftermath",
+      "annihilation",
+      "bloodcurdling",
+      "carnage",
+      "creepy",
+      "deserted",
+      "dreadful",
+      "eerie",
+      "freakish",
+      "gritty",
+      "harrowing",
+      "hellish",
+      "macabre",
+      "mutilation",
+      "ominous",
+      "pale",
+      "rotting",
+      "shambling",
+      "spine-chilling",
+      "suffocating",
+      "terrifying",
+      "twisted",
+      "unholy",
+      "withered",
+      "zombie",
+      "barricade",
+      "chaos",
+      "survivor",
+      "despair",
+      "ruin",
+      "fear",
+      "death",
+      "dead",
+      "wasteland",
+      "radioactive",
+      "toxic",
+      "quarantine",
+      "survive",
+      "doom",
+      "post-apocalyptic",
+      "mutation",
+      "horror",
+      "terror",
+      "nightmare",
+      "armageddon",
+      "cursed",
+      "nightfall",
+      "fatal",
+      "abomination",
+      "putrefaction",
+      "grotesque",
+      "wretched",
+      "extinction",
+      "feral",
+      "outcast",
+      "stalker",
+      "pale",
+      "desolate",
+      "morbid",
+      "shattered",
+      "hazardous",
+      "devoured",
+      "survivor",
+      "dystopian",
+    ];
+
+    return zombieWords[Math.floor(Math.random() * zombieWords.length)];
   }
 }
 
