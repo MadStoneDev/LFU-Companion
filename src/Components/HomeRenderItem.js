@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 
 const HomeRenderItem = observer(({ data, navigation }) => {
   const item = data.item;
-  let progressStr = buildingStore.getBuildingProgress(item) + "%";
+  let progressStr = buildingStore.progresses[item.id] + "%";
 
   return (
     <TouchableWithoutFeedback

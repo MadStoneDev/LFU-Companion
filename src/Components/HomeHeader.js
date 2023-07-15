@@ -5,7 +5,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { observer } from "mobx-react";
 
 import SingleStat from "./SingleStat";
@@ -37,7 +37,7 @@ const HomeHeader = observer(({ navigation, modalVisible }) => {
                     bottom: 0,
                   }}
                 >
-                  <FontAwesome name="pencil-square" size={30} color="white" />
+                  <FontAwesome5 name="user-edit" size={22} color="white" />
                 </View>
               </TouchableWithoutFeedback>
             </View>
@@ -65,7 +65,7 @@ const HomeHeader = observer(({ navigation, modalVisible }) => {
                 style={{
                   position: "absolute",
                   flexDirection: "row",
-                  right: 20,
+                  right: 25,
                   bottom: 15,
                 }}
               >

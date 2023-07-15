@@ -18,6 +18,7 @@ import WarehouseScreen from "./WarehouseScreen";
 
 import resourceStore from "../Helpers/ResourceStore";
 import { saveDataToFile } from "../Helpers/FileManager";
+import buildingStore from "../Helpers/BuildingStore";
 
 const Tabs = createMaterialTopTabNavigator();
 
@@ -31,6 +32,7 @@ const StatsScreen = ({ navigation }) => {
               console.log("Data saved");
             });
 
+            buildingStore.getBuildingProgress();
             navigation.goBack();
           }}
         >

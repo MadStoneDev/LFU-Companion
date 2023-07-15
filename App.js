@@ -2,7 +2,10 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
 
 import SplashScreen from "./src/Screens/SplashScreen";
 import HomeScreen from "./src/Screens/HomeScreen";
@@ -18,7 +21,7 @@ import BuildingScreen from "./src/Screens/BuildingScreen";
 //   tracesSampleRate: 1.0,
 // });
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   // States
@@ -43,7 +46,10 @@ export default function App() {
             <Stack.Screen
               name={"Statistics"}
               component={StatsScreen}
-              options={{ headerShown: false }}
+              options={{
+                headerShown: false,
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+              }}
             />
             <Stack.Screen
               name={"Building"}

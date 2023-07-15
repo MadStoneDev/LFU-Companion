@@ -10,7 +10,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import HomeHeader from "../Components/HomeHeader";
 import HomeRenderItem from "../Components/HomeRenderItem";
 import HomeEmptyItem from "../Components/HomeEmptyItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { saveDataToFile } from "../Helpers/FileManager";
 import { Modal, Portal, Provider, TextInput } from "react-native-paper";
@@ -26,48 +26,12 @@ const HomeScreen = ({ navigation }) => {
 
   const { buildings } = buildingStore;
 
-  // Change this to your own data source
-  const data = [
-    // {
-    //   id: 1,
-    //   title: "Building #1",
-    //   progress: 85,
-    //   theme: "#f8c820",
-    // },
-    // {
-    //   id: 2,
-    //   title: "Building #2",
-    //   progress: 35,
-    //   theme: "#c6005f",
-    // },
-    // {
-    //   id: 3,
-    //   title: "Building #3",
-    //   progress: 22,
-    //   theme: "#4792ed",
-    // },
-    // {
-    //   id: 4,
-    //   title: "Building #4",
-    //   progress: 22,
-    //   theme: "#4792ed",
-    // },
-    // {
-    //   id: 5,
-    //   title: "Building #5",
-    //   progress: 22,
-    //   theme: "#4792ed",
-    // },
-    // {
-    //   id: 6,
-    //   title: "Building #6",
-    //   progress: 22,
-    //   theme: "#4792ed",
-    // },
-  ];
-
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
+
+  useEffect(() => {
+    buildingStore.getBuildingProgress();
+  });
 
   return (
     <SafeAreaView style={styles.container}>
@@ -105,8 +69,6 @@ const HomeScreen = ({ navigation }) => {
                   resourceStore.updateUsername(usernameValue);
                   saveDataToFile(resourceStore).then(() => {
                     console.log("Saved");
-
-                    console.log(resourceStore);
                   });
                   hideModal();
                 }}
@@ -131,7 +93,7 @@ const HomeScreen = ({ navigation }) => {
           // }
         />
 
-        {data.length > 0 ? null : (
+        {buildings.length > 0 ? null : (
           <TouchableWithoutFeedback
             onPress={() => navigation.navigate("Building", { mode: "new" })}
           >

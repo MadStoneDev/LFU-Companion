@@ -31,7 +31,6 @@ import {
 
 const BuildingScreen = ({ navigation, route }) => {
   // States
-  const [selectedPaint, setSelectedPaint] = useState(null);
   const [buildingName, setBuildingName] = useState("Building Name");
   const [stoneRequired, setStoneRequired] = useState(0);
   const [ironRequired, setIronRequired] = useState(0);

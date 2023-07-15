@@ -1,4 +1,5 @@
-import { makeObservable, observable, action, computed } from "mobx";
+import { action, computed, makeObservable, observable } from "mobx";
+import { v4 as uuidv4 } from "uuid";
 import resourceStore from "./ResourceStore";
 
 class BuildingStore {
@@ -6,9 +7,18 @@ class BuildingStore {
   // {id, name, colour, stoneRequired, ironRequired, zCoinsRequired, diamondsRequired}
   buildings = [
     {
-      id: 1,
+      id: 123,
       name: "Building #1",
       colour: "blue",
+      stoneRequired: 30000,
+      ironRequired: 20000,
+      zCoinsRequired: 45000,
+      diamondsRequired: 5700,
+    },
+    {
+      id: 456,
+      name: "Building #2",
+      colour: "red",
       stoneRequired: 30000,
       ironRequired: 20000,
       zCoinsRequired: 45000,
@@ -24,18 +34,21 @@ class BuildingStore {
     diamonds: 5,
   };
 
+  progresses = {};
+
   constructor() {
     makeObservable(this, {
       buildings: observable,
       weightings: observable,
+      progresses: observable,
       addNewBuilding: action,
-      getBuildingProgress: computed,
+      getBuildingProgress: action,
+      clearBuildingProgress: action,
     });
   }
 
   addNewBuilding(
     // icon,
-    id,
     name,
     colour,
     stoneRequired,
@@ -44,6 +57,8 @@ class BuildingStore {
     diamondsRequired
   ) {
     // create a random id
+
+    const id = uuidv4();
 
     this.buildings.push({
       // icon,
@@ -57,37 +72,57 @@ class BuildingStore {
     });
   }
 
-  get getBuildingProgress() {
-    return (building) => {
-      const acquiredStone = resourceStore.totalStone;
-      const acquiredIron = resourceStore.totalIron;
-      const acquiredZCoins = resourceStore.totalZCoins;
-      const acquiredDiamonds = resourceStore.totalDiamonds;
+  clearBuildingProgress() {
+    this.progresses = {};
+  }
 
-      const cappedStone = Math.min(acquiredStone, building.stoneRequired);
-      const cappedIron = Math.min(acquiredIron, building.ironRequired);
-      const cappedZCoins = Math.min(acquiredZCoins, building.zCoinsRequired);
-      const cappedDiamonds = Math.min(
-        acquiredDiamonds,
-        building.diamondsRequired
-      );
+  getBuildingProgress() {
+    let acquiredStone = resourceStore.totalStone;
+    let acquiredIron = resourceStore.totalIron;
+    let acquiredZCoins = resourceStore.totalZCoins;
+    let acquiredDiamonds = resourceStore.totalDiamonds;
+
+    const stoneWeight = this.weightings.stone;
+    const ironWeight = this.weightings.iron;
+    const zCoinsWeight = this.weightings.zCoins;
+    const diamondsWeight = this.weightings.diamonds;
+
+    for (const building of this.buildings) {
+      const buildingId = building.id;
+
+      const requiredStone = building.stoneRequired;
+      const requiredIron = building.ironRequired;
+      const requiredZCoins = building.zCoinsRequired;
+      const requiredDiamonds = building.diamondsRequired;
+
+      const cappedStone = Math.min(acquiredStone, requiredStone);
+      const cappedIron = Math.min(acquiredIron, requiredIron);
+      const cappedZCoins = Math.min(acquiredZCoins, requiredZCoins);
+      const cappedDiamonds = Math.min(acquiredDiamonds, requiredDiamonds);
 
       const weightedStone = this.weightings.stone * cappedStone;
       const weightedIron = this.weightings.iron * cappedIron;
       const weightedZCoins = this.weightings.zCoins * cappedZCoins;
       const weightedDiamonds = this.weightings.diamonds * cappedDiamonds;
 
-      const totalRequired =
-        this.weightings.stone * building.stoneRequired +
-        this.weightings.iron * building.ironRequired +
-        this.weightings.zCoins * building.zCoinsRequired +
-        this.weightings.diamonds * building.diamondsRequired;
-
       const totalAcquired =
         weightedStone + weightedIron + weightedZCoins + weightedDiamonds;
+      const totalRequired =
+        stoneWeight * requiredStone +
+        ironWeight * requiredIron +
+        zCoinsWeight * requiredZCoins +
+        diamondsWeight * requiredDiamonds;
 
-      return Math.floor(Math.min(totalAcquired / totalRequired, 1) * 100);
-    };
+      this.progresses[buildingId] = Math.max(
+        Math.floor((totalAcquired / totalRequired) * 100),
+        0
+      );
+
+      acquiredStone = Math.max(0, acquiredStone - requiredStone);
+      acquiredIron = Math.max(0, acquiredIron - requiredIron);
+      acquiredZCoins = Math.max(0, acquiredZCoins - requiredZCoins);
+      acquiredDiamonds = Math.max(0, acquiredDiamonds - requiredDiamonds);
+    }
   }
 }
 

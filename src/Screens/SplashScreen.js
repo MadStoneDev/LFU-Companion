@@ -9,6 +9,7 @@ import {
 } from "../Helpers/FileManager";
 import resourceStore from "../Helpers/ResourceStore";
 import { usernames } from "../Helpers/usernames";
+import buildingStore from "../Helpers/BuildingStore";
 
 const SplashScreen = () => {
   useEffect(() => {
@@ -83,6 +84,8 @@ const SplashScreen = () => {
 
     loadAndCheckFile().then(() => {
       console.log("File loaded");
+      buildingStore.clearBuildingProgress();
+      buildingStore.getBuildingProgress();
     });
   }, []);
 
