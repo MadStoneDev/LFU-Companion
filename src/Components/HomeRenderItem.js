@@ -1,40 +1,45 @@
 import { Text, TouchableWithoutFeedback, StyleSheet, View } from "react-native";
 import buildingStore from "../Helpers/BuildingStore";
 import { observer } from "mobx-react";
+import { ScaleDecorator } from "react-native-draggable-flatlist/src/components/CellDecorators";
 
 const HomeRenderItem = observer(({ data, navigation }) => {
-  const item = data.item;
-  let progressStr = buildingStore.progresses[item.id] + "%";
+  const thisItem = data.item;
+  let progressStr = buildingStore.progresses[thisItem.id] + "%";
 
   return (
-    <TouchableWithoutFeedback
-      key={item.id}
-      onPress={() =>
-        navigation.navigate("Building", {
-          buildingItem: item,
-        })
-      }
-    >
-      <View style={styles.card}>
-        <View style={styles.cardTop}>
-          <View style={styles.cardDesc}>
-            <Text style={styles.title}>{item.name}</Text>
-            <Text style={styles.subtitle}>Progress: {progressStr}</Text>
-            <View style={styles.progressWrapper}>
-              <View
-                style={[
-                  styles.progressBar,
-                  {
-                    width: progressStr,
-                    backgroundColor: item.colour,
-                  },
-                ]}
-              ></View>
+    <ScaleDecorator>
+      <TouchableWithoutFeedback
+        key={thisItem.id}
+        onLongPress={() => data.drag()}
+        disabled={data.isActive}
+        onPress={() =>
+          navigation.navigate("Building", {
+            buildingItem: thisItem,
+          })
+        }
+      >
+        <View style={styles.card}>
+          <View style={styles.cardTop}>
+            <View style={styles.cardDesc}>
+              <Text style={styles.title}>{thisItem.name}</Text>
+              <Text style={styles.subtitle}>Progress: {progressStr}</Text>
+              <View style={styles.progressWrapper}>
+                <View
+                  style={[
+                    styles.progressBar,
+                    {
+                      width: progressStr,
+                      backgroundColor: thisItem.colour,
+                    },
+                  ]}
+                ></View>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-    </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
+    </ScaleDecorator>
   );
 });
 

@@ -13,6 +13,7 @@ import StatsScreen from "./src/Screens/StatsScreen";
 
 import * as Sentry from "@sentry/react-native";
 import BuildingScreen from "./src/Screens/BuildingScreen";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // Sentry.init({
 //   dsn: "https://fabaa650eabd4833a0f4cd8eea438ccf@o4505502003625984.ingest.sentry.io/4505502019747840",

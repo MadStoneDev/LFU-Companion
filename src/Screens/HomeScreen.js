@@ -1,7 +1,5 @@
 import {
-  FlatList,
   StatusBar,
-  Text,
   TouchableWithoutFeedback,
   StyleSheet,
   View,
@@ -16,15 +14,18 @@ import { saveDataToFile } from "../Helpers/FileManager";
 import { Modal, Portal, Provider, TextInput } from "react-native-paper";
 import resourceStore from "../Helpers/ResourceStore";
 import buildingStore from "../Helpers/BuildingStore";
-import HomeFooterItem from "../Components/HomeFooterItem";
+import DraggableFlatList from "react-native-draggable-flatlist";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const HomeScreen = ({ navigation }) => {
+  // Data
   const { username } = resourceStore;
+  const { buildings } = buildingStore;
+
   // States
   const [visible, setVisible] = useState(false);
   const [usernameValue, setUsernameValue] = useState(username);
-
-  const { buildings } = buildingStore;
+  const [buildingsValue, setBuildingsValue] = useState(buildings);
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -79,19 +80,37 @@ const HomeScreen = ({ navigation }) => {
           </Modal>
         </Portal>
 
-        <FlatList
-          data={buildings}
-          renderItem={(item) => {
-            return <HomeRenderItem data={item} navigation={navigation} />;
-          }}
-          ListHeaderComponent={
-            <HomeHeader navigation={navigation} modalVisible={setVisible} />
-          }
-          ListEmptyComponent={HomeEmptyItem}
-          // ListFooterComponent={
-          //   data.length > 0 && data.length < 2 ? <HomeFooterItem /> : null
-          // }
-        />
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <DraggableFlatList
+            data={buildingsValue}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={(item) => {
+              return <HomeRenderItem data={item} navigation={navigation} />;
+            }}
+            ListHeaderComponent={
+              <HomeHeader navigation={navigation} modalVisible={setVisible} />
+            }
+            ListEmptyComponent={HomeEmptyItem}
+            onDragEnd={(data) => {
+              buildingStore.updateBuildings(data.data);
+              setBuildingsValue(data.data);
+            }}
+          />
+        </GestureHandlerRootView>
+
+        {/*<FlatList*/}
+        {/*  data={buildings}*/}
+        {/*  renderItem={(item) => {*/}
+        {/*    return <HomeRenderItem data={item} navigation={navigation} />;*/}
+        {/*  }}*/}
+        {/*  ListHeaderComponent={*/}
+        {/*    <HomeHeader navigation={navigation} modalVisible={setVisible} />*/}
+        {/*  }*/}
+        {/*  ListEmptyComponent={HomeEmptyItem}*/}
+        {/*  // ListFooterComponent={*/}
+        {/*  //   data.length > 0 && data.length < 2 ? <HomeFooterItem /> : null*/}
+        {/*  // }*/}
+        {/*/>*/}
 
         {buildings.length > 0 ? null : (
           <TouchableWithoutFeedback

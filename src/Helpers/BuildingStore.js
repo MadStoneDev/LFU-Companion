@@ -5,26 +5,7 @@ import resourceStore from "./ResourceStore";
 class BuildingStore {
   // Sample Building Data
   // {id, name, colour, stoneRequired, ironRequired, zCoinsRequired, diamondsRequired}
-  buildings = [
-    {
-      id: 123,
-      name: "Building #1",
-      colour: "blue",
-      stoneRequired: 30000,
-      ironRequired: 20000,
-      zCoinsRequired: 45000,
-      diamondsRequired: 5700,
-    },
-    {
-      id: 456,
-      name: "Building #2",
-      colour: "red",
-      stoneRequired: 30000,
-      ironRequired: 20000,
-      zCoinsRequired: 45000,
-      diamondsRequired: 5700,
-    },
-  ];
+  buildings = [];
 
   // Weightings last updated: 14.07.2023
   weightings = {
@@ -42,8 +23,9 @@ class BuildingStore {
       weightings: observable,
       progresses: observable,
       addNewBuilding: action,
-      getBuildingProgress: action,
+      updateBuildings: action,
       clearBuildingProgress: action,
+      getBuildingProgress: action,
     });
   }
 
@@ -74,6 +56,14 @@ class BuildingStore {
 
   clearBuildingProgress() {
     this.progresses = {};
+  }
+
+  updateBuildings(data) {
+    console.log("Before");
+    console.log(this.buildings);
+    Object.assign(this.buildings, data);
+    console.log("After");
+    console.log(this.buildings);
   }
 
   getBuildingProgress() {
