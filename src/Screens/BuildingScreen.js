@@ -26,7 +26,10 @@ import {
   Provider,
 } from "react-native-paper";
 import buildingStore from "../Helpers/BuildingStore";
-import { saveDataToBuildingFile } from "../Helpers/BuildingsFileManager";
+import {
+  loadDataFromBuildingFile,
+  saveDataToBuildingFile,
+} from "../Helpers/BuildingsFileManager";
 
 const BuildingScreen = ({ navigation, route }) => {
   const { mode, buildingItem } = route.params;

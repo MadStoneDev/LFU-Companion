@@ -42,7 +42,6 @@ class BuildingStore {
     // create a random id
 
     const id = this.generateID(name);
-    console.log(id);
 
     this.buildings.push({
       // icon,

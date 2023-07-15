@@ -76,7 +76,6 @@ const SplashScreen = () => {
           );
         });
 
-        console.log("Username: ", data.username);
         resourceStore.updateUsername(data.username);
       }
 
@@ -87,7 +86,7 @@ const SplashScreen = () => {
       }
 
       if (buildingData) {
-        buildingStore.updateBuilding(buildingData.buildings);
+        buildingStore.updateAllBuildings(buildingData.buildings);
         buildingStore.clearBuildingProgress();
         buildingStore.getBuildingProgress();
       }

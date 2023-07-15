@@ -99,21 +99,7 @@ const HomeScreen = observer(({ navigation }) => {
           />
         </GestureHandlerRootView>
 
-        {/*<FlatList*/}
-        {/*  data={buildings}*/}
-        {/*  renderItem={(item) => {*/}
-        {/*    return <HomeRenderItem data={item} navigation={navigation} />;*/}
-        {/*  }}*/}
-        {/*  ListHeaderComponent={*/}
-        {/*    <HomeHeader navigation={navigation} modalVisible={setVisible} />*/}
-        {/*  }*/}
-        {/*  ListEmptyComponent={HomeEmptyItem}*/}
-        {/*  // ListFooterComponent={*/}
-        {/*  //   data.length > 0 && data.length < 2 ? <HomeFooterItem /> : null*/}
-        {/*  // }*/}
-        {/*/>*/}
-
-        {buildings.length > 1 ? null : (
+        {buildings.length > 2 ? null : (
           <TouchableWithoutFeedback
             onPress={() => navigation.navigate("Building", { mode: "new" })}
           >
