@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { observer } from "mobx-react";
 
 import StatInput from "../Components/StatInput";
-import { cleanUpNumber, processKeys } from "../Helpers/CleanUps";
+import { cleanUpNumber } from "../Helpers/CleanUps";
 import resourceStore from "../Helpers/ResourceStore";
 
 const DiamondsScreen = observer(() => {

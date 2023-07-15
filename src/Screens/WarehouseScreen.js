@@ -3,7 +3,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { observer } from "mobx-react";
 
 import StatInput from "../Components/StatInput";
-import { capitalise, cleanUpNumber } from "../Helpers/CleanUps";
+import { cleanUpNumber } from "../Helpers/CleanUps";
 import resourceStore from "../Helpers/ResourceStore";
 
 const WarehouseScreen = observer(() => {

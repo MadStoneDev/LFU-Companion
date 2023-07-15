@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ActivityIndicator, Button, Image } from "react-native";
+import { ActivityIndicator, Image } from "react-native";
 import {
   checkAndCreateFile,
-  deleteDataFromFile,
   loadDataFromFile,
   saveDataToFile,
 } from "../Helpers/FileManager";

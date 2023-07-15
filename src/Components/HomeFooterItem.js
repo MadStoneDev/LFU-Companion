@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 const HomeFooterItem = () => {
   return (

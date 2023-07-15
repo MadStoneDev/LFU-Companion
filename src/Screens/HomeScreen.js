@@ -26,9 +26,7 @@ const HomeScreen = observer(({ navigation }) => {
   // States
   const [visible, setVisible] = useState(false);
   const [usernameValue, setUsernameValue] = useState(username);
-  const [buildingsValue, setBuildingsValue] = useState(buildings);
 
-  const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
 
   useEffect(() => {

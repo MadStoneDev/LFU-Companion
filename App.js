@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { StyleSheet } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import {
@@ -13,7 +12,6 @@ import StatsScreen from "./src/Screens/StatsScreen";
 
 import * as Sentry from "@sentry/react-native";
 import BuildingScreen from "./src/Screens/BuildingScreen";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // Sentry.init({
 //   dsn: "https://fabaa650eabd4833a0f4cd8eea438ccf@o4505502003625984.ingest.sentry.io/4505502019747840",
@@ -63,12 +61,3 @@ export default function App() {
     </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

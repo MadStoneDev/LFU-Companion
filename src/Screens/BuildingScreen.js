@@ -8,8 +8,6 @@ import {
   Keyboard,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { saveDataToFile } from "../Helpers/FileManager";
-import resourceStore from "../Helpers/ResourceStore";
 import {
   Entypo,
   FontAwesome,
@@ -26,10 +24,7 @@ import {
   Provider,
 } from "react-native-paper";
 import buildingStore from "../Helpers/BuildingStore";
-import {
-  loadDataFromBuildingFile,
-  saveDataToBuildingFile,
-} from "../Helpers/BuildingsFileManager";
+import { saveDataToBuildingFile } from "../Helpers/BuildingsFileManager";
 
 const BuildingScreen = ({ navigation, route }) => {
   const { mode, buildingItem } = route.params;

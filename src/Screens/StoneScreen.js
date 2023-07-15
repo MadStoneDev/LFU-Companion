@@ -1,9 +1,7 @@
-import { Button, TextInput } from "react-native-paper";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { useState } from "react";
 import StatInput from "../Components/StatInput";
-import { capitalise, cleanUpNumber, processKeys } from "../Helpers/CleanUps";
-import { Entypo, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+import { cleanUpNumber } from "../Helpers/CleanUps";
+import { Entypo } from "@expo/vector-icons";
 import { observer } from "mobx-react";
 import resourceStore from "../Helpers/ResourceStore";
 
