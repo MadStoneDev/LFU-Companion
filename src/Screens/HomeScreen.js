@@ -59,6 +59,7 @@ const HomeScreen = observer(({ navigation }) => {
                 }}
                 label={"Username"}
                 mode={"outlined"}
+                textColor={"black"}
                 activeOutlineColor={"#d35322"}
                 outlineColor={"#d35322"}
                 value={usernameValue}

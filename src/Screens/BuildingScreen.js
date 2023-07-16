@@ -151,6 +151,7 @@ const BuildingScreen = ({ navigation, route }) => {
                 }}
                 label={"Username"}
                 mode={"outlined"}
+                textColor={"black"}
                 activeOutlineColor={"#d35322"}
                 outlineColor={"#d35322"}
                 value={buildingName}
