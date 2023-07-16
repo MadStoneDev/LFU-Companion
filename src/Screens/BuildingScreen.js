@@ -175,7 +175,13 @@ const BuildingScreen = ({ navigation, route }) => {
               setShowColour(true);
             }}
           >
-            <View>
+            <View
+              style={{
+                marginBottom: 20,
+                width: 130,
+                height: 50,
+              }}
+            >
               <View
                 style={{
                   top: -35,
