@@ -168,233 +168,244 @@ const BuildingScreen = ({ navigation, route }) => {
           </Modal>
         </Portal>
 
-        <View style={styles.container}>
-          <TouchableWithoutFeedback
-            onPress={() => {
-              Keyboard.dismiss();
-              setShowColour(true);
-            }}
-          >
-            <View
-              style={{
-                marginBottom: 20,
-                width: 130,
-                height: 50,
+        <View style={styles.wrapper}>
+          <View style={styles.container}>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                Keyboard.dismiss();
+                setShowColour(true);
               }}
             >
               <View
                 style={{
-                  top: -35,
-                  left: -35,
-                  width: 70,
-                  aspectRatio: 1,
-
-                  backgroundColor: selectedPaint,
-
-                  transform: [{ rotate: "45deg" }],
-                }}
-              />
-              <Text
-                style={{
-                  position: "absolute",
-                  top: 20,
-                  left: 35,
-                  color: selectedPaint,
+                  marginBottom: 20,
+                  width: 130,
+                  height: 50,
                 }}
               >
-                Change Colour
-              </Text>
-            </View>
-          </TouchableWithoutFeedback>
+                <View
+                  style={{
+                    top: -35,
+                    left: -35,
+                    width: 70,
+                    aspectRatio: 1,
 
-          <ScrollView style={{ width: "100%" }}>
-            <View style={{ marginHorizontal: 30, justifyContent: "center" }}>
-              <Text style={styles.headerTitle}>{buildingName}</Text>
-              <TouchableWithoutFeedback
-                onPress={() => {
-                  setShowChangeName(true);
-                }}
-              >
-                <View style={{ position: "absolute", top: 20, right: 0 }}>
-                  <FontAwesome name="pencil-square" size={30} color="black" />
-                </View>
-              </TouchableWithoutFeedback>
-            </View>
-            <View style={{ margin: 30, marginTop: 40 }}>
-              <Text style={{ marginBottom: 10 }}>
-                Requirements for next build/upgrade:
-              </Text>
-              <View>
-                <Entypo
-                  style={{ position: "absolute", left: 4, top: 5, zIndex: 1 }}
-                  name="basecamp"
-                  size={17}
-                  color="black"
-                />
-                <TextInput
-                  style={styles.resourceInput}
-                  placeholder={"Stone Required"}
-                  value={stoneRequired.toString()}
-                  keyboardType={"number-pad"}
-                  onChangeText={(text) =>
-                    setStoneRequired(isNaN(parseInt(text)) ? 0 : parseInt(text))
-                  }
-                />
-              </View>
+                    backgroundColor: selectedPaint,
 
-              <View>
-                <MaterialCommunityIcons
-                  style={{ position: "absolute", left: 0, top: -2, zIndex: 1 }}
-                  name="gold"
-                  size={23}
-                  color="black"
+                    transform: [{ rotate: "45deg" }],
+                  }}
                 />
-                <TextInput
-                  style={styles.resourceInput}
-                  placeholder={"Iron Required"}
-                  value={ironRequired.toString()}
-                  keyboardType={"number-pad"}
-                  onChangeText={(text) =>
-                    setIronRequired(isNaN(parseInt(text)) ? 0 : parseInt(text))
-                  }
-                />
-              </View>
-
-              <View>
-                <FontAwesome5
-                  style={{ position: "absolute", left: 3, top: 3, zIndex: 1 }}
-                  name="coins"
-                  size={18}
-                  color="black"
-                />
-
-                <TextInput
-                  style={styles.resourceInput}
-                  placeholder={"zCoins Required"}
-                  value={zCoinsRequired.toString()}
-                  keyboardType={"number-pad"}
-                  onChangeText={(text) =>
-                    setZCoinsRequired(
-                      isNaN(parseInt(text)) ? 0 : parseInt(text)
-                    )
-                  }
-                />
-              </View>
-
-              <View>
-                <FontAwesome
-                  style={{ position: "absolute", left: 3, top: 3, zIndex: 1 }}
-                  name="diamond"
-                  size={18}
-                  color="black"
-                />
-
-                <TextInput
-                  style={styles.resourceInput}
-                  placeholder={"Diamonds Required"}
-                  value={diamondsRequired.toString()}
-                  keyboardType={"number-pad"}
-                  onChangeText={(text) =>
-                    setDiamondsRequired(
-                      isNaN(parseInt(text)) ? 0 : parseInt(text)
-                    )
-                  }
-                />
-              </View>
-
-              <View
-                style={{
-                  marginTop: 15,
-                  flexDirection: "row-reverse",
-                  alignItems: "flex-end",
-                }}
-              >
-                <TouchableWithoutFeedback
-                  onPress={async () => {
-                    if (mode === "new") {
-                      buildingStore.addNewBuilding(
-                        buildingName,
-                        selectedPaint,
-                        stoneRequired,
-                        ironRequired,
-                        zCoinsRequired,
-                        diamondsRequired
-                      );
-                    } else {
-                      buildingStore.updateBuilding(
-                        buildingItem.id,
-                        buildingName,
-                        selectedPaint,
-                        stoneRequired,
-                        ironRequired,
-                        zCoinsRequired,
-                        diamondsRequired
-                      );
-                    }
-
-                    await saveDataToBuildingFile(buildingStore);
-                    navigation.navigate("Home");
+                <Text
+                  style={{
+                    position: "absolute",
+                    top: 20,
+                    left: 35,
+                    color: selectedPaint,
                   }}
                 >
-                  <Text
-                    style={{
-                      padding: 7,
-                      paddingHorizontal: 35,
-                      borderWidth: 1,
-                      borderColor: "#555",
-                      borderRadius: 5,
-                    }}
-                  >
-                    Save
-                  </Text>
-                </TouchableWithoutFeedback>
+                  Change Colour
+                </Text>
+              </View>
+            </TouchableWithoutFeedback>
 
+            <ScrollView style={{ width: "100%" }}>
+              <View style={{ marginHorizontal: 30, justifyContent: "center" }}>
+                <Text style={styles.headerTitle}>{buildingName}</Text>
                 <TouchableWithoutFeedback
-                  onPress={() => navigation.navigate("Home")}
+                  onPress={() => {
+                    setShowChangeName(true);
+                  }}
                 >
-                  <Text
-                    style={{
-                      padding: 7,
-                      paddingHorizontal: 25,
-                      color: "red",
-                    }}
-                  >
-                    Cancel
-                  </Text>
+                  <View style={{ position: "absolute", top: 20, right: 0 }}>
+                    <FontAwesome name="pencil-square" size={30} color="black" />
+                  </View>
                 </TouchableWithoutFeedback>
               </View>
+              <View style={{ margin: 30, marginTop: 40 }}>
+                <Text style={{ marginBottom: 10 }}>
+                  Requirements for next build/upgrade:
+                </Text>
+                <View>
+                  <Entypo
+                    style={{ position: "absolute", left: 4, top: 5, zIndex: 1 }}
+                    name="basecamp"
+                    size={17}
+                    color="black"
+                  />
+                  <TextInput
+                    style={styles.resourceInput}
+                    placeholder={"Stone Required"}
+                    value={stoneRequired.toString()}
+                    keyboardType={"number-pad"}
+                    onChangeText={(text) =>
+                      setStoneRequired(
+                        isNaN(parseInt(text)) ? 0 : parseInt(text)
+                      )
+                    }
+                  />
+                </View>
 
-              {/*<View*/}
-              {/*  style={{*/}
-              {/*    marginTop: 20,*/}
-              {/*    flexDirection: "row",*/}
-              {/*    flexWrap: "wrap",*/}
-              {/*    justifyContent: "space-between",*/}
-              {/*    gap: 10,*/}
-              {/*  }}*/}
-              {/*>*/}
-              {/*  {paints.map((paint) => {*/}
-              {/*    return (*/}
-              {/*      <Chip*/}
-              {/*        icon={() => (*/}
-              {/*          <FontAwesome*/}
-              {/*            name="paint-brush"*/}
-              {/*            size={18}*/}
-              {/*            color={selectedPaint === paint ? "white" : paint}*/}
-              {/*          />*/}
-              {/*        )}*/}
-              {/*        mode={"outlined"}*/}
-              {/*        selectedColor={paint}*/}
-              {/*        style={{*/}
-              {/*          backgroundColor: selectedPaint === paint ? paint : "white",*/}
-              {/*        }}*/}
-              {/*        onPress={() => setSelectedPaint(paint)}*/}
-              {/*      ></Chip>*/}
-              {/*    );*/}
-              {/*  })}*/}
-              {/*</View>*/}
-            </View>
-          </ScrollView>
+                <View>
+                  <MaterialCommunityIcons
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      top: -2,
+                      zIndex: 1,
+                    }}
+                    name="gold"
+                    size={23}
+                    color="black"
+                  />
+                  <TextInput
+                    style={styles.resourceInput}
+                    placeholder={"Iron Required"}
+                    value={ironRequired.toString()}
+                    keyboardType={"number-pad"}
+                    onChangeText={(text) =>
+                      setIronRequired(
+                        isNaN(parseInt(text)) ? 0 : parseInt(text)
+                      )
+                    }
+                  />
+                </View>
+
+                <View>
+                  <FontAwesome5
+                    style={{ position: "absolute", left: 3, top: 3, zIndex: 1 }}
+                    name="coins"
+                    size={18}
+                    color="black"
+                  />
+
+                  <TextInput
+                    style={styles.resourceInput}
+                    placeholder={"zCoins Required"}
+                    value={zCoinsRequired.toString()}
+                    keyboardType={"number-pad"}
+                    onChangeText={(text) =>
+                      setZCoinsRequired(
+                        isNaN(parseInt(text)) ? 0 : parseInt(text)
+                      )
+                    }
+                  />
+                </View>
+
+                <View>
+                  <FontAwesome
+                    style={{ position: "absolute", left: 3, top: 3, zIndex: 1 }}
+                    name="diamond"
+                    size={18}
+                    color="black"
+                  />
+
+                  <TextInput
+                    style={styles.resourceInput}
+                    placeholder={"Diamonds Required"}
+                    value={diamondsRequired.toString()}
+                    keyboardType={"number-pad"}
+                    onChangeText={(text) =>
+                      setDiamondsRequired(
+                        isNaN(parseInt(text)) ? 0 : parseInt(text)
+                      )
+                    }
+                  />
+                </View>
+
+                <View
+                  style={{
+                    marginTop: 15,
+                    flexDirection: "row-reverse",
+                    alignItems: "flex-end",
+                  }}
+                >
+                  <TouchableWithoutFeedback
+                    onPress={async () => {
+                      if (mode === "new") {
+                        buildingStore.addNewBuilding(
+                          buildingName,
+                          selectedPaint,
+                          stoneRequired,
+                          ironRequired,
+                          zCoinsRequired,
+                          diamondsRequired
+                        );
+                      } else {
+                        buildingStore.updateBuilding(
+                          buildingItem.id,
+                          buildingName,
+                          selectedPaint,
+                          stoneRequired,
+                          ironRequired,
+                          zCoinsRequired,
+                          diamondsRequired
+                        );
+                      }
+
+                      await saveDataToBuildingFile(buildingStore);
+                      navigation.navigate("Home");
+                    }}
+                  >
+                    <Text
+                      style={{
+                        padding: 7,
+                        paddingHorizontal: 35,
+                        borderWidth: 1,
+                        borderColor: "#555",
+                        borderRadius: 5,
+                      }}
+                    >
+                      Save
+                    </Text>
+                  </TouchableWithoutFeedback>
+
+                  <TouchableWithoutFeedback
+                    onPress={() => navigation.navigate("Home")}
+                  >
+                    <Text
+                      style={{
+                        padding: 7,
+                        paddingHorizontal: 25,
+                        color: "red",
+                      }}
+                    >
+                      Cancel
+                    </Text>
+                  </TouchableWithoutFeedback>
+                </View>
+
+                {/*<View*/}
+                {/*  style={{*/}
+                {/*    marginTop: 20,*/}
+                {/*    flexDirection: "row",*/}
+                {/*    flexWrap: "wrap",*/}
+                {/*    justifyContent: "space-between",*/}
+                {/*    gap: 10,*/}
+                {/*  }}*/}
+                {/*>*/}
+                {/*  {paints.map((paint) => {*/}
+                {/*    return (*/}
+                {/*      <Chip*/}
+                {/*        icon={() => (*/}
+                {/*          <FontAwesome*/}
+                {/*            name="paint-brush"*/}
+                {/*            size={18}*/}
+                {/*            color={selectedPaint === paint ? "white" : paint}*/}
+                {/*          />*/}
+                {/*        )}*/}
+                {/*        mode={"outlined"}*/}
+                {/*        selectedColor={paint}*/}
+                {/*        style={{*/}
+                {/*          backgroundColor: selectedPaint === paint ? paint : "white",*/}
+                {/*        }}*/}
+                {/*        onPress={() => setSelectedPaint(paint)}*/}
+                {/*      ></Chip>*/}
+                {/*    );*/}
+                {/*  })}*/}
+                {/*</View>*/}
+              </View>
+            </ScrollView>
+          </View>
         </View>
       </SafeAreaView>
     </Provider>
@@ -407,10 +418,17 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: "white",
   },
-  headerTitle: {
-    paddingTop: 20,
-    fontSize: 20,
-    textAlign: "center",
+  wrapper: {
+    flex: 1,
+    shadowColor: "#444",
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowRadius: 10,
+    shadowOpacity: 0.5,
+
+    elevation: 8,
   },
   container: {
     flex: 1,
@@ -419,7 +437,11 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 20,
     overflow: "hidden",
-    elevation: 8,
+  },
+  headerTitle: {
+    paddingTop: 20,
+    fontSize: 20,
+    textAlign: "center",
   },
   resourceInput: {
     marginBottom: 30,
