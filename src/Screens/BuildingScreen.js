@@ -64,6 +64,7 @@ const BuildingScreen = ({ navigation, route }) => {
     setPaint();
 
     if (mode === "edit") {
+      setBuildingName(buildingItem.name);
       setStoneRequired(buildingItem.stoneRequired);
       setIronRequired(buildingItem.ironRequired);
       setZCoinsRequired(buildingItem.zCoinsRequired);
