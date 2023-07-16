@@ -16,7 +16,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "7JYRAU3BVX.com.OMDESTI.LFToolbox"
     },
     "android": {
       "adaptiveIcon": {
