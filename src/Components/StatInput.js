@@ -45,7 +45,7 @@ const StatInput = ({ label, value, onChangeValue, onFocus, icon = null }) => {
         mode={"outlined"}
         label={label}
         value={value?.toString()}
-        placeholder={"eg. 3"}
+        // placeholder={"eg. 3"}
         activeOutlineColor={"#47656d"}
         onChangeText={(text) => {
           onChangeHandler(text);
