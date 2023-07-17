@@ -1,6 +1,6 @@
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Pressable, Text, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import {
   Entypo,
@@ -45,7 +45,7 @@ const StatsScreen = ({ navigation }) => {
       <Tabs.Navigator
         screenOptions={{
           tabBarIndicatorStyle: {
-            backgroundColor: "#02C3B1",
+            backgroundColor: "#d35322",
           },
           tabBarItemStyle: {
             paddingHorizontal: 0,
@@ -61,6 +61,11 @@ const StatsScreen = ({ navigation }) => {
             fontStyle: "italic",
             fontWeight: "bold",
             textTransform: "none",
+          },
+          tabBarStyle: {
+            shadowColor: "#000000",
+            shadowOffset: { width: 0, height: 3 },
+            shadowRadius: 2,
           },
         }}
       >
