@@ -1,7 +1,8 @@
-import { ScrollView, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import StatInput from "../Components/StatInput";
 import { cleanUpNumber } from "../Helpers/CleanUps";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import { observer } from "mobx-react";
 import resourceStore from "../Helpers/ResourceStore";
 
@@ -17,42 +18,44 @@ const StoneScreen = observer(() => {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      {Object.entries(stone.chests)
-        .reverse()
-        .map(([quantity, amount]) => {
-          return (
-            <StatInput
-              key={quantity}
-              label={quantity + " Stone Chest"}
-              value={amount.toString()}
-              onChangeValue={(text) => {
-                if (text.length < 1) text = 0;
-                handleChestsChange("stone", quantity, cleanUpNumber(text));
-              }}
-              icon={
-                amount.toString().length < 1 ? null : (
-                  <Entypo
-                    style={{ position: "absolute", left: 10, top: 20 }}
-                    name="basecamp"
-                    size={15}
-                    color="black"
-                  />
-                )
-              }
-            />
-          );
-        })}
-
-      <View style={{ height: 50 }}></View>
-    </ScrollView>
+    <KeyboardAwareScrollView>
+      <View style={styles.container}>
+        {Object.entries(stone.chests)
+          .reverse()
+          .map(([quantity, amount]) => {
+            return (
+              <StatInput
+                key={quantity}
+                label={quantity + " Stone Chest"}
+                value={amount.toString()}
+                onChangeValue={(text) => {
+                  if (text.length < 1) text = 0;
+                  handleChestsChange("stone", quantity, cleanUpNumber(text));
+                }}
+                icon={
+                  amount.toString().length < 1 ? null : (
+                    <Entypo
+                      style={{ position: "absolute", left: 10, top: 20 }}
+                      name="basecamp"
+                      size={15}
+                      color="black"
+                    />
+                  )
+                }
+              />
+            );
+          })}
+      </View>
+    </KeyboardAwareScrollView>
   );
 });
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    paddingVertical: 20,
+    paddingHorizontal: 40,
+    backgroundColor: "#f7f7f7",
   },
 });
 
