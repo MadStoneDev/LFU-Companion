@@ -1,9 +1,40 @@
-import { TextInput } from "react-native-paper";
+import { ActivityIndicator, TextInput } from "react-native-paper";
 import { StyleSheet, View } from "react-native";
+import { useEffect, useState } from "react";
+import { saveDataToFile } from "../Helpers/FileManager";
+import resourceStore from "../Helpers/ResourceStore";
 
-const StatInput = ({ label, value, onChangeValue, icon = null }) => {
+const StatInput = ({ label, value, onChangeValue, onFocus, icon = null }) => {
+  const [isSaving, setIsSaving] = useState(false);
+  const [timer, setTimer] = useState(null);
+
   const onChangeHandler = (value) => {
     onChangeValue?.(value);
+
+    // Reset Timer
+    clearTimeout(timer);
+
+    const newTimer = setTimeout(() => {
+      startSaving(value);
+    }, 1000);
+
+    setTimer(newTimer);
+  };
+
+  useEffect(() => {
+    return () => clearTimeout(timer);
+  }, [timer]);
+
+  const startSaving = (value) => {
+    setIsSaving(true);
+
+    saveDataToFile(resourceStore).then(() => {
+      console.log("Data saved");
+    });
+
+    setTimeout(() => {
+      setIsSaving(false);
+    }, 1000);
   };
 
   return (
@@ -16,10 +47,21 @@ const StatInput = ({ label, value, onChangeValue, icon = null }) => {
         value={value?.toString()}
         placeholder={"eg. 3"}
         activeOutlineColor={"#47656d"}
-        onChangeText={onChangeHandler}
+        onChangeText={(text) => {
+          onChangeHandler(text);
+        }}
+        onFocus={onFocus}
         keyboardType="numeric"
       ></TextInput>
       {icon}
+
+      {isSaving ? (
+        <ActivityIndicator
+          size={"small"}
+          color={"#d53233"}
+          style={{ position: "absolute", right: 10, top: 15 }}
+        />
+      ) : null}
     </View>
   );
 };
