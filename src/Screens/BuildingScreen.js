@@ -374,6 +374,54 @@ const BuildingScreen = ({ navigation, route }) => {
                   </TouchableWithoutFeedback>
                 </View>
 
+                <View
+                  style={{
+                    marginTop: 15,
+                    flexDirection: "row-reverse",
+                    alignItems: "flex-end",
+                  }}
+                >
+                  <TouchableWithoutFeedback
+                    onPress={async () => {
+                      if (mode === "new") {
+                        buildingStore.addNewBuilding(
+                          buildingName,
+                          selectedPaint,
+                          stoneRequired,
+                          ironRequired,
+                          zCoinsRequired,
+                          diamondsRequired
+                        );
+                      } else {
+                        buildingStore.updateBuilding(
+                          buildingItem.id,
+                          buildingName,
+                          selectedPaint,
+                          stoneRequired,
+                          ironRequired,
+                          zCoinsRequired,
+                          diamondsRequired
+                        );
+                      }
+
+                      await saveDataToBuildingFile(buildingStore);
+                      navigation.navigate("Home");
+                    }}
+                  >
+                    <Text
+                      style={{
+                        padding: 7,
+                        paddingHorizontal: 35,
+                        borderWidth: 1,
+                        borderColor: "#555",
+                        borderRadius: 5,
+                      }}
+                    >
+                      Delete
+                    </Text>
+                  </TouchableWithoutFeedback>
+                </View>
+
                 {/*<View*/}
                 {/*  style={{*/}
                 {/*    marginTop: 20,*/}
