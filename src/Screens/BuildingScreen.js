@@ -9,11 +9,13 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
+  AntDesign,
   Entypo,
   FontAwesome,
   FontAwesome5,
   Ionicons,
   MaterialCommunityIcons,
+  MaterialIcons,
 } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import paints from "../Helpers/paints";
@@ -170,46 +172,78 @@ const BuildingScreen = ({ navigation, route }) => {
 
         <View style={styles.wrapper}>
           <View style={styles.container}>
-            <TouchableWithoutFeedback
-              onPress={() => {
-                Keyboard.dismiss();
-                setShowColour(true);
-              }}
-            >
-              <View
-                style={{
-                  marginBottom: 20,
-                  width: 130,
-                  height: 50,
+            <View style={styles.topBar}>
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  Keyboard.dismiss();
+                  setShowColour(true);
                 }}
               >
                 <View
                   style={{
-                    top: -35,
-                    left: -35,
-                    width: 70,
-                    aspectRatio: 1,
-
-                    backgroundColor: selectedPaint,
-
-                    transform: [{ rotate: "45deg" }],
-                  }}
-                />
-                <Text
-                  style={{
-                    position: "absolute",
-                    top: 20,
-                    left: 35,
-                    color: selectedPaint,
+                    marginBottom: 20,
+                    width: 130,
+                    height: 50,
                   }}
                 >
-                  Change Colour
-                </Text>
-              </View>
-            </TouchableWithoutFeedback>
+                  <View
+                    style={{
+                      top: -35,
+                      left: -35,
+                      width: 70,
+                      aspectRatio: 1,
 
-            <ScrollView style={{ width: "100%" }}>
-              <View style={{ marginHorizontal: 30, justifyContent: "center" }}>
+                      backgroundColor: selectedPaint,
+
+                      transform: [{ rotate: "45deg" }],
+                    }}
+                  />
+                  <Text
+                    style={{
+                      position: "absolute",
+                      top: 20,
+                      left: 35,
+                      color: selectedPaint,
+                    }}
+                  >
+                    Change Colour
+                  </Text>
+                </View>
+              </TouchableWithoutFeedback>
+
+              {mode === "edit" ? (
+                <View style={{ top: 15 }}>
+                  <TouchableWithoutFeedback
+                    onPress={async () => {
+                      buildingStore.deleteBuilding(buildingItem.id);
+                      await saveDataToBuildingFile(buildingStore);
+                      navigation.navigate("Home");
+                    }}
+                  >
+                    <View
+                      style={{
+                        paddingRight: 20,
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: 5,
+                      }}
+                    >
+                      <Text>Delete</Text>
+                      <MaterialIcons
+                        name="delete-outline"
+                        size={24}
+                        color="black"
+                      />
+                    </View>
+                  </TouchableWithoutFeedback>
+                </View>
+              ) : null}
+            </View>
+
+            <ScrollView
+              style={{ alignSelf: "center", padding: 30, width: "100%" }}
+            >
+              <View style={{ justifyContent: "center" }}>
                 <Text style={styles.headerTitle}>{buildingName}</Text>
                 <TouchableWithoutFeedback
                   onPress={() => {
@@ -217,24 +251,26 @@ const BuildingScreen = ({ navigation, route }) => {
                   }}
                 >
                   <View style={{ position: "absolute", top: 20, right: 0 }}>
-                    <FontAwesome name="pencil-square" size={30} color="black" />
+                    <FontAwesome name="pencil-square" size={26} color="black" />
                   </View>
                 </TouchableWithoutFeedback>
               </View>
-              <View style={{ margin: 30, marginTop: 40 }}>
-                <Text style={{ marginBottom: 10 }}>
+              <View style={{ marginTop: 40 }}>
+                <Text style={{ marginBottom: 20 }}>
                   Requirements for next build/upgrade:
                 </Text>
-                <View>
+                <View style={{ flexDirection: "row", gap: 10 }}>
                   <Entypo
-                    style={{ position: "absolute", left: 4, top: 5, zIndex: 1 }}
+                    style={{
+                      zIndex: 1,
+                    }}
                     name="basecamp"
                     size={17}
                     color="black"
                   />
+                  <Text>Stone </Text>
                   <TextInput
                     style={styles.resourceInput}
-                    placeholder={"Stone Required"}
                     value={stoneRequired.toString()}
                     keyboardType={"number-pad"}
                     onChangeText={(text) =>
@@ -245,21 +281,19 @@ const BuildingScreen = ({ navigation, route }) => {
                   />
                 </View>
 
-                <View>
+                <View style={{ flexDirection: "row", gap: 10 }}>
                   <MaterialCommunityIcons
                     style={{
-                      position: "absolute",
-                      left: 0,
-                      top: -2,
-                      zIndex: 1,
+                      top: -5,
+                      left: -3,
                     }}
                     name="gold"
                     size={23}
                     color="black"
                   />
+                  <Text>Iron</Text>
                   <TextInput
                     style={styles.resourceInput}
-                    placeholder={"Iron Required"}
                     value={ironRequired.toString()}
                     keyboardType={"number-pad"}
                     onChangeText={(text) =>
@@ -270,17 +304,16 @@ const BuildingScreen = ({ navigation, route }) => {
                   />
                 </View>
 
-                <View>
+                <View style={{ flexDirection: "row", gap: 10 }}>
                   <FontAwesome5
-                    style={{ position: "absolute", left: 3, top: 3, zIndex: 1 }}
+                    style={{ top: -2 }}
                     name="coins"
                     size={18}
                     color="black"
                   />
-
+                  <Text>Z Coins</Text>
                   <TextInput
                     style={styles.resourceInput}
-                    placeholder={"zCoins Required"}
                     value={zCoinsRequired.toString()}
                     keyboardType={"number-pad"}
                     onChangeText={(text) =>
@@ -291,17 +324,16 @@ const BuildingScreen = ({ navigation, route }) => {
                   />
                 </View>
 
-                <View>
+                <View style={{ flexDirection: "row", gap: 10 }}>
                   <FontAwesome
-                    style={{ position: "absolute", left: 3, top: 3, zIndex: 1 }}
+                    style={{ top: -2 }}
                     name="diamond"
                     size={18}
                     color="black"
                   />
-
+                  <Text>Diamonds</Text>
                   <TextInput
                     style={styles.resourceInput}
-                    placeholder={"Diamonds Required"}
                     value={diamondsRequired.toString()}
                     keyboardType={"number-pad"}
                     onChangeText={(text) =>
@@ -316,7 +348,7 @@ const BuildingScreen = ({ navigation, route }) => {
                   style={{
                     marginTop: 15,
                     flexDirection: "row-reverse",
-                    alignItems: "flex-end",
+                    justifyContent: "flex-start",
                   }}
                 >
                   <TouchableWithoutFeedback
@@ -366,91 +398,14 @@ const BuildingScreen = ({ navigation, route }) => {
                       style={{
                         padding: 7,
                         paddingHorizontal: 25,
-                        color: "red",
+                        color: "grey",
+                        fontStyle: "italic",
                       }}
                     >
                       Cancel
                     </Text>
                   </TouchableWithoutFeedback>
                 </View>
-
-                <View
-                  style={{
-                    marginTop: 15,
-                    flexDirection: "row-reverse",
-                    alignItems: "flex-end",
-                  }}
-                >
-                  <TouchableWithoutFeedback
-                    onPress={async () => {
-                      if (mode === "new") {
-                        buildingStore.addNewBuilding(
-                          buildingName,
-                          selectedPaint,
-                          stoneRequired,
-                          ironRequired,
-                          zCoinsRequired,
-                          diamondsRequired
-                        );
-                      } else {
-                        buildingStore.updateBuilding(
-                          buildingItem.id,
-                          buildingName,
-                          selectedPaint,
-                          stoneRequired,
-                          ironRequired,
-                          zCoinsRequired,
-                          diamondsRequired
-                        );
-                      }
-
-                      await saveDataToBuildingFile(buildingStore);
-                      navigation.navigate("Home");
-                    }}
-                  >
-                    <Text
-                      style={{
-                        padding: 7,
-                        paddingHorizontal: 35,
-                        borderWidth: 1,
-                        borderColor: "#555",
-                        borderRadius: 5,
-                      }}
-                    >
-                      Delete
-                    </Text>
-                  </TouchableWithoutFeedback>
-                </View>
-
-                {/*<View*/}
-                {/*  style={{*/}
-                {/*    marginTop: 20,*/}
-                {/*    flexDirection: "row",*/}
-                {/*    flexWrap: "wrap",*/}
-                {/*    justifyContent: "space-between",*/}
-                {/*    gap: 10,*/}
-                {/*  }}*/}
-                {/*>*/}
-                {/*  {paints.map((paint) => {*/}
-                {/*    return (*/}
-                {/*      <Chip*/}
-                {/*        icon={() => (*/}
-                {/*          <FontAwesome*/}
-                {/*            name="paint-brush"*/}
-                {/*            size={18}*/}
-                {/*            color={selectedPaint === paint ? "white" : paint}*/}
-                {/*          />*/}
-                {/*        )}*/}
-                {/*        mode={"outlined"}*/}
-                {/*        selectedColor={paint}*/}
-                {/*        style={{*/}
-                {/*          backgroundColor: selectedPaint === paint ? paint : "white",*/}
-                {/*        }}*/}
-                {/*        onPress={() => setSelectedPaint(paint)}*/}
-                {/*      ></Chip>*/}
-                {/*    );*/}
-                {/*  })}*/}
-                {/*</View>*/}
               </View>
             </ScrollView>
           </View>
@@ -468,6 +423,7 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flex: 1,
+    backgroundColor: "#fff",
     shadowColor: "#444",
     shadowOffset: {
       width: 1,
@@ -476,15 +432,22 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     shadowOpacity: 0.5,
 
+    borderRadius: 20,
+
     elevation: 8,
   },
   container: {
     flex: 1,
     alignItems: "flex-start",
     paddingBottom: 10,
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     borderRadius: 20,
     overflow: "hidden",
+  },
+  topBar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
   },
   headerTitle: {
     paddingTop: 20,
@@ -492,8 +455,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   resourceInput: {
+    flex: 1,
     marginBottom: 30,
-    paddingLeft: 35,
+    paddingLeft: 10,
+    paddingBottom: 5,
     backgroundColor: "white",
     borderBottomWidth: 1,
     borderBottomColor: "black",
