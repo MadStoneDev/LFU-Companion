@@ -24,6 +24,7 @@ class BuildingStore {
       progresses: observable,
       addNewBuilding: action,
       updateBuilding: action,
+      deleteBuilding: action,
       updateAllBuildings: action,
       clearBuildingProgress: action,
       getBuildingProgress: action,
@@ -77,6 +78,14 @@ class BuildingStore {
         zCoinsRequired,
         diamondsRequired,
       };
+    }
+  }
+
+  deleteBuilding(id) {
+    const index = this.buildings.findIndex((building) => building.id === id);
+
+    if (index !== -1) {
+      this.buildings.splice(index, 1);
     }
   }
 
