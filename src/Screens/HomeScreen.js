@@ -3,6 +3,7 @@ import {
   TouchableWithoutFeedback,
   StyleSheet,
   View,
+  Text,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import HomeHeader from "../Components/HomeHeader";
@@ -93,7 +94,6 @@ const HomeScreen = observer(({ navigation }) => {
             ListEmptyComponent={HomeEmptyItem}
             onDragEnd={(data) => {
               buildingStore.updateAllBuildings(data.data);
-              // setBuildingsValue(data.data);
             }}
           />
         </GestureHandlerRootView>

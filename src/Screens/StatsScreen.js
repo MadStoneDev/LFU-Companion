@@ -63,6 +63,7 @@ const StatsScreen = ({ navigation }) => {
             textTransform: "none",
           },
           tabBarStyle: {
+            backgroundColor: "#fff",
             shadowColor: "#000000",
             shadowOffset: { width: 0, height: 3 },
             shadowRadius: 2,
