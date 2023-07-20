@@ -98,7 +98,7 @@ const StatsScreen = ({ navigation }) => {
           }}
         />
         <Tabs.Screen
-          name={"Z Coins Chests"}
+          name={"zCoin Chests"}
           component={ZCoinsScreen}
           options={{
             tabBarIcon: (focused) => (
@@ -107,7 +107,7 @@ const StatsScreen = ({ navigation }) => {
           }}
         />
         <Tabs.Screen
-          name={"Diamonds Chest"}
+          name={"Diamond Chest"}
           component={DiamondsScreen}
           options={{
             tabBarIcon: (focused) => (
