@@ -87,7 +87,8 @@ class ResourceStore {
   get totalStone() {
     let total = this.stone.warehouse;
     Object.keys(this.stone.chests).forEach((key) => {
-      total += key * this.stone.chests[key];
+      total +=
+        key * (isNaN(this.stone.chests[key]) ? 0 : this.stone.chests[key]);
     });
 
     return total;
@@ -96,7 +97,7 @@ class ResourceStore {
   get totalIron() {
     let total = this.iron.warehouse;
     Object.keys(this.iron.chests).forEach((key) => {
-      total += key * this.iron.chests[key];
+      total += key * (isNaN(this.iron.chests[key]) ? 0 : this.iron.chests[key]);
     });
 
     return total;
@@ -105,7 +106,8 @@ class ResourceStore {
   get totalZCoins() {
     let total = this.zCoins.warehouse;
     Object.keys(this.zCoins.chests).forEach((key) => {
-      total += key * this.zCoins.chests[key];
+      total +=
+        key * (isNaN(this.zCoins.chests[key]) ? 0 : this.zCoins.chests[key]);
     });
 
     return total;
@@ -114,7 +116,9 @@ class ResourceStore {
   get totalDiamonds() {
     let total = this.diamonds.warehouse;
     Object.keys(this.diamonds.chests).forEach((key) => {
-      total += key * this.diamonds.chests[key];
+      total +=
+        key *
+        (isNaN(this.diamonds.chests[key]) ? 0 : this.diamonds.chests[key]);
     });
 
     return total;
