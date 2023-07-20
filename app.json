@@ -3,7 +3,7 @@
     "name": "LFToolbox",
     "slug": "LFToolbox",
     "owner": "omdesti",
-    "version": "0.9.3",
+    "version": "0.9.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -18,7 +18,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.omdesti.lftoolbox",
-      "buildNumber": "5"
+      "buildNumber": "6"
     },
     "android": {
       "adaptiveIcon": {
