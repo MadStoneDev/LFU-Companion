@@ -241,7 +241,11 @@ const BuildingScreen = ({ navigation, route }) => {
             </View>
 
             <ScrollView
-              style={{ alignSelf: "center", padding: 30, width: "100%" }}
+              style={{
+                alignSelf: "center",
+                padding: 30,
+                width: "100%",
+              }}
             >
               <View style={{ justifyContent: "center" }}>
                 <Text style={styles.headerTitle}>{buildingName}</Text>
@@ -250,7 +254,7 @@ const BuildingScreen = ({ navigation, route }) => {
                     setShowChangeName(true);
                   }}
                 >
-                  <View style={{ position: "absolute", top: 20, right: 0 }}>
+                  <View style={{ position: "absolute", right: 0 }}>
                     <FontAwesome name="pencil-square" size={26} color="black" />
                   </View>
                 </TouchableWithoutFeedback>
@@ -259,16 +263,12 @@ const BuildingScreen = ({ navigation, route }) => {
                 <Text style={{ marginBottom: 20 }}>
                   Requirements for next build/upgrade:
                 </Text>
-                <View style={{ flexDirection: "row", gap: 10 }}>
-                  <Entypo
-                    style={{
-                      zIndex: 1,
-                    }}
-                    name="basecamp"
-                    size={17}
-                    color="black"
-                  />
-                  <Text>Stone </Text>
+
+                <View style={styles.fieldWrapper}>
+                  <View style={[styles.fieldLabel, { gap: 7 }]}>
+                    <Entypo name="basecamp" size={17} color="black" />
+                    <Text>Stone </Text>
+                  </View>
                   <TextInput
                     style={styles.resourceInput}
                     value={stoneRequired.toString()}
@@ -281,17 +281,18 @@ const BuildingScreen = ({ navigation, route }) => {
                   />
                 </View>
 
-                <View style={{ flexDirection: "row", gap: 10 }}>
-                  <MaterialCommunityIcons
-                    style={{
-                      top: -5,
-                      left: -3,
-                    }}
-                    name="gold"
-                    size={23}
-                    color="black"
-                  />
-                  <Text>Iron</Text>
+                <View style={styles.fieldWrapper}>
+                  <View style={[styles.fieldLabel, { gap: 6 }]}>
+                    <MaterialCommunityIcons
+                      style={{
+                        top: -2,
+                      }}
+                      name="gold"
+                      size={23}
+                      color="black"
+                    />
+                    <Text>Iron</Text>
+                  </View>
                   <TextInput
                     style={styles.resourceInput}
                     value={ironRequired.toString()}
@@ -304,14 +305,11 @@ const BuildingScreen = ({ navigation, route }) => {
                   />
                 </View>
 
-                <View style={{ flexDirection: "row", gap: 10 }}>
-                  <FontAwesome5
-                    style={{ top: -2 }}
-                    name="coins"
-                    size={18}
-                    color="black"
-                  />
-                  <Text>Z Coins</Text>
+                <View style={styles.fieldWrapper}>
+                  <View style={[styles.fieldLabel, { gap: 8 }]}>
+                    <FontAwesome5 name="coins" size={18} color="black" />
+                    <Text>zCoin</Text>
+                  </View>
                   <TextInput
                     style={styles.resourceInput}
                     value={zCoinsRequired.toString()}
@@ -324,14 +322,11 @@ const BuildingScreen = ({ navigation, route }) => {
                   />
                 </View>
 
-                <View style={{ flexDirection: "row", gap: 10 }}>
-                  <FontAwesome
-                    style={{ top: -2 }}
-                    name="diamond"
-                    size={18}
-                    color="black"
-                  />
-                  <Text>Diamonds</Text>
+                <View style={styles.fieldWrapper}>
+                  <View style={[styles.fieldLabel, { gap: 7 }]}>
+                    <FontAwesome name="diamond" size={18} color="black" />
+                    <Text>Diamond</Text>
+                  </View>
                   <TextInput
                     style={styles.resourceInput}
                     value={diamondsRequired.toString()}
@@ -450,13 +445,23 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   headerTitle: {
-    paddingTop: 20,
     fontSize: 20,
     textAlign: "center",
   },
+  fieldWrapper: {
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "stretch",
+    marginBottom: 30,
+  },
+  fieldLabel: {
+    top: -3,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
   resourceInput: {
     flex: 1,
-    marginBottom: 30,
     paddingLeft: 10,
     paddingBottom: 5,
     backgroundColor: "white",
