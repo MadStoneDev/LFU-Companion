@@ -3,7 +3,7 @@
     "name": "LFToolbox",
     "slug": "LFToolbox",
     "owner": "omdesti",
-    "version": "0.9.4",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -18,14 +18,15 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.omdesti.lftoolbox",
-      "buildNumber": "6"
+      "buildNumber": "7"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.omdesti.lftoolbox"
+      "package": "com.omdesti.lftoolbox",
+      "versionCode": 7
     },
     "web": {
       "favicon": "./assets/favicon.png"

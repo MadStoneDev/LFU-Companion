@@ -14,5 +14,14 @@
       "developmentClient": true
     },
     "production": {}
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "richard@haddads.net.au",
+        "ascAppId": "6451335280",
+        "appleTeamId": "7JYRAU3BVX"
+      }
+    }
   }
 }
