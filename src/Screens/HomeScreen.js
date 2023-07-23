@@ -107,6 +107,14 @@ const HomeScreen = observer(({ navigation }) => {
             </View>
           </TouchableWithoutFeedback>
         )}
+
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate("OnBoarding")}
+        >
+          <View style={styles.onBoardingButton}>
+            <FontAwesome name="question-circle" size={40} color="#777" />
+          </View>
+        </TouchableWithoutFeedback>
       </Provider>
       <StatusBar backgroundColor="black" barStyle="light-content" />
     </SafeAreaView>
@@ -124,6 +132,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     bottom: 20,
     right: 20,
+    width: 50,
+    aspectRatio: 1,
+    borderColor: "#d35322",
+    borderRadius: 99999,
+  },
+  onBoardingButton: {
+    position: "absolute",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    bottom: 20,
+    left: 20,
     width: 50,
     aspectRatio: 1,
     borderColor: "#d35322",
