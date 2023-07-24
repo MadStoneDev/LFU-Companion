@@ -40,7 +40,7 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
     },
     {
       image: require("../../assets/images/LFToolbox_Onboarding-01.png"),
-      title: "Track Multiple Buildings",
+      title: "Track multiple buildings",
       subtitle: "at the same time",
       content: (
         <View style={{ alignItems: "center" }}>
