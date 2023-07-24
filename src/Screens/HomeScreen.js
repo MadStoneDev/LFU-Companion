@@ -112,7 +112,7 @@ const HomeScreen = observer(({ navigation }) => {
           onPress={() => navigation.navigate("OnBoarding")}
         >
           <View style={styles.onBoardingButton}>
-            <FontAwesome name="question-circle" size={40} color="#777" />
+            <FontAwesome name="question-circle" size={40} color="#bbb" />
           </View>
         </TouchableWithoutFeedback>
       </Provider>

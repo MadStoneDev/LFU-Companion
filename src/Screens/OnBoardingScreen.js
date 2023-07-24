@@ -8,6 +8,37 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
 
   const onBoardingPages = [
     {
+      image: require("../../assets/images/LFToolbox_Onboarding-02.png"),
+      title: "Manage all of your resources",
+      subtitle: "in the one place",
+      content: (
+        <View style={{ alignItems: "center" }}>
+          <Text>Tap the</Text>
+          <View
+            style={{
+              margin: 2,
+              alignItems: "center",
+              justifyContent: "center",
+              elevation: 3,
+            }}
+          >
+            <View
+              style={{
+                position: "absolute",
+                width: 24,
+                height: 24,
+                backgroundColor: "black",
+                elevation: 0,
+                zIndex: 0,
+              }}
+            />
+            <FontAwesome name="pencil-square" size={34} color="white" />
+          </View>
+          <Text>to update your resources</Text>
+        </View>
+      ),
+    },
+    {
       image: require("../../assets/images/LFToolbox_Onboarding-01.png"),
       title: "Track Multiple Buildings",
       subtitle: "at the same time",
@@ -43,37 +74,6 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
             />
           </View>
           <Text>to track more buildings</Text>
-        </View>
-      ),
-    },
-    {
-      image: require("../../assets/images/LFToolbox_Onboarding-02.png"),
-      title: "Manage all of your resources",
-      subtitle: "in the one place",
-      content: (
-        <View style={{ alignItems: "center" }}>
-          <Text>Tap the</Text>
-          <View
-            style={{
-              margin: 2,
-              alignItems: "center",
-              justifyContent: "center",
-              elevation: 3,
-            }}
-          >
-            <View
-              style={{
-                position: "absolute",
-                width: 24,
-                height: 24,
-                backgroundColor: "black",
-                elevation: 0,
-                zIndex: 0,
-              }}
-            />
-            <FontAwesome name="pencil-square" size={34} color="white" />
-          </View>
-          <Text>to update your resources</Text>
         </View>
       ),
     },
@@ -141,8 +141,9 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
     >
       <Image
         style={{
+          marginVertical: 10,
           maxWidth: "100%",
-          height: "50%",
+          height: "45%",
           resizeMode: "contain",
         }}
         source={onBoardingPages[currentActive].image}
@@ -165,6 +166,22 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
           alignItems: "center",
         }}
       >
+        <View style={{ flexDirection: "row", gap: 5, marginBottom: 10 }}>
+          {onBoardingPages.map((page, index) => (
+            <View
+              key={index}
+              style={{
+                borderWidth: 1,
+                borderColor: index === currentActive ? "#d35322" : "#ddd",
+                backgroundColor: index === currentActive ? "#d35322" : "white",
+                width: 10,
+                height: 10,
+                borderRadius: 20,
+              }}
+            />
+          ))}
+        </View>
+
         {currentActive === onBoardingPages.length - 1 ? (
           <TouchableWithoutFeedback
             onPress={() => {
@@ -176,7 +193,7 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
             <Text
               style={{
                 padding: 15,
-                marginBottom: 20,
+                marginBottom: 15,
                 backgroundColor: "#d35322",
                 borderRadius: 10,
                 width: "100%",
@@ -194,7 +211,7 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
             <Text
               style={{
                 padding: 15,
-                marginBottom: 20,
+                marginBottom: 15,
                 backgroundColor: "#d35322",
                 borderRadius: 10,
                 width: "100%",
