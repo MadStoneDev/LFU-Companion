@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "LFToolbox",
-    "slug": "LFToolbox",
-    "owner": "omdesti",
-    "version": "1.0.1",
+    "name": "LFU Companion",
+    "slug": "lfu-companion",
+    "owner": "Madstone.Dev",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -18,7 +18,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.omdesti.lftoolbox",
-      "buildNumber": "8"
+      "buildNumber": "9"
     },
     "android": {
       "adaptiveIcon": {
@@ -26,7 +26,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.omdesti.lftoolbox",
-      "versionCode": 8
+      "versionCode": 9
     },
     "web": {
       "favicon": "./assets/favicon.png"
