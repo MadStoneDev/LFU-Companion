@@ -1,35 +1,25 @@
 import {
-  StatusBar,
   TouchableWithoutFeedback,
   StyleSheet,
   SafeAreaView,
   View,
+  Pressable,
   Text,
 } from "react-native";
-import HomeHeader from "../Components/HomeHeader";
 import HomeRenderItem from "../Components/HomeRenderItem";
 import HomeEmptyItem from "../Components/HomeEmptyItem";
 import { useEffect, useState } from "react";
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
-import { saveDataToFile } from "../Helpers/FileManager";
-import { Modal, Portal, Provider, TextInput } from "react-native-paper";
+import { Entypo, FontAwesome, Ionicons } from "@expo/vector-icons";
 import resourceStore from "../Helpers/ResourceStore";
 import buildingStore from "../Helpers/BuildingStore";
 import DraggableFlatList from "react-native-draggable-flatlist";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { observer } from "mobx-react";
-import OptimisedStatusBar from "../Components/OptimisedStatusBar";
+import { saveDataToFile } from "../Helpers/FileManager";
 
 const HomeScreen = observer(({ navigation }) => {
-  // Data
-  const { username } = resourceStore;
+  // mobX
   const { buildings } = buildingStore;
-
-  // States
-  const [visible, setVisible] = useState(false);
-  const [usernameValue, setUsernameValue] = useState(username);
-
-  const hideModal = () => setVisible(false);
 
   useEffect(() => {
     buildingStore.getBuildingProgress();
@@ -37,86 +27,52 @@ const HomeScreen = observer(({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Provider>
-        <Portal>
-          <Modal
-            visible={visible}
-            onDismiss={hideModal}
-            contentContainerStyle={{
-              backgroundColor: "white",
-              margin: 20,
-              padding: 20,
-              borderRadius: 10,
-            }}
-          >
-            <View
-              style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
-            >
-              <TextInput
-                style={{
-                  flex: 1,
-                  height: 35,
-                  padding: 0,
-                  backgroundColor: "white",
-                }}
-                label={"Username"}
-                mode={"outlined"}
-                textColor={"black"}
-                activeOutlineColor={"#d35322"}
-                outlineColor={"#d35322"}
-                value={usernameValue}
-                onChangeText={(text) => setUsernameValue(text)}
-              />
-              <TouchableWithoutFeedback
-                onPress={() => {
-                  resourceStore.updateUsername(usernameValue);
-                  saveDataToFile(resourceStore).then(() => {
-                    console.log("Saved");
-                  });
-                  hideModal();
-                }}
-              >
-                <Ionicons name="checkbox-sharp" size={30} color="#d35322" />
-              </TouchableWithoutFeedback>
-            </View>
-          </Modal>
-        </Portal>
-
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <DraggableFlatList
-            data={buildings}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={(item) => {
-              return <HomeRenderItem data={item} navigation={navigation} />;
-            }}
-            ListHeaderComponent={
-              <HomeHeader navigation={navigation} modalVisible={setVisible} />
-            }
-            ListEmptyComponent={HomeEmptyItem}
-            onDragEnd={(data) => {
-              buildingStore.updateAllBuildings(data.data);
-            }}
-          />
-        </GestureHandlerRootView>
-
-        {buildings.length > 2 ? null : (
-          <TouchableWithoutFeedback
-            onPress={() => navigation.navigate("Building", { mode: "new" })}
-          >
-            <View style={styles.addButton}>
-              <FontAwesome name="plus-circle" size={40} color="#d35322" />
-            </View>
-          </TouchableWithoutFeedback>
-        )}
-
-        <TouchableWithoutFeedback
-          onPress={() => navigation.navigate("OnBoarding")}
+      <View style={styles.header}>
+        <Pressable
+          onPress={() => {
+            navigation.openDrawer();
+          }}
         >
-          <View style={styles.onBoardingButton}>
-            <FontAwesome name="question-circle" size={40} color="#bbb" />
+          <Entypo name="menu" size={24} color="black" />
+        </Pressable>
+
+        <Text style={styles.headerTitle}>Building Tracker</Text>
+      </View>
+
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <DraggableFlatList
+          data={buildings}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={(item) => {
+            return <HomeRenderItem data={item} navigation={navigation} />;
+          }}
+          // ListHeaderComponent={
+          //   <HomeHeader navigation={navigation} modalVisible={setVisible} />
+          // }
+          ListEmptyComponent={HomeEmptyItem}
+          onDragEnd={(data) => {
+            buildingStore.updateAllBuildings(data.data);
+          }}
+        />
+      </GestureHandlerRootView>
+
+      {buildings.length > 2 ? null : (
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate("Building", { mode: "new" })}
+        >
+          <View style={styles.addButton}>
+            <FontAwesome name="plus-circle" size={40} color="#d35322" />
           </View>
         </TouchableWithoutFeedback>
-      </Provider>
+      )}
+
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate("OnBoarding")}
+      >
+        <View style={styles.onBoardingButton}>
+          <FontAwesome name="question-circle" size={40} color="#bbb" />
+        </View>
+      </TouchableWithoutFeedback>
     </SafeAreaView>
   );
 });
@@ -124,6 +80,20 @@ const HomeScreen = observer(({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  header: {
+    paddingVertical: 20,
+    paddingHorizontal: 15,
+    marginBottom: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    backgroundColor: "#b5c1c5",
+    elevation: 8,
+  },
+  headerTitle: {
+    marginLeft: 30,
+    fontSize: 20,
   },
   addButton: {
     position: "absolute",

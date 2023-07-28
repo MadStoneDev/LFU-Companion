@@ -7,28 +7,45 @@ import {
 } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 
-const SingleStat = ({ description, data }) => {
+const SingleStat = ({
+  description,
+  data,
+  colour = "white",
+  customStyles = null,
+}) => {
   const [optimisedData, setOptimisedData] = useState("");
 
   let iconComponent;
 
   switch (description) {
     case "Stone":
-      iconComponent = <Entypo name="basecamp" size={18} color="white" />;
+      iconComponent = <Entypo name="basecamp" size={18} color={colour} />;
       break;
 
     case "Iron":
       iconComponent = (
-        <MaterialCommunityIcons name="gold" size={24} color="white" />
+        <MaterialCommunityIcons
+          name="gold"
+          size={24}
+          color={colour}
+          style={{ left: 4 }}
+        />
       );
       break;
 
     case "Z Coins":
-      iconComponent = <FontAwesome5 name="coins" size={18} color="white" />;
+      iconComponent = <FontAwesome5 name="coins" size={18} color={colour} />;
       break;
 
     case "Diamonds":
-      iconComponent = <FontAwesome name="diamond" size={18} color="white" />;
+      iconComponent = (
+        <FontAwesome
+          name="diamond"
+          size={18}
+          color={colour}
+          style={{ left: 1 }}
+        />
+      );
       break;
   }
 
@@ -38,11 +55,15 @@ const SingleStat = ({ description, data }) => {
   }, [data]);
 
   return (
-    <View style={styles.statSingle}>
+    <View style={[styles.statSingle, customStyles]}>
       {iconComponent}
       {/*<GiStoneBlock size={20} color={"white"} />*/}
-      <Text style={styles.statQuantity}>{optimisedData}</Text>
-      <Text style={styles.statDescription}>{description}</Text>
+      <Text style={[styles.statQuantity, { color: colour }]}>
+        {optimisedData}
+      </Text>
+      <Text style={[styles.statDescription, { color: colour }]}>
+        {description}
+      </Text>
     </View>
   );
 };
@@ -59,12 +80,10 @@ const styles = StyleSheet.create({
     marginRight: 5,
     fontSize: 17,
     fontWeight: "bold",
-    color: "white",
   },
   statDescription: {
     fontSize: 15,
     fontWeight: "light",
-    color: "white",
   },
 });
 

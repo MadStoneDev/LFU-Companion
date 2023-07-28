@@ -53,9 +53,17 @@ const HomeHeader = observer(({ navigation, modalVisible }) => {
                 Current Statistics:
               </Text>
               <SingleStat data={totalStone} description={"Stone"} />
-              <SingleStat data={totalIron} description={"Iron"} />
+              <SingleStat
+                data={totalIron}
+                description={"Iron"}
+                customStyles={{ left: -6 }}
+              />
               <SingleStat data={totalZCoins} description={"Z Coins"} />
-              <SingleStat data={totalDiamonds} description={"Diamonds"} />
+              <SingleStat
+                data={totalDiamonds}
+                description={"Diamonds"}
+                customStyles={{ left: -2 }}
+              />
             </View>
 
             <TouchableWithoutFeedback
