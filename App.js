@@ -14,13 +14,14 @@ import * as Sentry from "@sentry/react-native";
 import BuildingScreen from "./src/Screens/BuildingScreen";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import OnBoardingScreen from "./src/Screens/OnBoardingScreen";
+import OptimisedStatusBar from "./src/Components/OptimisedStatusBar";
 
-Sentry.init({
-  dsn: "https://fabaa650eabd4833a0f4cd8eea438ccf@o4505502003625984.ingest.sentry.io/4505502019747840",
-  // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
-  // We recommend adjusting this value in production.
-  tracesSampleRate: 1.0,
-});
+// Sentry.init({
+//   dsn: "https://fabaa650eabd4833a0f4cd8eea438ccf@o4505502003625984.ingest.sentry.io/4505502019747840",
+//   // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+//   // We recommend adjusting this value in production.
+//   tracesSampleRate: 1.0,
+// });
 
 const Stack = createStackNavigator();
 
@@ -54,6 +55,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
+      <OptimisedStatusBar backgroundColor={"black"} barStyle="light-content" />
       {loading ? (
         <SplashScreen />
       ) : showOnBoarding ? (

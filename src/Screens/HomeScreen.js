@@ -2,10 +2,10 @@ import {
   StatusBar,
   TouchableWithoutFeedback,
   StyleSheet,
+  SafeAreaView,
   View,
   Text,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import HomeHeader from "../Components/HomeHeader";
 import HomeRenderItem from "../Components/HomeRenderItem";
 import HomeEmptyItem from "../Components/HomeEmptyItem";
@@ -18,6 +18,7 @@ import buildingStore from "../Helpers/BuildingStore";
 import DraggableFlatList from "react-native-draggable-flatlist";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { observer } from "mobx-react";
+import OptimisedStatusBar from "../Components/OptimisedStatusBar";
 
 const HomeScreen = observer(({ navigation }) => {
   // Data
@@ -116,7 +117,6 @@ const HomeScreen = observer(({ navigation }) => {
           </View>
         </TouchableWithoutFeedback>
       </Provider>
-      <StatusBar backgroundColor="black" barStyle="light-content" />
     </SafeAreaView>
   );
 });
