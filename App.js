@@ -68,6 +68,7 @@ const App = observer(() => {
   const [modalVisible, setModalVisible] = useState(false);
   const [usernameValue, setUsernameValue] = useState(username);
 
+  const showModal = () => setModalVisible(true);
   const hideModal = () => setModalVisible(false);
 
   return (
@@ -135,7 +136,7 @@ const App = observer(() => {
                 options={{
                   headerShown: false,
                 }}
-                initialParams={{ setModalVisible: setModalVisible }}
+                initialParams={{ showModal }}
               />
               <Stack.Screen
                 name={"Statistics"}

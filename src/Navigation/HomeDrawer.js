@@ -21,6 +21,7 @@ import {
   Ionicons,
 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import Dashboard from "../Screens/Dashboard";
 
 const Drawer = createDrawerNavigator();
 
@@ -28,27 +29,27 @@ const DrawerContent = observer((props) => {
   // MobX
   const { username, totalStone, totalIron, totalZCoins, totalDiamonds } =
     resourceStore;
-
-  const setModalVisible = props.setModalVisible;
-  const navigation = useNavigation();
+  console.log(props);
+  // const setModalVisible = props.setModalVisible;
+  // const navigation = useNavigation();
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View>
         <Text style={styles.topContent}>Hi {username}</Text>
 
-        <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-          <View
-            style={{
-              position: "absolute",
-              flexDirection: "row",
-              right: 10,
-              bottom: 15,
-            }}
-          >
-            <FontAwesome5 name="user-edit" size={22} color="#d35322" />
-          </View>
-        </TouchableWithoutFeedback>
+        {/*<TouchableWithoutFeedback onPress={() => setModalVisible(true)}>*/}
+        {/*  <View*/}
+        {/*    style={{*/}
+        {/*      position: "absolute",*/}
+        {/*      flexDirection: "row",*/}
+        {/*      right: 10,*/}
+        {/*      bottom: 15,*/}
+        {/*    }}*/}
+        {/*  >*/}
+        {/*    <FontAwesome5 name="user-edit" size={22} color="#d35322" />*/}
+        {/*  </View>*/}
+        {/*</TouchableWithoutFeedback>*/}
       </View>
       <View style={styles.statsContent}>
         <View>
@@ -216,7 +217,7 @@ const HomeDrawer = ({ navigation, route }) => {
         drawerActiveTintColor: "#d35322",
       }}
     >
-      {/*<Drawer.Screen name="Dashboard" component={HomeScreen} />*/}
+      <Drawer.Screen name="Dashboard" component={Dashboard} />
       <Drawer.Screen name="Building Tracker" component={HomeScreen} />
       {/*<Drawer.Screen name="Event Calendar" component={HomeScreen} />*/}
       {/*<Drawer.Screen name="Construction Calculator" component={HomeScreen} />*/}
