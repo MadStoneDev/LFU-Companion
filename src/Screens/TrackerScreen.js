@@ -17,7 +17,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { observer } from "mobx-react";
 import { saveDataToFile } from "../Helpers/FileManager";
 
-const HomeScreen = observer(({ navigation }) => {
+const TrackerScreen = observer(({ navigation }) => {
   // mobX
   const { buildings } = buildingStore;
 
@@ -121,4 +121,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default TrackerScreen;

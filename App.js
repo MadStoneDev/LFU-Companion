@@ -8,7 +8,7 @@ import {
 } from "@react-navigation/stack";
 
 import SplashScreen from "./src/Screens/SplashScreen";
-import HomeScreen from "./src/Screens/HomeScreen";
+import TrackerScreen from "./src/Screens/TrackerScreen";
 import StatsScreen from "./src/Screens/StatsScreen";
 
 import * as Sentry from "@sentry/react-native";
@@ -132,12 +132,12 @@ const App = observer(() => {
             <Stack.Navigator>
               <Stack.Screen
                 name={"Home"}
-                component={HomeDrawer}
                 options={{
                   headerShown: false,
                 }}
-                initialParams={{ showModal }}
-              />
+              >
+                {(props) => <HomeDrawer showModal={showModal} {...props} />}
+              </Stack.Screen>
               <Stack.Screen
                 name={"Statistics"}
                 component={StatsScreen}

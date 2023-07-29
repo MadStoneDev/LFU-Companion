@@ -3,7 +3,7 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
-import HomeScreen from "../Screens/HomeScreen";
+import TrackerScreen from "../Screens/TrackerScreen";
 import {
   StyleSheet,
   SafeAreaView,
@@ -20,37 +20,38 @@ import {
   FontAwesome5,
   Ionicons,
 } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import Dashboard from "../Screens/Dashboard";
 
 const Drawer = createDrawerNavigator();
 
 const DrawerContent = observer((props) => {
+  const route = useRoute();
+  const navigation = useNavigation();
+
   // MobX
   const { username, totalStone, totalIron, totalZCoins, totalDiamonds } =
     resourceStore;
-  console.log(props);
-  // const setModalVisible = props.setModalVisible;
-  // const navigation = useNavigation();
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View>
-        <Text style={styles.topContent}>Hi {username}</Text>
+        <Text style={styles.topContent}>{username}</Text>
 
-        {/*<TouchableWithoutFeedback onPress={() => setModalVisible(true)}>*/}
-        {/*  <View*/}
-        {/*    style={{*/}
-        {/*      position: "absolute",*/}
-        {/*      flexDirection: "row",*/}
-        {/*      right: 10,*/}
-        {/*      bottom: 15,*/}
-        {/*    }}*/}
-        {/*  >*/}
-        {/*    <FontAwesome5 name="user-edit" size={22} color="#d35322" />*/}
-        {/*  </View>*/}
-        {/*</TouchableWithoutFeedback>*/}
+        <TouchableWithoutFeedback onPress={() => props.showModal(true)}>
+          <View
+            style={{
+              position: "absolute",
+              flexDirection: "row",
+              right: 10,
+              bottom: 15,
+            }}
+          >
+            <FontAwesome5 name="user-edit" size={22} color="#d35322" />
+          </View>
+        </TouchableWithoutFeedback>
       </View>
+
       <View style={styles.statsContent}>
         <View>
           <SingleStat data={totalStone} description={"Stone"} />
@@ -176,7 +177,6 @@ const DrawerContent = observer((props) => {
       </DrawerContentScrollView>
 
       <View style={styles.bottomContent}>
-        {/*  <Text>Account</Text>*/}
         <TouchableWithoutFeedback
           onPress={() => navigation.navigate("Account")}
         >
@@ -201,13 +201,11 @@ const DrawerContent = observer((props) => {
   );
 });
 
-const HomeDrawer = ({ navigation, route }) => {
-  const { setModalVisible } = route.params;
-
+const HomeDrawer = ({ showModal }) => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
-        <DrawerContent {...props} setModalVisible={setModalVisible} />
+        <DrawerContent showModal={showModal} {...props} />
       )}
       screenOptions={{
         headerShown: false,
@@ -218,11 +216,11 @@ const HomeDrawer = ({ navigation, route }) => {
       }}
     >
       <Drawer.Screen name="Dashboard" component={Dashboard} />
-      <Drawer.Screen name="Building Tracker" component={HomeScreen} />
-      {/*<Drawer.Screen name="Event Calendar" component={HomeScreen} />*/}
-      {/*<Drawer.Screen name="Construction Calculator" component={HomeScreen} />*/}
-      {/*<Drawer.Screen name="Alliance Duel Guide" component={HomeScreen} />*/}
-      {/*<Drawer.Screen name="Timer" component={HomeScreen} />*/}
+      <Drawer.Screen name="Building Tracker" component={TrackerScreen} />
+      {/*<Drawer.Screen name="Event Calendar" component={TrackerScreen} />*/}
+      {/*<Drawer.Screen name="Construction Calculator" component={TrackerScreen} />*/}
+      {/*<Drawer.Screen name="Alliance Duel Guide" component={TrackerScreen} />*/}
+      {/*<Drawer.Screen name="Timer" component={TrackerScreen} />*/}
     </Drawer.Navigator>
   );
 };
