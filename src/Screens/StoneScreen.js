@@ -6,6 +6,8 @@ import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import { observer } from "mobx-react";
 import resourceStore from "../Helpers/ResourceStore";
 
+const inputRefs = [];
+
 const StoneScreen = observer(() => {
   const { stone } = resourceStore;
 
@@ -17,6 +19,8 @@ const StoneScreen = observer(() => {
     );
   };
 
+  const handleInputRef = (index) => (ref) => (inputRefs[index] = ref);
+
   return (
     <KeyboardAwareScrollView>
       <View style={styles.container}>
@@ -25,6 +29,7 @@ const StoneScreen = observer(() => {
           .map(([quantity, amount]) => {
             return (
               <StatInput
+                ref={handleInputRef(quantity)}
                 key={quantity}
                 label={quantity + " Stone Chest"}
                 value={amount.toString()}
@@ -42,6 +47,7 @@ const StoneScreen = observer(() => {
                     />
                   )
                 }
+                // onSubmitEditing={() => inputRefs[quantity].current.focus()}
               />
             );
           })}
