@@ -26,14 +26,18 @@ const Dashboard = observer(() => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Pressable
-          onPress={() => {
-            navigation.openDrawer();
-          }}
-        >
-          <Entypo name="menu" size={24} color="#d35322" />
-        </Pressable>
+      <View style={{ justifyContent: "space-between" }}>
+        <View style={styles.header}>
+          <Pressable
+            onPress={() => {
+              navigation.openDrawer();
+            }}
+          >
+            <Entypo name="menu" size={28} color="#d35322" />
+          </Pressable>
+
+          <Text style={styles.headerTitle}>Dashboard</Text>
+        </View>
 
         {/*<Pressable*/}
         {/*  onPress={() => {*/}
@@ -116,18 +120,18 @@ const Dashboard = observer(() => {
           }}
         >
           {/*<Text>Hello</Text>*/}
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item, index) => (
-            <View
-              key={index}
-              style={{
-                width: "28%",
-                aspectRatio: 1,
-                backgroundColor: "white",
-                borderRadius: 20,
-                elevation: 5,
-              }}
-            ></View>
-          ))}
+          {/*{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item, index) => (*/}
+          {/*  <View*/}
+          {/*    key={index}*/}
+          {/*    style={{*/}
+          {/*      width: "28%",*/}
+          {/*      aspectRatio: 1,*/}
+          {/*      backgroundColor: "white",*/}
+          {/*      borderRadius: 20,*/}
+          {/*      elevation: 5,*/}
+          {/*    }}*/}
+          {/*  ></View>*/}
+          {/*))}*/}
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -142,7 +146,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+  },
+  headerTitle: {
+    marginLeft: 10,
+    fontSize: 17,
+    fontWeight: "800",
+    color: "#d35322",
   },
 });
 

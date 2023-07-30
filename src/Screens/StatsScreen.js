@@ -35,7 +35,7 @@ const StatsScreen = ({ navigation }) => {
             navigation.goBack();
           }}
         >
-          <Ionicons name="arrow-back-sharp" size={24} color="black" />
+          <Ionicons name="arrow-back-sharp" size={24} color="#d35322" />
         </Pressable>
 
         <Text style={styles.headerTitle}>Statistics</Text>
@@ -106,7 +106,7 @@ const StatsScreen = ({ navigation }) => {
           }}
         />
         <Tabs.Screen
-          name={"Diamond Chest"}
+          name={"Diamond Chests"}
           component={DiamondsScreen}
           options={{
             tabBarIcon: (focused) => (
@@ -130,11 +130,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
-    backgroundColor: "#b5c1c5",
+    // backgroundColor: "#b5c1c5",
+    backgroundColor: "white",
   },
   headerTitle: {
-    marginLeft: 30,
-    fontSize: 20,
+    marginLeft: 10,
+    fontSize: 17,
+    fontWeight: "800",
+    color: "#d35322",
   },
   container: {
     flex: 1,

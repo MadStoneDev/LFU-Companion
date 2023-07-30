@@ -6,6 +6,9 @@ import { observer } from "mobx-react";
 import StatInput from "../Components/StatInput";
 import { cleanUpNumber } from "../Helpers/CleanUps";
 import resourceStore from "../Helpers/ResourceStore";
+import { useNavigation } from "@react-navigation/native";
+
+const inputRefs = [];
 
 const DiamondsScreen = observer(() => {
   const { diamonds } = resourceStore;
@@ -18,14 +21,17 @@ const DiamondsScreen = observer(() => {
     );
   };
 
+  const handleInputRef = (index) => (ref) => (inputRefs[index] = ref);
+
   return (
     <KeyboardAwareScrollView>
       <View style={styles.container}>
         {Object.entries(diamonds.chests)
           .reverse()
-          .map(([quantity, amount]) => {
+          .map(([quantity, amount], index) => {
             return (
               <StatInput
+                ref={handleInputRef(index)}
                 key={quantity}
                 label={quantity + " Diamond Chest"}
                 value={amount.toString()}
@@ -43,6 +49,12 @@ const DiamondsScreen = observer(() => {
                     />
                   )
                 }
+                returnKeyType={index < inputRefs.length - 1 ? "next" : "done"}
+                onSubmitEditing={() => {
+                  index < inputRefs.length - 1
+                    ? inputRefs[index + 1].focus()
+                    : null;
+                }}
               />
             );
           })}

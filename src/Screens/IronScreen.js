@@ -5,7 +5,9 @@ import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import StatInput from "../Components/StatInput";
 import resourceStore from "../Helpers/ResourceStore";
 import { observer } from "mobx-react";
-import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+
+const inputRefs = [];
 
 const IronScreen = observer(() => {
   const { iron } = resourceStore;
@@ -18,14 +20,19 @@ const IronScreen = observer(() => {
     );
   };
 
+  const navigation = useNavigation();
+
+  const handleInputRef = (index) => (ref) => (inputRefs[index] = ref);
+
   return (
     <KeyboardAwareScrollView>
       <View style={styles.container}>
         {Object.entries(iron.chests)
           .reverse()
-          .map(([quantity, amount]) => {
+          .map(([quantity, amount], index) => {
             return (
               <StatInput
+                ref={handleInputRef(index)}
                 key={quantity}
                 label={quantity + " Iron Chest"}
                 value={amount.toString()}
@@ -43,6 +50,12 @@ const IronScreen = observer(() => {
                     />
                   )
                 }
+                returnKeyType={index < inputRefs.length - 1 ? "next" : "done"}
+                onSubmitEditing={() => {
+                  index < inputRefs.length - 1
+                    ? inputRefs[index + 1].focus()
+                    : navigation.navigate("zCoin Chests");
+                }}
               />
             );
           })}

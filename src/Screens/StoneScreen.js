@@ -5,6 +5,7 @@ import { cleanUpNumber } from "../Helpers/CleanUps";
 import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import { observer } from "mobx-react";
 import resourceStore from "../Helpers/ResourceStore";
+import { useNavigation } from "@react-navigation/native";
 
 const inputRefs = [];
 
@@ -19,6 +20,8 @@ const StoneScreen = observer(() => {
     );
   };
 
+  const navigation = useNavigation();
+
   const handleInputRef = (index) => (ref) => (inputRefs[index] = ref);
 
   return (
@@ -26,10 +29,10 @@ const StoneScreen = observer(() => {
       <View style={styles.container}>
         {Object.entries(stone.chests)
           .reverse()
-          .map(([quantity, amount]) => {
+          .map(([quantity, amount], index) => {
             return (
               <StatInput
-                ref={handleInputRef(quantity)}
+                ref={handleInputRef(index)}
                 key={quantity}
                 label={quantity + " Stone Chest"}
                 value={amount.toString()}
@@ -47,7 +50,12 @@ const StoneScreen = observer(() => {
                     />
                   )
                 }
-                // onSubmitEditing={() => inputRefs[quantity].current.focus()}
+                returnKeyType={index < inputRefs.length - 1 ? "next" : "done"}
+                onSubmitEditing={() => {
+                  index < inputRefs.length - 1
+                    ? inputRefs[index + 1].focus()
+                    : navigation.navigate("Iron Chests");
+                }}
               />
             );
           })}

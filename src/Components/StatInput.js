@@ -39,19 +39,30 @@ const StatInput = forwardRef(
       }, 1000);
     };
 
+    // const incrementHandler = () => {
+    //   onChangeHandler((parseInt(value) + 1).toString());
+    // };
+    //
+    // const decrementHandler = () => {
+    //   onChangeHandler((parseInt(value) - 1).toString());
+    // };
+
     return (
       <View
         style={{
-          marginBottom: 20,
+          marginBottom: 15,
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
           gap: 15,
         }}
       >
-        <TouchableWithoutFeedback style={{ flexGrow: 0 }}>
-          <AntDesign name="minussquareo" size={24} color="#555" />
-        </TouchableWithoutFeedback>
+        {/*<TouchableWithoutFeedback*/}
+        {/*  style={{ flexGrow: 0 }}*/}
+        {/*  onPress={decrementHandler}*/}
+        {/*>*/}
+        {/*  <AntDesign name="minussquareo" size={24} color="#555" />*/}
+        {/*</TouchableWithoutFeedback>*/}
 
         <View>
           <TextInput
@@ -80,9 +91,12 @@ const StatInput = forwardRef(
           ) : null}
         </View>
 
-        <TouchableWithoutFeedback style={{ flexGrow: 0 }}>
-          <AntDesign name="plussquareo" size={24} color="#555" />
-        </TouchableWithoutFeedback>
+        {/*<TouchableWithoutFeedback*/}
+        {/*  style={{ flexGrow: 0 }}*/}
+        {/*  onPress={incrementHandler}*/}
+        {/*>*/}
+        {/*  <AntDesign name="plussquareo" size={24} color="#555" />*/}
+        {/*</TouchableWithoutFeedback>*/}
       </View>
     );
   }
@@ -92,7 +106,7 @@ const styles = StyleSheet.create({
   statInput: {
     flexGrow: 1,
     height: 40,
-    minWidth: "70%",
+    minWidth: "80%",
   },
 });
 

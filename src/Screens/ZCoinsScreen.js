@@ -5,6 +5,9 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import StatInput from "../Components/StatInput";
 import { observer } from "mobx-react";
 import resourceStore from "../Helpers/ResourceStore";
+import { useNavigation } from "@react-navigation/native";
+
+const inputRefs = [];
 
 const ZCoinsScreen = observer(() => {
   const { zCoins } = resourceStore;
@@ -17,14 +20,19 @@ const ZCoinsScreen = observer(() => {
     );
   };
 
+  const navigation = useNavigation();
+
+  const handleInputRef = (index) => (ref) => (inputRefs[index] = ref);
+
   return (
     <KeyboardAwareScrollView>
       <View style={styles.container}>
         {Object.entries(zCoins.chests)
           .reverse()
-          .map(([quantity, amount]) => {
+          .map(([quantity, amount], index) => {
             return (
               <StatInput
+                ref={handleInputRef(index)}
                 key={quantity}
                 label={quantity + " ZCoins Chest"}
                 value={amount.toString()}
@@ -42,6 +50,12 @@ const ZCoinsScreen = observer(() => {
                     />
                   )
                 }
+                returnKeyType={index < inputRefs.length - 1 ? "next" : "done"}
+                onSubmitEditing={() => {
+                  index < inputRefs.length - 1
+                    ? inputRefs[index + 1].focus()
+                    : navigation.navigate("Diamond Chests");
+                }}
               />
             );
           })}
