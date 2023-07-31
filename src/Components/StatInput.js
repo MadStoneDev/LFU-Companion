@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     height: 40,
     minWidth: "80%",
+    backgroundColor: "#fff",
   },
 });
 

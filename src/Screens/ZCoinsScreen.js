@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     minHeight: "100%",
     borderWidth: 1,
-    backgroundColor: "#f7f7f7",
+    backgroundColor: "#eee",
   },
 });
 

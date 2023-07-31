@@ -32,7 +32,7 @@ const StatsScreen = ({ navigation }) => {
             });
 
             buildingStore.getBuildingProgress();
-            navigation.goBack();
+            navigation.navigate("Dashboard");
           }}
         >
           <Ionicons name="arrow-back-sharp" size={24} color="#d35322" />
@@ -122,7 +122,6 @@ const StatsScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   screenWrap: {
     flex: 1,
-    backgroundColor: "white",
   },
   header: {
     paddingVertical: 20,
@@ -131,7 +130,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     // backgroundColor: "#b5c1c5",
-    backgroundColor: "white",
+    backgroundColor: "#eee",
   },
   headerTitle: {
     marginLeft: 10,

@@ -9,7 +9,12 @@ import {
 import HomeRenderItem from "../Components/HomeRenderItem";
 import HomeEmptyItem from "../Components/HomeEmptyItem";
 import { useEffect, useState } from "react";
-import { Entypo, FontAwesome, Ionicons } from "@expo/vector-icons";
+import {
+  Entypo,
+  FontAwesome,
+  Ionicons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import resourceStore from "../Helpers/ResourceStore";
 import buildingStore from "../Helpers/BuildingStore";
 import DraggableFlatList from "react-native-draggable-flatlist";
@@ -30,16 +35,18 @@ const TrackerScreen = observer(({ navigation }) => {
       <View style={styles.header}>
         <Pressable
           onPress={() => {
-            navigation.openDrawer();
+            navigation.navigate("Dashboard");
           }}
         >
-          <Entypo name="menu" size={24} color="black" />
+          <Ionicons name="arrow-back" size={24} color="#d35322" />
         </Pressable>
 
         <Text style={styles.headerTitle}>Building Tracker</Text>
       </View>
 
-      <GestureHandlerRootView style={{ flex: 1 }}>
+      <GestureHandlerRootView
+        style={{ flex: 1, paddingHorizontal: 10, backgroundColor: "#eee" }}
+      >
         <DraggableFlatList
           data={buildings}
           keyExtractor={(item) => item.id.toString()}
@@ -65,14 +72,6 @@ const TrackerScreen = observer(({ navigation }) => {
           </View>
         </TouchableWithoutFeedback>
       )}
-
-      <TouchableWithoutFeedback
-        onPress={() => navigation.navigate("OnBoarding")}
-      >
-        <View style={styles.onBoardingButton}>
-          <FontAwesome name="question-circle" size={40} color="#bbb" />
-        </View>
-      </TouchableWithoutFeedback>
     </SafeAreaView>
   );
 });
@@ -82,18 +81,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    paddingVertical: 20,
-    paddingHorizontal: 15,
-    marginBottom: 20,
+    paddingTop: 30,
+    paddingBottom: 40,
+    paddingHorizontal: 20,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start",
-    backgroundColor: "#b5c1c5",
-    elevation: 8,
+    backgroundColor: "#eee",
   },
   headerTitle: {
-    marginLeft: 30,
-    fontSize: 20,
+    marginLeft: 10,
+    fontSize: 17,
+    fontWeight: "800",
+    color: "#d35322",
   },
   addButton: {
     position: "absolute",
@@ -102,18 +101,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     bottom: 20,
     right: 20,
-    width: 50,
-    aspectRatio: 1,
-    borderColor: "#d35322",
-    borderRadius: 99999,
-  },
-  onBoardingButton: {
-    position: "absolute",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    bottom: 20,
-    left: 20,
     width: 50,
     aspectRatio: 1,
     borderColor: "#d35322",
