@@ -2,6 +2,7 @@ import { Text, TouchableWithoutFeedback, StyleSheet, View } from "react-native";
 import buildingStore from "../Helpers/BuildingStore";
 import { observer } from "mobx-react";
 import { ScaleDecorator } from "react-native-draggable-flatlist/src/components/CellDecorators";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const HomeRenderItem = observer(({ data, navigation }) => {
   const thisItem = data.item;
@@ -25,6 +26,13 @@ const HomeRenderItem = observer(({ data, navigation }) => {
       >
         <View style={styles.card}>
           <View style={styles.cardTop}>
+            <View style={styles.cardIcon}>
+              <MaterialCommunityIcons
+                name="treasure-chest"
+                size={30}
+                color={thisItem.colour}
+              />
+            </View>
             <View style={styles.cardDesc}>
               <Text style={styles.title}>{thisItem.name}</Text>
               <Text style={styles.subtitle}>Progress: {progressStr}</Text>
@@ -49,13 +57,14 @@ const HomeRenderItem = observer(({ data, navigation }) => {
 
 const styles = StyleSheet.create({
   card: {
-    paddingVertical: 10,
+    paddingTop: 20,
+    paddingBottom: 25,
     paddingHorizontal: 15,
     marginBottom: 15,
-    width: "75%",
-    height: 80,
+    width: "90%",
     alignSelf: "center",
-    borderRadius: 7,
+    justifyContent: "center",
+    borderRadius: 10,
     backgroundColor: "#fff",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 7 },
@@ -66,17 +75,19 @@ const styles = StyleSheet.create({
   },
   cardTop: {
     flexDirection: "row",
-    flexWrap: "nowrap",
+    alignItems: "center",
+    gap: 10,
   },
   cardDesc: {
     flex: 1,
-    // marginLeft: 10,
+    marginLeft: 5,
   },
   cardIcon: {
-    marginBottom: 10,
+    alignItems: "center",
+    justifyContent: "center",
     height: 60,
     aspectRatio: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#eee",
     borderRadius: 999,
     shadowColor: "#000",
     shadowRadius: 4,

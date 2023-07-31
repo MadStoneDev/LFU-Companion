@@ -22,6 +22,8 @@ import {
 } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import Dashboard from "../Screens/Dashboard";
+import StatsScreen from "../Screens/StatsScreen";
+import { CardStyleInterpolators } from "@react-navigation/stack";
 
 const Drawer = createDrawerNavigator();
 
@@ -94,7 +96,7 @@ const DrawerContent = observer((props) => {
                 color: "#aaa",
               }}
             >
-              Event Calendar
+              Gathering Timer
             </Text>
             <Text
               style={{
@@ -116,7 +118,29 @@ const DrawerContent = observer((props) => {
                 color: "#aaa",
               }}
             >
-              Construction Calculator
+              Upgrades Calculator
+            </Text>
+            <Text
+              style={{
+                position: "absolute",
+                right: 0,
+                color: "#aaa",
+                fontStyle: "italic",
+              }}
+            >
+              Coming Soon
+            </Text>
+          </View>
+
+          <View style={{ paddingVertical: 18, justifyContent: "center" }}>
+            <Text
+              style={{
+                fontWeight: "500",
+                fontSize: 14,
+                color: "#aaa",
+              }}
+            >
+              Event Calendar
             </Text>
             <Text
               style={{
@@ -174,6 +198,14 @@ const DrawerContent = observer((props) => {
             </Text>
           </View>
         </View>
+
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate("OnBoarding")}
+        >
+          <View style={styles.onBoardingButton}>
+            <FontAwesome name="question-circle" size={40} color="#bbb" />
+          </View>
+        </TouchableWithoutFeedback>
       </DrawerContentScrollView>
 
       <View style={styles.bottomContent}>
@@ -210,7 +242,7 @@ const HomeDrawer = ({ showModal }) => {
       screenOptions={{
         headerShown: false,
         drawerType: "front",
-        swipeEdgeWidth: 200,
+        swipeEdgeWidth: 50,
 
         drawerActiveTintColor: "#d35322",
       }}
@@ -218,9 +250,20 @@ const HomeDrawer = ({ showModal }) => {
       <Drawer.Screen name="Dashboard" component={Dashboard} />
       <Drawer.Screen name="Building Tracker" component={TrackerScreen} />
       {/*<Drawer.Screen name="Event Calendar" component={TrackerScreen} />*/}
-      {/*<Drawer.Screen name="Construction Calculator" component={TrackerScreen} />*/}
+      {/*<Drawer.Screen name="Upgrades Calculator" component={TrackerScreen} />*/}
+      {/*<Drawer.Screen name="Gathering Timer" component={TrackerScreen} />*/}
       {/*<Drawer.Screen name="Alliance Duel Guide" component={TrackerScreen} />*/}
       {/*<Drawer.Screen name="Timer" component={TrackerScreen} />*/}
+
+      <Drawer.Screen
+        name={"Statistics"}
+        component={StatsScreen}
+        options={{
+          headerShown: false,
+          drawerItemStyle: { display: "none" },
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        }}
+      />
     </Drawer.Navigator>
   );
 };
@@ -248,6 +291,16 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderTopWidth: 1,
     borderTopColor: "rgba(0, 0, 0, 0.1)",
+  },
+  onBoardingButton: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    left: 10,
+    width: 50,
+    aspectRatio: 1,
+    borderColor: "#d35322",
+    borderRadius: 99999,
   },
 });
 

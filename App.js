@@ -139,15 +139,6 @@ const App = observer(() => {
                 {(props) => <HomeDrawer showModal={showModal} {...props} />}
               </Stack.Screen>
               <Stack.Screen
-                name={"Statistics"}
-                component={StatsScreen}
-                options={{
-                  headerShown: false,
-                  cardStyleInterpolator:
-                    CardStyleInterpolators.forHorizontalIOS,
-                }}
-              />
-              <Stack.Screen
                 name={"Building"}
                 component={BuildingScreen}
                 options={{ headerShown: false }}

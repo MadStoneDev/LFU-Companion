@@ -67,8 +67,8 @@ const ServerTime = ({ showTimeLeft }) => {
         style={{
           marginTop: -4,
           fontSize: 40,
-          fontWeight: "600",
-          color: "white",
+          fontWeight: "800",
+          color: "#555",
         }}
       >
         {showTimeLeft ? timeTilReset.current : serverTime}
@@ -78,10 +78,10 @@ const ServerTime = ({ showTimeLeft }) => {
           marginTop: -4,
           fontSize: 18,
           fontWeight: "400",
-          color: "white",
-          opacity: 0.7,
+          color: "#555",
+          opacity: 0.5,
           textTransform: "uppercase",
-          letterSpacing: 6,
+          letterSpacing: 7,
         }}
       >
         {showTimeLeft ? "Until Reset" : serverDay}
