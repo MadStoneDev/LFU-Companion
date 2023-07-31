@@ -14,12 +14,7 @@ import {
 import SingleStat from "../Components/SingleStat";
 import { observer } from "mobx-react";
 import resourceStore from "../Helpers/ResourceStore";
-import {
-  AntDesign,
-  FontAwesome,
-  FontAwesome5,
-  Ionicons,
-} from "@expo/vector-icons";
+import { AntDesign, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import Dashboard from "../Screens/Dashboard";
 import StatsScreen from "../Screens/StatsScreen";
@@ -29,7 +24,6 @@ import VotingScreen from "../Screens/VotingScreen";
 const Drawer = createDrawerNavigator();
 
 const DrawerContent = observer((props) => {
-  const route = useRoute();
   const navigation = useNavigation();
 
   // MobX
