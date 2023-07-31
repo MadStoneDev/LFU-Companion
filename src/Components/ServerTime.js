@@ -31,10 +31,33 @@ const ServerTime = ({ showTimeLeft }) => {
     second: "numeric",
   });
 
+  const gameDays = [
+    "Rest Day",
+    "Gathering Day",
+    "Expansion Day",
+    "Research Day",
+    "Recruitment Day",
+    "Training Day",
+    "Elimination Day",
+  ];
+
   useEffect(() => {
     const updateTime = () => {
       timeNow.current = new Date();
-      setServerDay(dayFormat.format(timeNow.current));
+
+      const daysOfWeek = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+
+      setServerDay(
+        gameDays[daysOfWeek.indexOf(dayFormat.format(timeNow.current))]
+      );
       setServerTime(timeFormat.format(timeNow.current));
 
       resetTime.current = endOfDay(utcToZonedTime(timeNow.current, serverZone));
@@ -81,7 +104,7 @@ const ServerTime = ({ showTimeLeft }) => {
           color: "#555",
           opacity: 0.5,
           textTransform: "uppercase",
-          letterSpacing: 7,
+          letterSpacing: 4,
         }}
       >
         {showTimeLeft ? "Until Reset" : serverDay}
