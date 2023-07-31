@@ -24,6 +24,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import Dashboard from "../Screens/Dashboard";
 import StatsScreen from "../Screens/StatsScreen";
 import { CardStyleInterpolators } from "@react-navigation/stack";
+import VotingScreen from "../Screens/VotingScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -209,9 +210,7 @@ const DrawerContent = observer((props) => {
       </DrawerContentScrollView>
 
       <View style={styles.bottomContent}>
-        <TouchableWithoutFeedback
-          onPress={() => navigation.navigate("Account")}
-        >
+        <TouchableWithoutFeedback onPress={() => navigation.navigate("Voting")}>
           <View
             style={{ flexDirection: "row", alignContent: "center", gap: 5 }}
           >
@@ -259,10 +258,14 @@ const HomeDrawer = ({ showModal }) => {
         name={"Statistics"}
         component={StatsScreen}
         options={{
-          headerShown: false,
           drawerItemStyle: { display: "none" },
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
+      />
+      <Drawer.Screen
+        name="Voting"
+        component={VotingScreen}
+        options={{ drawerItemStyle: { display: "none" } }}
       />
     </Drawer.Navigator>
   );

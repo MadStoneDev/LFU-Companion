@@ -278,7 +278,7 @@ const Dashboard = observer(() => {
       <View
         style={{ position: "absolute", padding: 20, bottom: 0, width: "100%" }}
       >
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate("Voting")}>
           <View
             style={{
               bottom: 0,
