@@ -7,9 +7,12 @@ import {
   View,
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { Screen } from "react-native-screens";
+import Constants from "expo-constants";
+import { useEffect } from "react";
 
 const VotingScreen = ({ navigation }) => {
+  const faunaAccess = Constants.manifest.extra.FAUNA_API_KEY;
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -23,6 +26,12 @@ const VotingScreen = ({ navigation }) => {
 
         <Text style={styles.headerTitle}>Vote for the Next Feature</Text>
       </View>
+
+      {/*<Text style={{ paddingHorizontal: 20, textAlign: "center" }}>*/}
+      {/*  Please note that voting for a feature is completely anonymous. LFU*/}
+      {/*  Companion does not record your username, or any personal details. It*/}
+      {/*  simply increments a tally.*/}
+      {/*</Text>*/}
 
       <ScrollView style={{ padding: 20 }}>
         <View
@@ -98,7 +107,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#eee" },
   header: {
     paddingTop: 30,
-    paddingBottom: 40,
+    paddingBottom: 10,
     paddingHorizontal: 20,
     flexDirection: "row",
     alignItems: "center",
