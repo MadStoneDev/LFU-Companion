@@ -68,6 +68,12 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
               alignItems: "center",
               justifyContent: "center",
               borderRadius: 5,
+              shadowOpacity: 0.35,
+              shadowColor: "rgba(0, 0, 0, 0.5)",
+              shadowOffset: {
+                width: 2,
+                height: 2,
+              },
               elevation: 5,
             }}
           >
@@ -215,6 +221,7 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
                 textAlign: "center",
                 color: "rgba(255, 255, 255, 0.5)",
                 textTransform: "uppercase",
+                fontSize: 13,
               }}
             >
               Tutorial {currentActive + 1} / {onBoardingPages.length}
@@ -232,9 +239,12 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
                   key={index}
                   style={{
                     borderWidth: 1,
-                    borderColor: index === currentActive ? "#fff" : "#fff",
+                    borderColor:
+                      index <= currentActive
+                        ? "#fff"
+                        : "rgba(255, 255, 255, 0.25)",
                     backgroundColor:
-                      index === currentActive ? "#fff" : "#d35322",
+                      index <= currentActive ? "#fff" : "#d35322",
                     width: 10,
                     height: 10,
                     borderRadius: 20,
@@ -252,6 +262,7 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
                   marginBottom: 15,
                   backgroundColor: "#fff",
                   borderRadius: 10,
+                  overflow: "hidden",
                   width: "100%",
                   color: "#d35322",
                   textAlign: "center",
@@ -306,6 +317,7 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
                 textAlign: "center",
                 color: "#d35322",
                 textTransform: "uppercase",
+                fontSize: 13,
                 opacity: 0.5,
               }}
             >
@@ -317,9 +329,9 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
                   key={index}
                   style={{
                     borderWidth: 1,
-                    borderColor: index === currentActive ? "#d35322" : "#ddd",
+                    borderColor: index <= currentActive ? "#d35322" : "#ddd",
                     backgroundColor:
-                      index === currentActive ? "#d35322" : "white",
+                      index <= currentActive ? "#d35322" : "white",
                     width: 10,
                     height: 10,
                     borderRadius: 20,
@@ -339,7 +351,7 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
                 <Text
                   style={{
                     padding: 15,
-                    marginBottom: 15,
+                    marginBottom: 5,
                     backgroundColor: "#d35322",
                     borderRadius: 10,
                     width: "100%",
@@ -357,9 +369,10 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
                 <Text
                   style={{
                     padding: 15,
-                    marginBottom: 15,
+                    marginBottom: 5,
                     backgroundColor: "#d35322",
                     borderRadius: 10,
+                    overflow: "hidden",
                     width: "100%",
                     color: "white",
                     textAlign: "center",
@@ -374,7 +387,14 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
               <TouchableWithoutFeedback
                 onPress={() => setCurrentActive(currentActive - 1)}
               >
-                <Text style={{ marginBottom: 20, fontSize: 12, color: "#777" }}>
+                <Text
+                  style={{
+                    marginBottom: 20,
+                    padding: 10,
+                    fontSize: 12,
+                    color: "#777",
+                  }}
+                >
                   Missed something? Go back.
                 </Text>
               </TouchableWithoutFeedback>

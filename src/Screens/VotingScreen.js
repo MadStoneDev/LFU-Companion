@@ -184,6 +184,14 @@ const VotingScreen = observer(() => {
                       featureVote === feature.title ? "#d35322" : "#fff",
                     borderColor: "#d35322",
                     borderRadius: 15,
+
+                    shadowColor: "black",
+                    shadowOpacity: featureVote === feature.title ? 0 : 0.35,
+                    shadowOffset: {
+                      width: 0,
+                      height: 0,
+                    },
+                    shadowRadius: 5,
                     elevation: featureVote === feature.title ? 0 : 6,
                   }}
                 >

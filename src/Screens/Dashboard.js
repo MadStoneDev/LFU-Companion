@@ -145,27 +145,46 @@ const Dashboard = observer(() => {
           marginTop: 30,
           backgroundColor: "#fbfbfb",
           borderRadius: 15,
+          shadowOpacity: 0.25,
+          shadowColor: "rgba(0, 0, 0, 1)",
+          shadowOffset: {
+            width: 0,
+            height: 0,
+          },
+          shadowRadius: 5,
           elevation: 6,
         }}
       >
         <View style={{ alignItems: "center" }}>
           <TouchableWithoutFeedback onPress={() => switchTime()}>
-            <Text
+            <View
               style={{
                 padding: 10,
-                marginBottom: -12,
+                marginBottom: -10,
+                alignItems: "center",
+                backgroundColor: "#eee",
                 borderBottomLeftRadius: 10,
                 borderBottomRightRadius: 10,
-                backgroundColor: "#eee",
-                alignItems: "center",
-                fontSize: 14,
-                fontWeight: "500",
-                color: "#555",
+                shadowOpacity: 0.2,
+                shadowColor: "rgba(0, 0, 0, 1)",
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+                shadowRadius: 2,
                 elevation: 3,
               }}
             >
-              {showTimeLeft ? "Time Until Next Reset" : "Server Time"}
-            </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  fontWeight: "500",
+                  color: "#555",
+                }}
+              >
+                {showTimeLeft ? "Time Until Next Reset" : "Server Time"}
+              </Text>
+            </View>
           </TouchableWithoutFeedback>
         </View>
 
@@ -227,6 +246,13 @@ const Dashboard = observer(() => {
                   width: 120,
                   backgroundColor: item.disabled ? "#e1e1e1" : "#fbfbfb",
                   borderRadius: 15,
+                  shadowOpacity: item.disabled ? 0 : 0.3,
+                  shadowColor: "rgba(0, 0, 0, 1)",
+                  shadowOffset: {
+                    width: 0,
+                    height: 0,
+                  },
+                  shadowRadius: 5,
                   elevation: item.disabled ? 0 : 6,
                 }}
               >
@@ -284,14 +310,15 @@ const Dashboard = observer(() => {
           <View
             style={{
               bottom: 0,
+              padding: 15,
+              marginHorizontal: 20,
+              backgroundColor: "#d35322",
+              borderRadius: 999,
+              overflow: "hidden",
             }}
           >
             <Text
               style={{
-                padding: 15,
-                marginHorizontal: 20,
-                backgroundColor: "#d35322",
-                borderRadius: 999,
                 textAlign: "center",
                 fontWeight: "600",
                 fontSize: 15,
