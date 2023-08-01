@@ -291,6 +291,7 @@ const styles = StyleSheet.create({
   },
   onBoardingButton: {
     display: "flex",
+    marginBottom: 25,
     justifyContent: "center",
     alignItems: "center",
     left: 10,
