@@ -3,12 +3,11 @@
     "name": "LFU Companion",
     "slug": "LFToolbox",
     "owner": "madstone.dev",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/new-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,15 +17,15 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.omdesti.lftoolbox",
-      "buildNumber": "9"
+      "buildNumber": "10"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./assets/new-icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.omdesti.lftoolbox",
-      "versionCode": 9
+      "versionCode": 10
     },
     "web": {
       "favicon": "./assets/favicon.png"
