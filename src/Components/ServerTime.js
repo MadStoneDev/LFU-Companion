@@ -98,8 +98,7 @@ const ServerTime = ({ showTimeLeft }) => {
       </Text>
       <Text
         style={{
-          marginTop: -4,
-          fontSize: 18,
+          fontSize: 16,
           fontWeight: "400",
           color: "#555",
           opacity: 0.5,
