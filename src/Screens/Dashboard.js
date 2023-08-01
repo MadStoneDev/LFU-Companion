@@ -142,6 +142,7 @@ const Dashboard = observer(() => {
       <View
         style={{
           margin: 20,
+          marginTop: 30,
           backgroundColor: "#fbfbfb",
           borderRadius: 15,
           elevation: 6,
@@ -262,11 +263,12 @@ const Dashboard = observer(() => {
           <Text
             style={{
               padding: 15,
-              backgroundColor: "#555",
+              backgroundColor: "#ddd",
+              borderRadius: 10,
               textAlign: "center",
               fontSize: 14,
               lineHeight: 20,
-              color: "#fff",
+              color: "#555",
             }}
           >
             You can open the drawer menu by swiping from the left edge of your
@@ -309,7 +311,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#eee" },
   header: {
     paddingTop: 30,
-    paddingBottom: 40,
+    paddingBottom: 30,
     paddingHorizontal: 20,
     flexDirection: "row",
     alignItems: "center",
