@@ -1,5 +1,5 @@
 import { Image, Text, TouchableWithoutFeedback, View } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 
 const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
@@ -14,38 +14,82 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
       subtitle: "Let's take a quick tour",
     },
     {
-      image: require("../../assets/images/onBoarding003.png"),
-      title: "Manage all of your resources",
-      subtitle: "in the one place",
+      image: require("../../assets/images/onBoarding002.png"),
+      title: "Stay informed",
+      subtitle: "with an intuitive dashboard",
       content: (
         <View style={{ alignItems: "center" }}>
-          <Text>Tap the</Text>
+          <Text>While in the dashboard, tap the</Text>
           <View
             style={{
               margin: 2,
               alignItems: "center",
               justifyContent: "center",
-              elevation: 3,
+            }}
+          >
+            <Entypo name="cycle" size={34} color="#d35322" />
+          </View>
+          <Text>to see the time left until next reset</Text>
+        </View>
+      ),
+    },
+    {
+      image: require("../../assets/images/onBoarding003.png"),
+      title: "Have everything",
+      subtitle: "within easy reach",
+      content: (
+        <View style={{ alignItems: "center" }}>
+          <Text>Swipe from the left edge or tap the</Text>
+          <View
+            style={{
+              margin: 2,
+              alignItems: "center",
+              justifyContent: "center",
+
+              borderRadius: 999,
+            }}
+          >
+            <MaterialIcons name="article" size={38} color="#d35322" />
+          </View>
+          <Text>to open the drawer menu</Text>
+        </View>
+      ),
+    },
+    {
+      image: require("../../assets/images/onBoarding004.png"),
+      title: "Manage all of your resources",
+      subtitle: "in the one place",
+      content: (
+        <View style={{ alignItems: "center" }}>
+          <Text>In the drawer menu, tap the</Text>
+          <View
+            style={{
+              margin: 2,
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 5,
+              elevation: 5,
             }}
           >
             <View
               style={{
                 position: "absolute",
-                width: 24,
-                height: 24,
-                backgroundColor: "black",
+                width: 30,
+                height: 30,
+                backgroundColor: "#d35322",
+                borderRadius: 5,
                 elevation: 0,
                 zIndex: 0,
               }}
             />
-            <FontAwesome name="pencil-square" size={34} color="white" />
+            <FontAwesome name="pencil-square" size={36} color="white" />
           </View>
           <Text>to update your resources</Text>
         </View>
       ),
     },
     {
-      image: require("../../assets/images/onBoarding004.png"),
+      image: require("../../assets/images/onBoarding005.png"),
       title: "Track multiple buildings",
       subtitle: "at the same time",
       content: (
@@ -58,20 +102,8 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
               justifyContent: "center",
 
               borderRadius: 999,
-              elevation: 3,
             }}
           >
-            <View
-              style={{
-                position: "absolute",
-                width: 20,
-                height: 20,
-                backgroundColor: "white",
-                borderRadius: 999,
-                elevation: 0,
-                zIndex: 0,
-              }}
-            />
             <FontAwesome
               style={{}}
               name="plus-circle"
@@ -84,7 +116,7 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
       ),
     },
     {
-      image: require("../../assets/images/onBoarding005.png"),
+      image: require("../../assets/images/onBoarding006.png"),
       title: "Re-arrange tracked buildings",
       subtitle: "to change priorities",
       content: (
@@ -163,7 +195,7 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
             <Text
               style={{
                 marginBottom: 40,
-                fontSize: 24,
+                fontSize: 26,
                 fontWeight: "bold",
                 textAlign: "center",
                 color: "white",
@@ -171,7 +203,7 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
             >
               {onBoardingPages[currentActive].extraLange}
             </Text>
-            <Text style={{ textAlign: "center", color: "white" }}>
+            <Text style={{ textAlign: "center", color: "white", fontSize: 16 }}>
               {onBoardingPages[currentActive].subtitle}
             </Text>
           </View>
@@ -187,6 +219,30 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
             >
               Tutorial {currentActive + 1} / {onBoardingPages.length}
             </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                gap: 5,
+                marginBottom: 10,
+                justifyContent: "center",
+              }}
+            >
+              {onBoardingPages.map((page, index) => (
+                <View
+                  key={index}
+                  style={{
+                    borderWidth: 1,
+                    borderColor: index === currentActive ? "#fff" : "#fff",
+                    backgroundColor:
+                      index === currentActive ? "#fff" : "#d35322",
+                    width: 10,
+                    height: 10,
+                    borderRadius: 20,
+                  }}
+                />
+              ))}
+            </View>
+
             <TouchableWithoutFeedback
               onPress={() => setCurrentActive(currentActive + 1)}
             >
@@ -210,6 +266,7 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
         <View
           style={{
             flex: 1,
+            paddingTop: 20,
             height: "100%",
             alignItems: "center",
             justifyContent: "space-between",
@@ -243,6 +300,17 @@ const OnBoardingScreen = ({ setOnBoarding = null, navigation = null }) => {
               alignItems: "center",
             }}
           >
+            <Text
+              style={{
+                marginBottom: 5,
+                textAlign: "center",
+                color: "#d35322",
+                textTransform: "uppercase",
+                opacity: 0.5,
+              }}
+            >
+              Tutorial {currentActive + 1} / {onBoardingPages.length}
+            </Text>
             <View style={{ flexDirection: "row", gap: 5, marginBottom: 10 }}>
               {onBoardingPages.map((page, index) => (
                 <View
