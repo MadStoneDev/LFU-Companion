@@ -44,7 +44,7 @@ const App = observer(() => {
 
   useEffect(() => {
     // Check if user has loaded the app before
-    AsyncStorage.getItem("firstLoad").then((value) => {
+    AsyncStorage.getItem("firstLoad-1.1.0").then((value) => {
       if (!value) {
         // Flag doesn't exist, this is the first time the app has loaded
         setShowOnBoarding(true);
@@ -55,7 +55,7 @@ const App = observer(() => {
   useEffect(() => {
     // Save onboarding flag
     if (showOnBoarding) {
-      AsyncStorage.setItem("firstLoad", "true").then((r) =>
+      AsyncStorage.setItem("firstLoad-1.1.0", "true").then((r) =>
         console.log("AsyncStorage Flag Set")
       );
     }
