@@ -73,10 +73,11 @@ const StatInput = forwardRef(
             label={label}
             value={value?.toString()}
             // placeholder={"eg. 3"}
-            activeOutlineColor={"#47656d"}
+            activeOutlineColor={"#d35322"}
             onChangeText={(text) => {
               onChangeHandler(text);
             }}
+            selectionColor={"#F1AA78"}
             keyboardType="numeric"
             {...rest}
           ></TextInput>

@@ -24,6 +24,10 @@ const ZCoinsScreen = observer(() => {
 
   const handleInputRef = (index) => (ref) => (inputRefs[index] = ref);
 
+  const focusAndSelect = (ref) => {
+    ref.focus();
+  };
+
   return (
     <KeyboardAwareScrollView>
       <View style={styles.container}>
@@ -40,6 +44,16 @@ const ZCoinsScreen = observer(() => {
                   if (text.length < 1) text = 0;
                   handleChestsChange("zCoins", quantity, cleanUpNumber(text));
                 }}
+                selectTextOnFocus
+                // onFocus={() => {
+                //   const inputRef = inputRefs[index];
+                //   inputRef.setNativeProps({
+                //     selection: {
+                //       start: inputRef.current.value.length,
+                //       end: inputRef.current.value.length,
+                //     },
+                //   });
+                // }}
                 icon={
                   amount.toString().length < 1 ? null : (
                     <FontAwesome5
@@ -53,7 +67,7 @@ const ZCoinsScreen = observer(() => {
                 returnKeyType={index < inputRefs.length - 1 ? "next" : "done"}
                 onSubmitEditing={() => {
                   index < inputRefs.length - 1
-                    ? inputRefs[index + 1].focus()
+                    ? focusAndSelect(inputRefs[index + 1])
                     : navigation.navigate("Diamond Chests");
                 }}
               />

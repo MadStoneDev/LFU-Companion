@@ -25,6 +25,10 @@ const WarehouseScreen = observer(() => {
 
   const navigation = useNavigation();
 
+  const focusAndSelect = (ref) => {
+    ref.current.focus();
+  };
+
   return (
     <KeyboardAwareScrollView>
       <View style={styles.container}>
@@ -36,6 +40,7 @@ const WarehouseScreen = observer(() => {
             if (text.length < 1) text = 0;
             handleWarehouseChange("stone", cleanUpNumber(text));
           }}
+          selectTextOnFocus
           icon={
             stone.warehouse.toString().length < 1 ? null : (
               <FontAwesome5
@@ -47,7 +52,7 @@ const WarehouseScreen = observer(() => {
             )
           }
           returnKeyType={"next"}
-          onSubmitEditing={() => ironRef.current.focus()}
+          onSubmitEditing={() => focusAndSelect(ironRef)}
         />
 
         <StatInput
@@ -58,6 +63,7 @@ const WarehouseScreen = observer(() => {
             if (text.length < 1) text = 0;
             handleWarehouseChange("iron", cleanUpNumber(text));
           }}
+          selectTextOnFocus
           icon={
             iron.warehouse.toString().length < 1 ? null : (
               <FontAwesome5
@@ -69,7 +75,7 @@ const WarehouseScreen = observer(() => {
             )
           }
           returnKeyType={"next"}
-          onSubmitEditing={() => zCoinsRef.current.focus()}
+          onSubmitEditing={() => focusAndSelect(zCoinsRef)}
         />
 
         <StatInput
@@ -80,6 +86,7 @@ const WarehouseScreen = observer(() => {
             if (text.length < 1) text = 0;
             handleWarehouseChange("zCoins", cleanUpNumber(text));
           }}
+          selectTextOnFocus
           icon={
             zCoins.warehouse.toString().length < 1 ? null : (
               <FontAwesome5
@@ -91,7 +98,7 @@ const WarehouseScreen = observer(() => {
             )
           }
           returnKeyType={"next"}
-          onSubmitEditing={() => diamondsRef.current.focus()}
+          onSubmitEditing={() => focusAndSelect(diamondsRef)}
         />
 
         <StatInput
@@ -102,6 +109,16 @@ const WarehouseScreen = observer(() => {
             if (text.length < 1) text = 0;
             handleWarehouseChange("diamonds", cleanUpNumber(text));
           }}
+          selectTextOnFocus
+          // onFocus={() => {
+          //   const inputRef = inputRefs[index];
+          //   inputRef.setNativeProps({
+          //     selection: {
+          //       start: inputRef.current.value.length,
+          //       end: inputRef.current.value.length,
+          //     },
+          //   });
+          // }}
           icon={
             diamonds.warehouse.toString().length < 1 ? null : (
               <FontAwesome5
