@@ -21,7 +21,6 @@ const VotingScreen = observer(() => {
 
   // States
   const [voted, setVoted] = useState(false);
-  const [votedFor, setVotedFor] = useState("");
   const [featureVote, setFeatureVote] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -34,7 +33,6 @@ const VotingScreen = observer(() => {
 
       if (!lastVoteTimestamp) {
         await AsyncStorage.setItem("lastVotedFor", "");
-        setVotedFor("");
         return true;
       }
 
@@ -46,6 +44,7 @@ const VotingScreen = observer(() => {
         today.getMonth() === lastVoteDay.getMonth() &&
         today.getDate() === lastVoteDay.getDate()
       ) {
+        setFeatureVote(lastVotedFor);
         return false;
       } else {
         return true;
@@ -63,7 +62,6 @@ const VotingScreen = observer(() => {
 
       if (!lastVoteTimestamp) {
         await AsyncStorage.setItem("lastVotedFor", "");
-        setVotedFor("");
         return true;
       }
 
@@ -84,7 +82,8 @@ const VotingScreen = observer(() => {
 
       if (lastVoteDay < thisSunday || lastVoteDay > thisSaturday) {
         await AsyncStorage.setItem("lastVotedFor", "");
-        setVotedFor("");
+      } else {
+        setFeatureVote(lastVotedFor);
       }
 
       return lastVoteDay >= thisSunday && lastVoteDay <= thisSaturday;
@@ -98,8 +97,8 @@ const VotingScreen = observer(() => {
       await AsyncStorage.setItem("lastVoteTimestamp", Date.now().toString());
       await AsyncStorage.setItem("lastVotedFor", featureVote);
       saveVote(featureVote).then(() => console.log("Vote saved"));
+      setVoted(true);
 
-      setVotedFor(featureVote);
       console.log("Vote submitted successfully");
     } catch (error) {
       console.log(error);
@@ -255,7 +254,7 @@ const VotingScreen = observer(() => {
               );
             })}
 
-        {!features ? null : (
+        {voted ? null : (
           <TouchableWithoutFeedback onPress={() => setFeatureVote("")}>
             <Text
               style={{
@@ -283,7 +282,7 @@ const VotingScreen = observer(() => {
         </Text>
 
         <TouchableWithoutFeedback
-          onPress={featureVote === "" ? null : () => submitVote(featureVote)}
+          onPress={voted ? null : () => submitVote(featureVote)}
         >
           <Text
             style={{
