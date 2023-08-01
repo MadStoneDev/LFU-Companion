@@ -26,13 +26,13 @@ const HomeRenderItem = observer(({ data, navigation }) => {
       >
         <View style={styles.card}>
           <View style={styles.cardTop}>
-            <View style={styles.cardIcon}>
-              <MaterialCommunityIcons
-                name="treasure-chest"
-                size={30}
-                color={thisItem.colour}
-              />
-            </View>
+            {/*<View style={styles.cardIcon}>*/}
+            {/*  <MaterialCommunityIcons*/}
+            {/*    name="treasure-chest"*/}
+            {/*    size={30}*/}
+            {/*    color={thisItem.colour}*/}
+            {/*  />*/}
+            {/*</View>*/}
             <View style={styles.cardDesc}>
               <Text style={styles.title}>{thisItem.name}</Text>
               <Text style={styles.subtitle}>Progress: {progressStr}</Text>
