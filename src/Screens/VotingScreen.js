@@ -14,6 +14,7 @@ import faunaStore from "../Helpers/FaunaStore";
 import { observer } from "mobx-react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import Constants from "expo-constants";
 
 const VotingScreen = observer(() => {
   // mobX

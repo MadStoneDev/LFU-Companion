@@ -12,6 +12,7 @@ class FaunaStore {
       features: observable,
       loadFeatures: action,
       saveVote: action,
+      loadVotes: action,
       setFeatures: action,
     });
   }
@@ -60,14 +61,13 @@ class FaunaStore {
         q.Paginate(q.Match(q.Index("feature_by_title"), vote))
       );
 
-      if (document.data.length === 0) {
-        console.error("Feature with title " + vote + " does not exist");
-        return;
-      }
-
       const documentId = document.data[0].id;
 
-      const currentVotes = document.data.votes || 0;
+      const getVotes = await client.query(
+        q.Paginate(q.Match(q.Index("votes_by_title"), vote))
+      );
+
+      const currentVotes = getVotes.data[0] || 0;
 
       const newVotes = currentVotes + 1;
 
@@ -75,6 +75,39 @@ class FaunaStore {
         q.Update(q.Ref(q.Collection("featureSuggestions"), documentId), {
           data: { votes: newVotes },
         })
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  loadVotes = async () => {
+    const faunaAccess = Constants.manifest.extra.FAUNA_API_KEY;
+
+    try {
+      const client = new faunadb.Client({
+        secret: faunaAccess,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const document = await client.query(
+        q.Paginate(q.Match(q.Index("feature_by_title"), "Gathering Timer"))
+      );
+
+      const documentId = document.data[0].id;
+
+      const getVotes = await client.query(
+        q.Paginate(q.Match(q.Index("votes_by_title"), "Gathering Timer"))
+      );
+
+      const currentVotes = getVotes.data[0] || 0;
+
+      const newVotes = currentVotes + 1;
+
+      console.log(
+        `Document Id: ${documentId}, Current votes: ${currentVotes}, new votes: ${newVotes}`
       );
     } catch (error) {
       console.error(error);
