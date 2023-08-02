@@ -39,12 +39,13 @@ const DrawerContent = observer((props) => {
           <View
             style={{
               position: "absolute",
+              padding: 5,
               flexDirection: "row",
-              right: 10,
+              right: 5,
               bottom: 15,
             }}
           >
-            <FontAwesome5 name="user-edit" size={22} color="#d35322" />
+            <FontAwesome5 name="user-edit" size={24} color="#d35322" />
           </View>
         </TouchableWithoutFeedback>
       </View>
@@ -71,12 +72,13 @@ const DrawerContent = observer((props) => {
           <View
             style={{
               position: "absolute",
+              padding: 5,
               flexDirection: "row",
-              right: 18,
-              bottom: 12,
+              right: 10,
+              bottom: 6,
             }}
           >
-            <FontAwesome name="pencil-square" size={26} color="white" />
+            <FontAwesome name="pencil-square" size={30} color="white" />
           </View>
         </TouchableWithoutFeedback>
       </View>

@@ -18,7 +18,7 @@ import OnBoardingScreen from "./src/Screens/OnBoardingScreen";
 import OptimisedStatusBar from "./src/Components/OptimisedStatusBar";
 import HomeDrawer from "./src/Navigation/HomeDrawer";
 import { Modal, Portal, Provider, TextInput } from "react-native-paper";
-import { TouchableWithoutFeedback, View } from "react-native";
+import { Text, TouchableWithoutFeedback, View } from "react-native";
 import resourceStore from "./src/Helpers/ResourceStore";
 import { saveDataToFile } from "./src/Helpers/FileManager";
 import { Ionicons } from "@expo/vector-icons";
@@ -34,9 +34,14 @@ import { observer } from "mobx-react";
 const Stack = createStackNavigator();
 
 const App = observer(() => {
+  // MobX
+  const { username } = resourceStore;
+
   // States
   const [loading, setLoading] = useState(true);
   const [showOnBoarding, setShowOnBoarding] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [currentUsername, setCurrentUsername] = useState("");
 
   setTimeout(() => {
     setLoading(false);
@@ -61,15 +66,17 @@ const App = observer(() => {
     }
   }, [showOnBoarding]);
 
-  // MobX
-  const { username } = resourceStore;
+  const showModal = () => {
+    setCurrentUsername(username);
+    setModalVisible(true);
+  };
+  const hideModal = (updateUsername = false) => {
+    if (!updateUsername) {
+      resourceStore.updateUsername(currentUsername);
+    }
 
-  // States
-  const [modalVisible, setModalVisible] = useState(false);
-  const [usernameValue, setUsernameValue] = useState(username);
-
-  const showModal = () => setModalVisible(true);
-  const hideModal = () => setModalVisible(false);
+    setModalVisible(false);
+  };
 
   return (
     <SafeAreaProvider>
@@ -111,19 +118,37 @@ const App = observer(() => {
                     textColor={"black"}
                     activeOutlineColor={"#d35322"}
                     outlineColor={"#d35322"}
-                    value={usernameValue}
-                    onChangeText={(text) => setUsernameValue(text)}
+                    value={resourceStore.username}
+                    onChangeText={(text) => resourceStore.updateUsername(text)}
                   />
                   <TouchableWithoutFeedback
                     onPress={() => {
-                      resourceStore.updateUsername(usernameValue);
+                      hideModal(true);
+
                       saveDataToFile(resourceStore).then(() => {
-                        console.log("Saved");
+                        console.log("Username Saved");
                       });
-                      hideModal();
                     }}
                   >
-                    <Ionicons name="checkbox-sharp" size={30} color="#d35322" />
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        paddingVertical: 10,
+                        paddingHorizontal: 15,
+                        backgroundColor: "#d35322",
+                        borderRadius: 10,
+                        gap: 10,
+                      }}
+                    >
+                      <Text
+                        style={{
+                          color: "white",
+                        }}
+                      >
+                        Save
+                      </Text>
+                    </View>
                   </TouchableWithoutFeedback>
                 </View>
               </Modal>
