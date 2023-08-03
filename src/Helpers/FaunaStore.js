@@ -76,6 +76,18 @@ class FaunaStore {
           data: { votes: newVotes },
         })
       );
+
+      // CONSIDER THIS
+      // Let(
+      //     {
+      //       docID: Match(Index('feature_by_title'), 'Gathering Timer')
+      //     },
+      //     Update(Select(['ref'], Get(Var('docID'))), {
+      //       data: {
+      //         votes: Add(Select(['data', 'votes'],Get(Var('docID'))), 1),
+      //       }
+      //     })
+      // )
     } catch (error) {
       console.error(error);
     }
@@ -105,6 +117,10 @@ class FaunaStore {
       const currentVotes = getVotes.data[0] || 0;
 
       const newVotes = currentVotes + 1;
+
+      // CONSIDER THIS (Load only those that are active
+      // Filter(Map(Paginate(Documents(Collection('featureSuggestions'))), Lambda((ref) => Get(ref))),
+      // Lambda('feature', Equals(Select(['data', 'status'], Var('feature')), 'active')))
 
       console.log(
         `Document Id: ${documentId}, Current votes: ${currentVotes}, new votes: ${newVotes}`
