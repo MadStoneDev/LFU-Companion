@@ -6,9 +6,9 @@ import {
   loadDataFromFile,
   saveDataToFile,
 } from "../Helpers/FileManager";
-import resourceStore from "../Helpers/ResourceStore";
+import resourceStore from "../Helpers/MobX/ResourceStore";
 import { usernames } from "../Helpers/usernames";
-import buildingStore from "../Helpers/BuildingStore";
+import buildingStore from "../Helpers/MobX/BuildingStore";
 import {
   checkAndCreateBuildingFile,
   loadDataFromBuildingFile,

@@ -17,7 +17,7 @@ import {
 } from "@expo/vector-icons";
 import { observer } from "mobx-react";
 import { useNavigation } from "@react-navigation/native";
-import ResourceStore from "../Helpers/ResourceStore";
+import ResourceStore from "../Helpers/MobX/ResourceStore";
 import { useState } from "react";
 
 const Dashboard = observer(() => {

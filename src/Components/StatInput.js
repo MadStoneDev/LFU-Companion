@@ -2,7 +2,7 @@ import { ActivityIndicator, TextInput } from "react-native-paper";
 import { StyleSheet, TouchableWithoutFeedback, View } from "react-native";
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { saveDataToFile } from "../Helpers/FileManager";
-import resourceStore from "../Helpers/ResourceStore";
+import resourceStore from "../Helpers/MobX/ResourceStore";
 import { AntDesign } from "@expo/vector-icons";
 
 const StatInput = forwardRef(

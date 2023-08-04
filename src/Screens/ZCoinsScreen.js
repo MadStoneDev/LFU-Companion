@@ -4,7 +4,7 @@ import { cleanUpNumber } from "../Helpers/CleanUps";
 import { FontAwesome5 } from "@expo/vector-icons";
 import StatInput from "../Components/StatInput";
 import { observer } from "mobx-react";
-import resourceStore from "../Helpers/ResourceStore";
+import resourceStore from "../Helpers/MobX/ResourceStore";
 import { useNavigation } from "@react-navigation/native";
 
 const inputRefs = [];

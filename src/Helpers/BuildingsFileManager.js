@@ -1,5 +1,5 @@
 import * as FileSystem from "expo-file-system";
-import buildingStore from "./BuildingStore";
+import buildingStore from "./MobX/BuildingStore";
 
 const filePath = `${FileSystem.documentDirectory}/buildingsData.json`;
 

@@ -3,7 +3,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { cleanUpNumber } from "../Helpers/CleanUps";
 import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import StatInput from "../Components/StatInput";
-import resourceStore from "../Helpers/ResourceStore";
+import resourceStore from "../Helpers/MobX/ResourceStore";
 import { observer } from "mobx-react";
 import { useNavigation } from "@react-navigation/native";
 
