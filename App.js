@@ -2,14 +2,9 @@ import "react-native-gesture-handler";
 import { useEffect, useState } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
-import {
-  CardStyleInterpolators,
-  createStackNavigator,
-} from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import SplashScreen from "./src/Screens/SplashScreen";
-import TrackerScreen from "./src/Screens/TrackerScreen";
-import StatsScreen from "./src/Screens/StatsScreen";
 
 import * as Sentry from "@sentry/react-native";
 import BuildingScreen from "./src/Screens/BuildingScreen";
@@ -23,6 +18,9 @@ import resourceStore from "./src/Helpers/ResourceStore";
 import { saveDataToFile } from "./src/Helpers/FileManager";
 import { Ionicons } from "@expo/vector-icons";
 import { observer } from "mobx-react";
+import { ClerkProvider } from "@clerk/clerk-expo";
+import Constants from "expo-constants";
+import HomeStack from "./src/Navigation/HomeStack";
 
 // Sentry.init({
 //   dsn: "https://fabaa650eabd4833a0f4cd8eea438ccf@o4505502003625984.ingest.sentry.io/4505502019747840",
@@ -79,105 +77,95 @@ const App = observer(() => {
   };
 
   return (
-    <SafeAreaProvider>
-      <OptimisedStatusBar backgroundColor={"black"} barStyle="light-content" />
-      {loading ? (
-        <SplashScreen />
-      ) : showOnBoarding ? (
-        <OnBoardingScreen setOnBoarding={setShowOnBoarding} />
-      ) : (
-        <NavigationContainer>
-          <Provider>
-            <Portal>
-              <Modal
-                visible={modalVisible}
-                onDismiss={hideModal}
-                contentContainerStyle={{
-                  backgroundColor: "white",
-                  margin: 20,
-                  padding: 20,
-                  borderRadius: 10,
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: 10,
+    <ClerkProvider
+      publishableKey={Constants.manifest.extra.CLERK_PUBLISHABLE_KEY}
+    >
+      <SafeAreaProvider>
+        <OptimisedStatusBar
+          backgroundColor={"black"}
+          barStyle="light-content"
+        />
+        {loading ? (
+          <SplashScreen />
+        ) : showOnBoarding ? (
+          <OnBoardingScreen setOnBoarding={setShowOnBoarding} />
+        ) : (
+          <NavigationContainer>
+            <Provider>
+              <Portal>
+                <Modal
+                  visible={modalVisible}
+                  onDismiss={hideModal}
+                  contentContainerStyle={{
+                    backgroundColor: "white",
+                    margin: 20,
+                    padding: 20,
+                    borderRadius: 10,
                   }}
                 >
-                  <TextInput
+                  <View
                     style={{
-                      flex: 1,
-                      height: 35,
-                      padding: 0,
-                      backgroundColor: "white",
-                    }}
-                    label={"Username"}
-                    mode={"outlined"}
-                    textColor={"black"}
-                    activeOutlineColor={"#d35322"}
-                    outlineColor={"#d35322"}
-                    value={resourceStore.username}
-                    onChangeText={(text) => resourceStore.updateUsername(text)}
-                  />
-                  <TouchableWithoutFeedback
-                    onPress={() => {
-                      hideModal(true);
-
-                      saveDataToFile(resourceStore).then(() => {
-                        console.log("Username Saved");
-                      });
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: 10,
                     }}
                   >
-                    <View
+                    <TextInput
                       style={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                        paddingVertical: 10,
-                        paddingHorizontal: 15,
-                        backgroundColor: "#d35322",
-                        borderRadius: 10,
-                        gap: 10,
+                        flex: 1,
+                        height: 35,
+                        padding: 0,
+                        backgroundColor: "white",
+                      }}
+                      label={"Username"}
+                      mode={"outlined"}
+                      textColor={"black"}
+                      activeOutlineColor={"#d35322"}
+                      outlineColor={"#d35322"}
+                      value={resourceStore.username}
+                      onChangeText={(text) =>
+                        resourceStore.updateUsername(text)
+                      }
+                    />
+                    <TouchableWithoutFeedback
+                      onPress={() => {
+                        hideModal(true);
+
+                        saveDataToFile(resourceStore).then(() => {
+                          console.log("Username Saved");
+                        });
                       }}
                     >
-                      <Text
+                      <View
                         style={{
-                          color: "white",
+                          flexDirection: "row",
+                          alignItems: "center",
+                          paddingVertical: 10,
+                          paddingHorizontal: 15,
+                          backgroundColor: "#d35322",
+                          borderRadius: 10,
+                          gap: 10,
                         }}
                       >
-                        Save
-                      </Text>
-                    </View>
-                  </TouchableWithoutFeedback>
-                </View>
-              </Modal>
-            </Portal>
+                        <Text
+                          style={{
+                            color: "white",
+                          }}
+                        >
+                          Save
+                        </Text>
+                      </View>
+                    </TouchableWithoutFeedback>
+                  </View>
+                </Modal>
+              </Portal>
 
-            <Stack.Navigator>
-              <Stack.Screen
-                name={"Home"}
-                options={{
-                  headerShown: false,
-                }}
-              >
-                {(props) => <HomeDrawer showModal={showModal} {...props} />}
-              </Stack.Screen>
-              <Stack.Screen
-                name={"Building"}
-                component={BuildingScreen}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name={"OnBoarding"}
-                component={OnBoardingScreen}
-                options={{ headerShown: false }}
-              />
-            </Stack.Navigator>
-          </Provider>
-        </NavigationContainer>
-      )}
-    </SafeAreaProvider>
+              <HomeStack showModal={showModal} />
+            </Provider>
+          </NavigationContainer>
+        )}
+      </SafeAreaProvider>
+    </ClerkProvider>
   );
 });
 

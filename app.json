@@ -31,7 +31,10 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "FAUNA_API_KEY": "fnAFKM8mNLAARIZzZgkDwWtELtfTA-RgDQeS9FfU",
+      "FAUNA_GUEST": "fnAFKM8mNLAARIZzZgkDwWtELtfTA-RgDQeS9FfU",
+      "FAUNA_FREE_USER": "fnAFKcKjIjAAQZrE8vjc9KTYjgnrIUkCEW_HhCGw",
+      "FAUNA_SUBSCRIBED_USER": "fnAFKcLTxvAAREfx0aPMpcHSV5xyFpXJhvKpQg7L",
+      "CLERK_PUBLISHABLE_KEY": "pk_test_b3JnYW5pYy1qYXZlbGluLTMuY2xlcmsuYWNjb3VudHMuZGV2JA",
       "eas": {
         "projectId": "9d10aa85-c883-4b34-a4ae-58084e8650ec"
       }
