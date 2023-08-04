@@ -1,0 +1,1276 @@
+[
+    {
+        "Season": "S0",
+        "Set": "Reaper",
+        "Gear": "Ame no Mura Kumo",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Firm Birch",
+            "Synthetic Metal",
+            "Hard Rattan",
+            "Resistant Glass"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Reaper",
+        "Gear": "Lucky Hat",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Artificial Fiber",
+            "Hard Rattan",
+            "Firm Birch",
+            "Nanocoating"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Reaper",
+        "Gear": "Noble Robe",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Artificial Fiber",
+            "Hard Rattan",
+            "Resilient Fabric",
+            "Nanocoating"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Reaper",
+        "Gear": "Jade Hairpin",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Resistant Glass",
+            "Precision Part",
+            "Resilient Fabric",
+            "Reflective Material"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Hurricane",
+        "Gear": "M16",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Firm Birch",
+            "Synthetic Metal",
+            "Precision Part",
+            "Resilient Fabric"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Hurricane",
+        "Gear": "Justicar's Goggles",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Resistant Glass",
+            "Artificial Fiber",
+            "Hard Rattan",
+            "Resilient Fabric"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Hurricane",
+        "Gear": "Fearless Heavy Armor",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Artificial Fiber",
+            "Hard Rattan",
+            "Resilient Fabric",
+            "Nanocoating"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Hurricane",
+        "Gear": "Apocalypse Interceptor",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Resistant Glass",
+            "Precision Part",
+            "Synthetic Metal",
+            "Reflective Material"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Castle",
+        "Gear": "Gloves of Fury",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Synthetic Metal",
+            "Precision Part",
+            "Nanocoating",
+            "Artificial Fiber"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Castle",
+        "Gear": "Tracking Goggles",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Resistant Glass",
+            "Precision Part",
+            "Synthetic Metal",
+            "Nanocoating"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Castle",
+        "Gear": "Mecha Armor",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Synthetic Metal",
+            "Precision Part",
+            "Resistant Glass",
+            "Artificial Fiber"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Castle",
+        "Gear": "Cuban Cigar",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Synthetic Metal",
+            "Reflective Material",
+            "Firm Birch",
+            "Nanocoating"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Castle",
+        "Gear": "Mechanical Shield",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Synthetic Metal",
+            "Precision Part",
+            "Nanocoating",
+            "Firm Birch"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Castle",
+        "Gear": "Tracking Goggles",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Resistant Glass",
+            "Precision Part",
+            "Synthetic Metal",
+            "Nanocoating"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Castle",
+        "Gear": "Mecha Armor",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Synthetic Metal",
+            "Precision Part",
+            "Resistant Glass",
+            "Artificial Fiber"
+        ]
+    },
+    {
+        "Season": "S0",
+        "Set": "Castle",
+        "Gear": "Guardian Pendant",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Synthetic Metal",
+            "Reflective Material",
+            "Artificial Fiber",
+            "Resilient Fabric"
+        ]
+    },
+    {
+        "Season": "",
+        "Set": "",
+        "Gear": "",
+        "Classification": "",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Apocalypse",
+        "Gear": "Sharp Hatchet",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Beast Fang",
+            "Vulcanized Hide",
+            "Precision Sandpaper",
+            "High-Carbon Steel"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Apocalypse",
+        "Gear": "Alloy Mask",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Precision Sandpaper",
+            "High-Carbon Steel",
+            "Carbon-Fiber Material",
+            "Vulcanized Hide"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Apocalypse",
+        "Gear": "Spiked Shoulder Guards",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Beast Fang",
+            "Vulcanized Hide",
+            "Carbon-Fiber Material",
+            "Metal Part"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Apocalypse",
+        "Gear": "Wild Belt",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Laser Gem",
+            "Vulcanized Hide",
+            "Beast Fang",
+            "Metal Part"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Apocalypse",
+        "Gear": "Sharp Hatchet",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Beast Fang",
+            "Vulcanized Hide",
+            "Precision Sandpaper",
+            "High-Carbon Steel"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Apocalypse",
+        "Gear": "Alloy Mask",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Precision Sandpaper",
+            "High-Carbon Steel",
+            "Carbon-Fiber Material",
+            "Vulcanized Hide"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Apocalypse",
+        "Gear": "Spiked Shoulder Guards",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Beast Fang",
+            "Vulcanized Hide",
+            "Carbon-Fiber Material",
+            "Metal Part"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Apocalypse",
+        "Gear": "Wild Belt",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Laser Gem",
+            "Vulcanized Hide",
+            "Beast Fang",
+            "Metal Part"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Death",
+        "Gear": "Crimson Blade",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Beast Fang",
+            "Precision Sandpaper",
+            "High-Carbon Steel",
+            "Metal Part"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Death",
+        "Gear": "Death Helmet",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Carbon-Fiber Material",
+            "High-Carbon Steel",
+            "Metal Part",
+            "Vulcanized Hide"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Death",
+        "Gear": "Midnight Chain Mail",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "High-Carbon Steel",
+            "Carbon-Fiber Material",
+            "Precision Sandpaper",
+            "Metal Part"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Death",
+        "Gear": "Wolf Tusk Earring",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Beast Fang",
+            "Laser Gem",
+            "Precision Sandpaper",
+            "Vulcanized Hide"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Death",
+        "Gear": "Portable Laser Gun",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Metal Part",
+            "High-Carbon Steel",
+            "Precision Sandpaper",
+            "Carbon-Fiber Material"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Death",
+        "Gear": "Death Helmet",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Carbon-Fiber Material",
+            "High-Carbon Steel",
+            "Metal Part",
+            "Vulcanized Hide"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Death",
+        "Gear": "Midnight Chain Mail",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "High-Carbon Steel",
+            "Carbon-Fiber Material",
+            "Precision Sandpaper",
+            "Metal Part"
+        ]
+    },
+    {
+        "Season": "S1",
+        "Set": "Death",
+        "Gear": "Auto Focus Locker",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Laser Gem",
+            "Precision Sandpaper",
+            "Carbon-Fiber Material",
+            "Metal Part"
+        ]
+    },
+    {
+        "Season": "",
+        "Set": "",
+        "Gear": "",
+        "Classification": "",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "Season": "S2",
+        "Set": "Heal",
+        "Gear": "Silver Fox Gun",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Ultralight Plastic Steel",
+            "Alloy Accessory",
+            "High-Performance Chip",
+            "Supercoating"
+        ]
+    },
+    {
+        "Season": "S2",
+        "Set": "Heal",
+        "Gear": "Crossed Beret",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Top-Quality Cashmere",
+            "Polymer Fiber",
+            "Alloy Accessory",
+            "Supercoating"
+        ]
+    },
+    {
+        "Season": "S2",
+        "Set": "Heal",
+        "Gear": "Dust-free Medical Suit",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Polymer Fiber",
+            "Top-Quality Cashmere",
+            "Alloy Accessory",
+            "Ultralight Plastic Steel"
+        ]
+    },
+    {
+        "Season": "S2",
+        "Set": "Heal",
+        "Gear": "Nano Wonder Drug",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Alloy Accessory",
+            "Nanocrystal",
+            "Ultralight Plastic Steel",
+            "Supercoating"
+        ]
+    },
+    {
+        "Season": "S2",
+        "Set": "Tough Wall",
+        "Gear": "Pulse Electron Shield",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Supercoating",
+            "High-Performance Chip",
+            "Ultralight Plastic Steel",
+            "Alloy Accessory"
+        ]
+    },
+    {
+        "Season": "S2",
+        "Set": "Tough Wall",
+        "Gear": "Crystal Energy Helmet",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Top-Quality Cashmere",
+            "High-Performance Chip",
+            "Supercoating",
+            "Polymer Fiber"
+        ]
+    },
+    {
+        "Season": "S2",
+        "Set": "Tough Wall",
+        "Gear": "Nuclear Induction Armor",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Top-Quality Cashmere",
+            "High-Performance Chip",
+            "Ultralight Plastic Steel",
+            "Polymer Fiber"
+        ]
+    },
+    {
+        "Season": "S2",
+        "Set": "Tough Wall",
+        "Gear": "Blue Core",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Polymer Fiber",
+            "High-Performance Chip",
+            "Alloy Accessory",
+            "Nanocrystal"
+        ]
+    },
+    {
+        "Season": "S2",
+        "Set": "Tough Wall",
+        "Gear": "Alloy Gloves",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Supercoating",
+            "High-Performance Chip",
+            "Ultralight Plastic Steel",
+            "Alloy Accessory"
+        ]
+    },
+    {
+        "Season": "S2",
+        "Set": "Tough Wall",
+        "Gear": "Crystal Energy Helmet",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Top-Quality Cashmere",
+            "High-Performance Chip",
+            "Supercoating",
+            "Polymer Fiber"
+        ]
+    },
+    {
+        "Season": "S2",
+        "Set": "Tough Wall",
+        "Gear": "Nuclear Induction Armor",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Top-Quality Cashmere",
+            "High-Performance Chip",
+            "Ultralight Plastic Steel",
+            "Polymer Fiber"
+        ]
+    },
+    {
+        "Season": "S2",
+        "Set": "Tough Wall",
+        "Gear": "Cyber Headset",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "High-Performance Chip",
+            "Nanocrystal",
+            "Polymer Fiber",
+            "Top-Quality Cashmere"
+        ]
+    },
+    {
+        "Season": "",
+        "Set": "",
+        "Gear": "",
+        "Classification": "",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Resolute",
+        "Gear": "Warblade of the Resolute",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Titanium Alloy Ingot",
+            "Ruby Material",
+            "Molten Chip",
+            "Metal Adhesive"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Resolute",
+        "Gear": "Helmet of the Resolute",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Metal Adhesive",
+            "Titanium Alloy Ingot",
+            "Alpha Fiber",
+            "Molten Chip"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Resolute",
+        "Gear": "Heavy Armor of the Resolute",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Gold Coating",
+            "Titanium Alloy Ingot",
+            "Alpha Fiber",
+            "Metal Adhesive"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Resolute",
+        "Gear": "Bracelet of the Resolute",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Metal Adhesive",
+            "Polishing Agent",
+            "Alpha Fiber",
+            "Gold Coating"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Resolute",
+        "Gear": "Crossbow of the Resolut",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Titanium Alloy Ingot",
+            "Metal Adhesive",
+            "Molten Chip",
+            "Alpha Fiber"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Resolute",
+        "Gear": "Helmet of the Resolute",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Metal Adhesive",
+            "Titanium Alloy Ingot",
+            "Alpha Fiber",
+            "Molten Chip"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Resolute",
+        "Gear": "Heavy Armor of the Resolute",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Gold Coating",
+            "Titanium Alloy Ingot",
+            "Alpha Fiber",
+            "Metal Adhesive"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Resolute",
+        "Gear": "Ring of the Resolute",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Metal Adhesive",
+            "Polishing Agent",
+            "Ruby Material",
+            "Alpha Fiber"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Alpha Bless",
+        "Gear": "Alpha Tech Drive",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Ruby Material",
+            "Metal Adhesive",
+            "Titanium Alloy Ingot",
+            "Gold Coating"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Alpha Bless",
+        "Gear": "Alpha Tech Hat",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Ruby Material",
+            "Molten Chip",
+            "Titanium Alloy Ingot",
+            "Gold Coating"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Alpha Bless",
+        "Gear": "Alpha Tech Top",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Alpha Fiber",
+            "Ruby Material",
+            "Molten Chip",
+            "Gold Coating"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Alpha Bless",
+        "Gear": "Alpha Tech Core",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Molten Chip",
+            "Polishing Agent",
+            "Ruby Material",
+            "Gold Coating"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Alpha Bless",
+        "Gear": "Alpha Tech Drive",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Ruby Material",
+            "Metal Adhesive",
+            "Titanium Alloy Ingot",
+            "Gold Coating"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Alpha Bless",
+        "Gear": "Alpha Tech Hat",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Ruby Material",
+            "Molten Chip",
+            "Titanium Alloy Ingot",
+            "Gold Coating"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Alpha Bless",
+        "Gear": "Alpha Tech Top",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Alpha Fiber",
+            "Ruby Material",
+            "Molten Chip",
+            "Gold Coating"
+        ]
+    },
+    {
+        "Season": "S3",
+        "Set": "Alpha Bless",
+        "Gear": "Alpha Tech Core",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Molten Chip",
+            "Polishing Agent",
+            "Ruby Material",
+            "Gold Coating"
+        ]
+    },
+    {
+        "Season": "",
+        "Set": "",
+        "Gear": "",
+        "Classification": "",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Mental Control",
+        "Gear": "Mental Disruptor",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Laser Transmitter",
+            "Logic Circuit",
+            "Passive Component",
+            "Warp-and-Weft Fabric"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Mental Control",
+        "Gear": "Laser Mask",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Reverse Recovery Factor",
+            "Warp-and-Weft Fabric",
+            "Logic Circuit",
+            "Laser Transmitter"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Mental Control",
+        "Gear": "Anti-Jamming Suit",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Logic Circuit",
+            "Passive Component",
+            "Warp-and-Weft Fabric",
+            "Reverse Recovery Factor"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Mental Control",
+        "Gear": "Foreseer's Ring",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Crystal Relic",
+            "Passive Component",
+            "Logic Circuit",
+            "Laser Transmitter"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Mental Control",
+        "Gear": "Mental Disruptor",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Laser Transmitter",
+            "Logic Circuit",
+            "Passive Component",
+            "Warp-and-Weft Fabric"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Mental Control",
+        "Gear": "Laser Mask",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Reverse Recovery Factor",
+            "Warp-and-Weft Fabric",
+            "Logic Circuit",
+            "Laser Transmitter"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Mental Control",
+        "Gear": "Anti-Jamming Suit",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Logic Circuit",
+            "Passive Component",
+            "Warp-and-Weft Fabric",
+            "Reverse Recovery Factor"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Mental Control",
+        "Gear": "Foreseer's Ring",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Crystal Relic",
+            "Passive Component",
+            "Logic Circuit",
+            "Laser Transmitter"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Self-Healing",
+        "Gear": "Healing Spray Gun",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Reverse Recovery Factor",
+            "Logic Circuit",
+            "Passive Component",
+            "Laser Transmitter"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Self-Healing",
+        "Gear": "Healing Face Shield",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Reverse Recovery Factor",
+            "Warp-and-Weft Fabric",
+            "Logic Circuit",
+            "Laser Transmitter"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Self-Healing",
+        "Gear": "Healing & Protective Top",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Reverse Recovery Factor",
+            "Warp-and-Weft Fabric",
+            "Passive Component",
+            "Laser Transmitter"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Self-Healing",
+        "Gear": "Crystal Pocket Watch",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Reverse Recovery Factor",
+            "Crystal Relic",
+            "Passive Component",
+            "Warp-and-Weft Fabric"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Self-Healing",
+        "Gear": "Healing Spray Gun",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Reverse Recovery Factor",
+            "Logic Circuit",
+            "Passive Component",
+            "Laser Transmitter"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Self-Healing",
+        "Gear": "Healing Face Shield",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Reverse Recovery Factor",
+            "Warp-and-Weft Fabric",
+            "Logic Circuit",
+            "Laser Transmitter"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Self-Healing",
+        "Gear": "Healing & Protective Top",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Reverse Recovery Factor",
+            "Warp-and-Weft Fabric",
+            "Passive Component",
+            "Laser Transmitter"
+        ]
+    },
+    {
+        "Season": "S4",
+        "Set": "Self-Healing",
+        "Gear": "Crystal Pocket Watch",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Reverse Recovery Factor",
+            "Crystal Relic",
+            "Passive Component",
+            "Warp-and-Weft Fabric"
+        ]
+    },
+    {
+        "Season": "",
+        "Set": "",
+        "Gear": "",
+        "Classification": "",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "Season": "S5",
+        "Set": "Super Core",
+        "Gear": "Super Core Device",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Super Core Metal",
+            "Silver Component",
+            "Rare Energy Matter",
+            "Energy Carrier"
+        ]
+    },
+    {
+        "Season": "S5",
+        "Set": "Super Core",
+        "Gear": "Super Core Helmet",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Super Core Metal",
+            "Silver Component",
+            "Magnetic Plate",
+            "Energy Carrier"
+        ]
+    },
+    {
+        "Season": "S5",
+        "Set": "Super Core",
+        "Gear": "Super Core Armor",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Super Core Metal",
+            "Magnetic Plate",
+            "Rare Energy Matter",
+            "Energy Carrier"
+        ]
+    },
+    {
+        "Season": "S5",
+        "Set": "Super Core",
+        "Gear": "Energy Core",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Energy Carrier",
+            "Rare Energy Matter",
+            "Silver Component",
+            "Daylight Chip"
+        ]
+    },
+    {
+        "Season": "S5",
+        "Set": "Super Core",
+        "Gear": "Super Core Device",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Super Core Metal",
+            "Silver Component",
+            "Rare Energy Matter",
+            "Energy Carrier"
+        ]
+    },
+    {
+        "Season": "S5",
+        "Set": "Super Core",
+        "Gear": "Super Core Helmet",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Super Core Metal",
+            "Silver Component",
+            "Magnetic Plate",
+            "Energy Carrier"
+        ]
+    },
+    {
+        "Season": "S5",
+        "Set": "Super Core",
+        "Gear": "Super Core Armor",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Super Core Metal",
+            "Magnetic Plate",
+            "Rare Energy Matter",
+            "Energy Carrier"
+        ]
+    },
+    {
+        "Season": "S5",
+        "Set": "Super Core",
+        "Gear": "Energy Core",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Energy Carrier",
+            "Rare Energy Matter",
+            "Silver Component",
+            "Daylight Chip"
+        ]
+    },
+    {
+        "Season": "",
+        "Set": "",
+        "Gear": "",
+        "Classification": "",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    {
+        "Season": "S6",
+        "Set": "Ripper",
+        "Gear": "Ripper Gauntlet",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Ancient Power Core",
+            "High-Tech Metal Part",
+            "Cryptic Ore",
+            "Serrated Fang"
+        ]
+    },
+    {
+        "Season": "S6",
+        "Set": "Ripper",
+        "Gear": "Greatbone Helmet",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "High-Quality Leather",
+            "Polymer Fiber Fur",
+            "Meshed Abrasive Strip",
+            "Serrated Fang"
+        ]
+    },
+    {
+        "Season": "S6",
+        "Set": "Ripper",
+        "Gear": "Greatbeast Armor",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "High-Quality Leather",
+            "Polymer Fiber Fur",
+            "Meshed Abrasive Strip",
+            "High-Tech Metal Part"
+        ]
+    },
+    {
+        "Season": "S6",
+        "Set": "Ripper",
+        "Gear": "Beastblood Amber",
+        "Classification": "STR",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Ancient Power Core",
+            "High-Tech Metal Part",
+            "Cryptic Ore",
+            "Primeval Amber"
+        ]
+    },
+    {
+        "Season": "S6",
+        "Set": "Ripper",
+        "Gear": "Ripper Gauntlet",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Ancient Power Core",
+            "High-Tech Metal Part",
+            "Cryptic Ore",
+            "Serrated Fang"
+        ]
+    },
+    {
+        "Season": "S6",
+        "Set": "Ripper",
+        "Gear": "Greatbone Helmet",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "High-Quality Leather",
+            "Polymer Fiber Fur",
+            "Meshed Abrasive Strip",
+            "Serrated Fang"
+        ]
+    },
+    {
+        "Season": "S6",
+        "Set": "Ripper",
+        "Gear": "Greatbeast Armor",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "High-Quality Leather",
+            "Polymer Fiber Fur",
+            "Meshed Abrasive Strip",
+            "High-Tech Metal Part"
+        ]
+    },
+    {
+        "Season": "S6",
+        "Set": "Ripper",
+        "Gear": "Beastblood Amber",
+        "Classification": "INT",
+        "image": "./assets/images/Gear/path-to-file",
+        "Parts": [
+            "Ancient Power Core",
+            "High-Tech Metal Part",
+            "Cryptic Ore",
+            "Primeval Amber"
+        ]
+    }
+]
