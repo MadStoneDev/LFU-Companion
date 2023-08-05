@@ -211,44 +211,44 @@ const DrawerContent = observer((props) => {
         </TouchableWithoutFeedback>
       </DrawerContentScrollView>
 
-      <View style={styles.bottomContent}>
-        <SignedIn>
-          <TouchableWithoutFeedback
-            onPress={() => navigation.navigate("Voting")}
-          >
-            <Text
-              style={{
-                paddingTop: 3,
-                fontWeight: "500",
-                fontSize: 14,
-                color: "#6d6d6d",
-              }}
-            >
-              Vote for Next Feature
-            </Text>
-          </TouchableWithoutFeedback>
-        </SignedIn>
+      {/*<View style={styles.bottomContent}>*/}
+      {/*  <SignedIn>*/}
+      {/*    <TouchableWithoutFeedback*/}
+      {/*      onPress={() => navigation.navigate("Voting")}*/}
+      {/*    >*/}
+      {/*      <Text*/}
+      {/*        style={{*/}
+      {/*          paddingTop: 3,*/}
+      {/*          fontWeight: "500",*/}
+      {/*          fontSize: 14,*/}
+      {/*          color: "#6d6d6d",*/}
+      {/*        }}*/}
+      {/*      >*/}
+      {/*        Vote for Next Feature*/}
+      {/*      </Text>*/}
+      {/*    </TouchableWithoutFeedback>*/}
+      {/*  </SignedIn>*/}
 
-        <SignedOut>
-          <TouchableWithoutFeedback
-            onPress={() => navigation.navigate("Sign Up")}
-          >
-            <View style={{ flexDirection: "row", gap: 5 }}>
-              <MaterialIcons name="account-circle" size={24} color="#d35322" />
-              <Text
-                style={{
-                  paddingTop: 3,
-                  fontWeight: "500",
-                  fontSize: 14,
-                  color: "#6d6d6d",
-                }}
-              >
-                Register a free sync account
-              </Text>
-            </View>
-          </TouchableWithoutFeedback>
-        </SignedOut>
-      </View>
+      {/*  <SignedOut>*/}
+      {/*    <TouchableWithoutFeedback*/}
+      {/*      onPress={() => navigation.navigate("Sign Up")}*/}
+      {/*    >*/}
+      {/*      <View style={{ flexDirection: "row", gap: 5 }}>*/}
+      {/*        <MaterialIcons name="account-circle" size={24} color="#d35322" />*/}
+      {/*        <Text*/}
+      {/*          style={{*/}
+      {/*            paddingTop: 3,*/}
+      {/*            fontWeight: "500",*/}
+      {/*            fontSize: 14,*/}
+      {/*            color: "#6d6d6d",*/}
+      {/*          }}*/}
+      {/*        >*/}
+      {/*          Register a free sync account*/}
+      {/*        </Text>*/}
+      {/*      </View>*/}
+      {/*    </TouchableWithoutFeedback>*/}
+      {/*  </SignedOut>*/}
+      {/*</View>*/}
     </SafeAreaView>
   );
 });

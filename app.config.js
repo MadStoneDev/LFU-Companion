@@ -17,7 +17,8 @@ export default {
     ios: {
       supportsTablet: true,
       bundleIdentifier: "com.omdesti.lftoolbox",
-      buildNumber: "14",
+      buildNumber: "15",
+      usesAppleSignIn: true,
     },
     android: {
       adaptiveIcon: {
@@ -25,7 +26,7 @@ export default {
         backgroundImage: "./assets/icon_background.png",
       },
       package: "com.omdesti.lftoolbox",
-      versionCode: 14,
+      versionCode: 15,
     },
     web: {
       favicon: "./assets/favicon.png",
