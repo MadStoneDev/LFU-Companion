@@ -5,7 +5,7 @@ export default {
     name: "LFU Companion",
     slug: "LFToolbox",
     owner: "madstone.dev",
-    version: "1.1.0",
+    version: "1.1.1",
     orientation: "portrait",
     icon: "./assets/icon_new.png",
     userInterfaceStyle: "light",
@@ -17,7 +17,7 @@ export default {
     ios: {
       supportsTablet: true,
       bundleIdentifier: "com.omdesti.lftoolbox",
-      buildNumber: "13",
+      buildNumber: "14",
     },
     android: {
       adaptiveIcon: {
@@ -25,7 +25,7 @@ export default {
         backgroundImage: "./assets/icon_background.png",
       },
       package: "com.omdesti.lftoolbox",
-      versionCode: 13,
+      versionCode: 14,
     },
     web: {
       favicon: "./assets/favicon.png",
