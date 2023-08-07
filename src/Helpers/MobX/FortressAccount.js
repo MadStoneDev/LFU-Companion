@@ -1,19 +1,16 @@
 import { createResourceStore } from "./ResourceStore";
 import { createBuildingStore } from "./BuildingStore";
-import fortressStore from "./FortressStore";
 
 class FortressAccount {
+  username;
   resourceStore;
   buildingStore;
 
-  constructor(resourceStore, buildingStore) {
-    this.resourceStore = resourceStore;
-    this.buildingStore = buildingStore;
+  constructor(username) {
+    this.username = username;
+    this.resourceStore = createResourceStore();
+    this.buildingStore = createBuildingStore();
   }
 }
 
-const fortressAccount = new FortressAccount(
-  createResourceStore(),
-  createBuildingStore()
-);
-fortressStore.addFortressAccount(fortressAccount);
+export default FortressAccount;
