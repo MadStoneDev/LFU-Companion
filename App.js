@@ -14,7 +14,7 @@ import OptimisedStatusBar from "./src/Components/OptimisedStatusBar";
 import HomeDrawer from "./src/Navigation/HomeDrawer";
 import { Modal, Portal, Provider, TextInput } from "react-native-paper";
 import { Text, TouchableWithoutFeedback, View } from "react-native";
-import resourceStore from "./src/Helpers/ResourceStore";
+import resourceStore from "./src/Helpers/MobX/ResourceStore";
 import { saveDataToFile } from "./src/Helpers/FileManager";
 import { Ionicons } from "@expo/vector-icons";
 import { observer } from "mobx-react";

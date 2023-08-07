@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 
 import StatInput from "../Components/StatInput";
 import { cleanUpNumber } from "../Helpers/CleanUps";
-import resourceStore from "../Helpers/ResourceStore";
+import resourceStore from "../Helpers/MobX/ResourceStore";
 import { useNavigation } from "@react-navigation/native";
 import { useRef } from "react";
 

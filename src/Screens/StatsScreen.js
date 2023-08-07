@@ -15,9 +15,9 @@ import IronScreen from "./IronScreen";
 import StoneScreen from "./StoneScreen";
 import WarehouseScreen from "./WarehouseScreen";
 
-import resourceStore from "../Helpers/ResourceStore";
+import resourceStore from "../Helpers/MobX/ResourceStore";
 import { saveDataToFile } from "../Helpers/FileManager";
-import buildingStore from "../Helpers/BuildingStore";
+import buildingStore from "../Helpers/MobX/ResourceStore";
 
 const Tabs = createMaterialTopTabNavigator();
 

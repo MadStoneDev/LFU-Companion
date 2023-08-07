@@ -1,5 +1,5 @@
 import { Text, TouchableWithoutFeedback, StyleSheet, View } from "react-native";
-import buildingStore from "../Helpers/BuildingStore";
+import buildingStore from "../Helpers/MobX/ResourceStore";
 import { observer } from "mobx-react";
 import { ScaleDecorator } from "react-native-draggable-flatlist/src/components/CellDecorators";
 import { MaterialCommunityIcons } from "@expo/vector-icons";

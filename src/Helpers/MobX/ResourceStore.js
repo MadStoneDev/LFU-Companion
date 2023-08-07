@@ -125,6 +125,7 @@ class ResourceStore {
   }
 }
 
-const resourceStore = new ResourceStore();
+export const createResourceStore = () => new ResourceStore();
 
+const resourceStore = new ResourceStore();
 export default resourceStore;

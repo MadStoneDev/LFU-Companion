@@ -14,7 +14,7 @@ import {
 import SingleStat from "../Components/SingleStat";
 import { observer } from "mobx-react";
 import { SignedIn, SignedOut } from "@clerk/clerk-expo";
-import resourceStore from "../Helpers/ResourceStore";
+import resourceStore from "../Helpers/MobX/ResourceStore";
 import {
   AntDesign,
   FontAwesome,

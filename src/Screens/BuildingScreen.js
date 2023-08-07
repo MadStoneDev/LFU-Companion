@@ -25,7 +25,7 @@ import {
   Portal,
   Provider,
 } from "react-native-paper";
-import buildingStore from "../Helpers/BuildingStore";
+import buildingStore from "../Helpers/MobX/ResourceStore";
 import { saveDataToBuildingFile } from "../Helpers/BuildingsFileManager";
 
 const BuildingScreen = ({ navigation, route }) => {

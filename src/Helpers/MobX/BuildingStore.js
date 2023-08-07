@@ -299,6 +299,7 @@ class BuildingStore {
   }
 }
 
-const buildingStore = new BuildingStore();
+export const createBuildingStore = () => new BuildingStore();
 
+const buildingStore = new BuildingStore();
 export default buildingStore;
