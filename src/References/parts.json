@@ -1,0 +1,257 @@
+[
+    {
+        "name": "Firm Birch",
+        "season": "S0",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Synthetic Metal",
+        "season": "S0",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Hard Rattan",
+        "season": "S0",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Resistant Glass",
+        "season": "S0",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Artificial Fiber",
+        "season": "S0",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Nanocoating",
+        "season": "S0",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Resilient Fabric",
+        "season": "S0",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Precision Part",
+        "season": "S0",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Reflective Material",
+        "season": "S0",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "",
+        "season": "",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Beast Fang",
+        "season": "S1",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Vulcanized Hide",
+        "season": "S1",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Precision Sandpaper",
+        "season": "S1",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "High-Carbon Steel",
+        "season": "S1",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Carbon-Fiber Material",
+        "season": "S1",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Metal Part",
+        "season": "S1",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Laser Gem",
+        "season": "S1",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Ultralight Plastic Steel",
+        "season": "S2",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Alloy Accessory",
+        "season": "S2",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "High-Performance Chip",
+        "season": "S2",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Supercoating",
+        "season": "S2",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Top-Quality Cashmere",
+        "season": "S2",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Polymer Fiber",
+        "season": "S2",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Nanocrystal",
+        "season": "S2",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Titanium Alloy Ingot",
+        "season": "S3",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Ruby Material",
+        "season": "S3",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Molten Chip",
+        "season": "S3",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Metal Adhesive",
+        "season": "S3",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Alpha Fiber",
+        "season": "S3",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Gold Coating",
+        "season": "S3",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Polishing Agent",
+        "season": "S3",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Laser Transmitter",
+        "season": "S4",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Logic Circuit",
+        "season": "S4",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Passive Component",
+        "season": "S4",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Warp-and-Weft Fabric",
+        "season": "S4",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Reverse Recovery Factor",
+        "season": "S4",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Crystal Relic",
+        "season": "S4",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Super Core Metal",
+        "season": "S5",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Silver Component",
+        "season": "S5",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Rare Energy Matter",
+        "season": "S5",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Energy Carrier",
+        "season": "S5",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Magnetic Plate",
+        "season": "S5",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Daylight Chip",
+        "season": "S5",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Ancient Power Core",
+        "season": "S6",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "High-Tech Metal Part",
+        "season": "S6",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Cryptic Ore",
+        "season": "S6",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Serrated Fang",
+        "season": "S6",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "High-Quality Leather",
+        "season": "S6",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Polymer Fiber Fur",
+        "season": "S6",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Meshed Abrasive Strip",
+        "season": "S6",
+        "image": "./assets/images/Gear/path-to-file"
+    },
+    {
+        "name": "Primeval Amber",
+        "season": "S6",
+        "image": "./assets/images/Gear/path-to-file"
+    }
+]

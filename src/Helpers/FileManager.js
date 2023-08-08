@@ -1,5 +1,5 @@
 import * as FileSystem from "expo-file-system";
-import resourceStore from "./ResourceStore";
+import resourceStore from "./MobX/ResourceStore";
 
 const filePath = `${FileSystem.documentDirectory}/resourcesData.json`;
 

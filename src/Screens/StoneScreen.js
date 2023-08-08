@@ -4,7 +4,7 @@ import StatInput from "../Components/StatInput";
 import { cleanUpNumber } from "../Helpers/CleanUps";
 import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import { observer } from "mobx-react";
-import resourceStore from "../Helpers/ResourceStore";
+import resourceStore from "../Helpers/MobX/ResourceStore";
 import { useNavigation } from "@react-navigation/native";
 
 const inputRefs = [];

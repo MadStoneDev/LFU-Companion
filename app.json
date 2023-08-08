@@ -31,7 +31,6 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "FAUNA_API_KEY": "fnAFKM8mNLAARIZzZgkDwWtELtfTA-RgDQeS9FfU",
       "eas": {
         "projectId": "9d10aa85-c883-4b34-a4ae-58084e8650ec"
       }

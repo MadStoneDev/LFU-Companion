@@ -9,7 +9,7 @@ import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { observer } from "mobx-react";
 
 import SingleStat from "./SingleStat";
-import resourceStore from "../Helpers/ResourceStore";
+import resourceStore from "../Helpers/MobX/ResourceStore";
 import { Provider } from "react-native-paper";
 
 const HomeHeader = observer(({ navigation, modalVisible }) => {

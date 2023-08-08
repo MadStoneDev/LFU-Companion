@@ -13,8 +13,14 @@ import {
 } from "react-native";
 import SingleStat from "../Components/SingleStat";
 import { observer } from "mobx-react";
-import resourceStore from "../Helpers/ResourceStore";
-import { AntDesign, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+import { SignedIn, SignedOut } from "@clerk/clerk-expo";
+import resourceStore from "../Helpers/MobX/ResourceStore";
+import {
+  AntDesign,
+  FontAwesome,
+  FontAwesome5,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import Dashboard from "../Screens/Dashboard";
 import StatsScreen from "../Screens/StatsScreen";
@@ -205,25 +211,44 @@ const DrawerContent = observer((props) => {
         </TouchableWithoutFeedback>
       </DrawerContentScrollView>
 
-      <View style={styles.bottomContent}>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate("Voting")}>
-          <View
-            style={{ flexDirection: "row", alignContent: "center", gap: 5 }}
-          >
-            <AntDesign name="checksquare" size={24} color="#6d6d6d" />
-            <Text
-              style={{
-                paddingTop: 3,
-                fontWeight: "500",
-                fontSize: 14,
-                color: "#6d6d6d",
-              }}
-            >
-              Vote for Next Feature
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </View>
+      {/*<View style={styles.bottomContent}>*/}
+      {/*  <SignedIn>*/}
+      {/*    <TouchableWithoutFeedback*/}
+      {/*      onPress={() => navigation.navigate("Voting")}*/}
+      {/*    >*/}
+      {/*      <Text*/}
+      {/*        style={{*/}
+      {/*          paddingTop: 3,*/}
+      {/*          fontWeight: "500",*/}
+      {/*          fontSize: 14,*/}
+      {/*          color: "#6d6d6d",*/}
+      {/*        }}*/}
+      {/*      >*/}
+      {/*        Vote for Next Feature*/}
+      {/*      </Text>*/}
+      {/*    </TouchableWithoutFeedback>*/}
+      {/*  </SignedIn>*/}
+
+      {/*  <SignedOut>*/}
+      {/*    <TouchableWithoutFeedback*/}
+      {/*      onPress={() => navigation.navigate("Sign Up")}*/}
+      {/*    >*/}
+      {/*      <View style={{ flexDirection: "row", gap: 5 }}>*/}
+      {/*        <MaterialIcons name="account-circle" size={24} color="#d35322" />*/}
+      {/*        <Text*/}
+      {/*          style={{*/}
+      {/*            paddingTop: 3,*/}
+      {/*            fontWeight: "500",*/}
+      {/*            fontSize: 14,*/}
+      {/*            color: "#6d6d6d",*/}
+      {/*          }}*/}
+      {/*        >*/}
+      {/*          Register a free sync account*/}
+      {/*        </Text>*/}
+      {/*      </View>*/}
+      {/*    </TouchableWithoutFeedback>*/}
+      {/*  </SignedOut>*/}
+      {/*</View>*/}
     </SafeAreaView>
   );
 });
