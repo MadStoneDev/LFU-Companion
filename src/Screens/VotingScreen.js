@@ -10,16 +10,12 @@ import {
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
-import faunaStore from "../Helpers/FaunaStore";
 import { observer } from "mobx-react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
 
 const VotingScreen = observer(() => {
-  // mobX
-  const { features, loadFeatures, saveVote } = faunaStore;
-
   // States
   const [voted, setVoted] = useState(false);
   const [featureVote, setFeatureVote] = useState("");
