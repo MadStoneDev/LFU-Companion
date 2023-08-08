@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import {
   ActivityIndicator,
   Pressable,
@@ -8,14 +11,15 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useNavigation } from "@react-navigation/native";
-import Constants from "expo-constants";
+import featureSuggestionsStore from "../Helpers/MobX/featureSuggestionsStore";
 
 const VotingScreen = observer(() => {
+  // mobX
+  const { suggestions, loadSuggestions, voteOnSuggestion } =
+    featureSuggestionsStore;
+
   // States
   const [voted, setVoted] = useState(false);
   const [featureVote, setFeatureVote] = useState("");
@@ -93,7 +97,7 @@ const VotingScreen = observer(() => {
     try {
       await AsyncStorage.setItem("lastVoteTimestamp", Date.now().toString());
       await AsyncStorage.setItem("lastVotedFor", featureVote);
-      saveVote(featureVote).then(() => console.log("Vote saved"));
+      voteOnSuggestion(featureVote).then(() => console.log("Vote saved"));
       setVoted(true);
 
       console.log("Vote submitted successfully");
@@ -105,13 +109,7 @@ const VotingScreen = observer(() => {
   useEffect(() => {
     setLoading(true);
 
-    if (!features)
-      loadFeatures()
-        .then(() => {
-          console.log("Loaded features");
-          setLoading(false);
-        })
-        .catch((error) => console.log(error));
+    loadSuggestions().then(() => console.log("Loaded suggestions"));
 
     canVoteToday()
       .then((res) => setVoted(!res))
@@ -120,7 +118,7 @@ const VotingScreen = observer(() => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-  }, [features, loadFeatures]);
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -142,7 +140,7 @@ const VotingScreen = observer(() => {
       {/*  simply increments a tally.*/}
       {/*</Text>*/}
 
-      {!features ? null : (
+      {!suggestions ? null : (
         <Text
           style={{
             margin: 20,
@@ -157,19 +155,17 @@ const VotingScreen = observer(() => {
           }}
         >
           There are currently{" "}
-          <Text style={{ fontWeight: "800" }}>{features.length}</Text> features
-          to vote from. Scroll through the list below and read the description
-          to get a better idea what each feature is about:
+          <Text style={{ fontWeight: "800" }}>{suggestions.length}</Text>{" "}
+          features to vote from. Scroll through the list below and read the
+          description to get a better idea what each feature is about:
         </Text>
       )}
 
       <ScrollView>
         {loading ? <ActivityIndicator size="large" color="#d35322" /> : null}
-        {!features
+        {!suggestions && !loading
           ? null
-          : features.map((item, index) => {
-              const feature = item.data;
-
+          : suggestions.map((feature, index) => {
               return (
                 <View
                   key={index}
@@ -192,24 +188,26 @@ const VotingScreen = observer(() => {
                     elevation: featureVote === feature.title ? 0 : 6,
                   }}
                 >
-                  {/*<Text*/}
-                  {/*    style={{*/}
-                  {/*        position: "absolute",*/}
-                  {/*        paddingVertical: 5,*/}
-                  {/*        paddingHorizontal: 5,*/}
-                  {/*        top: 15,*/}
-                  {/*        right: 20,*/}
-                  {/*        fontWeight: "600",*/}
-                  {/*        color: "#d35322",*/}
-                  {/*    }}*/}
-                  {/*>*/}
-                  {/*    10 Votes*/}
-                  {/*</Text>*/}
+                  <Text
+                    style={{
+                      position: "absolute",
+                      paddingVertical: 5,
+                      paddingHorizontal: 5,
+                      top: 21,
+                      right: 20,
+                      fontWeight: "600",
+                      color: "#d35322",
+                    }}
+                  >
+                    {feature.votes} Votes
+                  </Text>
 
                   <Text
                     style={{
                       marginBottom: 15,
+                      width: "80%",
                       fontSize: 20,
+                      lineHeight: 28,
                       fontWeight: "600",
                       color: featureVote === feature.title ? "white" : "#555",
                     }}

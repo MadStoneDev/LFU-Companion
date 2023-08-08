@@ -78,7 +78,7 @@ const App = observer(() => {
 
   return (
     <ClerkProvider
-      publishableKey={Constants.manifest.extra.CLERK_PUBLISHABLE_KEY}
+      publishableKey={Constants.manifest.extra.clerkPublishableKey}
     >
       <SafeAreaProvider>
         <OptimisedStatusBar
