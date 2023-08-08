@@ -16,7 +16,7 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import resourceStore from "../Helpers/MobX/ResourceStore";
-import buildingStore from "../Helpers/MobX/ResourceStore";
+import buildingStore from "../Helpers/MobX/BuildingStore";
 import DraggableFlatList from "react-native-draggable-flatlist";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { observer } from "mobx-react";

@@ -7,8 +7,8 @@ import {
   saveDataToFile,
 } from "../Helpers/FileManager";
 import resourceStore from "../Helpers/MobX/ResourceStore";
+import buildingStore from "../Helpers/MobX/BuildingStore";
 import { usernames } from "../Helpers/usernames";
-import buildingStore from "../Helpers/MobX/ResourceStore";
 import {
   checkAndCreateBuildingFile,
   loadDataFromBuildingFile,

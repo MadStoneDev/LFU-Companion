@@ -17,7 +17,7 @@ import WarehouseScreen from "./WarehouseScreen";
 
 import resourceStore from "../Helpers/MobX/ResourceStore";
 import { saveDataToFile } from "../Helpers/FileManager";
-import buildingStore from "../Helpers/MobX/ResourceStore";
+import buildingStore from "../Helpers/MobX/BuildingStore";
 
 const Tabs = createMaterialTopTabNavigator();
 
