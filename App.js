@@ -56,7 +56,7 @@ const App = observer(() => {
   }, []);
 
   useEffect(() => {
-    // Save onboarding flag
+    // Save on-boarding flag
     if (showOnBoarding) {
       AsyncStorage.setItem("firstLoad-1.1.0", "true").then((r) =>
         console.log("AsyncStorage Flag Set")
@@ -78,7 +78,7 @@ const App = observer(() => {
 
   return (
     <ClerkProvider
-      publishableKey={Constants.manifest.extra.clerkPublishableKey}
+      publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}
     >
       <SafeAreaProvider>
         <OptimisedStatusBar
