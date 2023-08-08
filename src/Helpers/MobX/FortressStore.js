@@ -2,12 +2,27 @@ import { action, makeObservable, observable } from "mobx";
 import FortressAccount from "./FortressAccount";
 
 class FortressStore {
-  @observable fortressAccounts = [];
-  @observable activeFortressAccount = null;
-  @observable accountsUsed = 0;
-  @observable accountsAllowable = 1;
+  fortressAccounts = [];
+  activeFortressAccount = null;
+  accountsUsed = 0;
+  accountsAllowable = 1;
 
-  @action addFortressAccount(username) {
+  constructor() {
+    makeObservable(this, {
+      fortressAccounts: observable,
+      activeFortressAccount: observable,
+      accountsUsed: observable,
+      accountsAllowable: observable,
+      addFortressAccount: action,
+      updateAccountsUsed: action,
+      setActiveFortressAccount: action,
+      getActiveFortressAccount: action,
+      getFortressAccounts: action,
+      resetFortressStore: action,
+    });
+  }
+
+  addFortressAccount(username) {
     if (this.accountsUsed < this.accountsAllowable) {
       const fortressAccount = new FortressAccount(username);
       this.fortressAccounts.push(fortressAccount);
@@ -19,23 +34,23 @@ class FortressStore {
     }
   }
 
-  @action updateAccountsUsed() {
+  updateAccountsUsed() {
     this.accountsUsed = this.fortressAccounts.length;
   }
 
-  @action setActiveFortressAccount(fortressAccount) {
+  setActiveFortressAccount(fortressAccount) {
     this.activeFortressAccount = fortressAccount;
   }
 
-  @action getActiveFortressAccount() {
+  getActiveFortressAccount() {
     return this.activeFortressAccount;
   }
 
-  @action getFortressAccounts(index) {
+  getFortressAccounts(index) {
     return this.fortressAccounts[index];
   }
 
-  @action resetFortressStore() {
+  resetFortressStore() {
     this.fortressAccounts = [];
     this.activeFortressAccount = null;
     this.accountsUsed = 0;
