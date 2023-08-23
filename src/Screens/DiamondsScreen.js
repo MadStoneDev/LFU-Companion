@@ -43,7 +43,7 @@ const DiamondsScreen = observer(() => {
                   if (text.length < 1) text = 0;
                   handleChestsChange("diamonds", quantity, cleanUpNumber(text));
                 }}
-                // selectTextOnFocus
+                selectTextOnFocus
                 // onFocus={() => {
                 //   const inputRef = inputRefs[index];
                 //   inputRef.setNativeProps({

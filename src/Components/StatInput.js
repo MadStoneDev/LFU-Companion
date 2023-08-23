@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     height: 40,
     minWidth: "80%",
     backgroundColor: "#fff",
+    color: "black",
   },
 });
 
