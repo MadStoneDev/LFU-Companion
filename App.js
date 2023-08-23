@@ -21,6 +21,7 @@ import { observer } from "mobx-react";
 import { ClerkProvider } from "@clerk/clerk-expo";
 import Constants from "expo-constants";
 import HomeStack from "./src/Navigation/HomeStack";
+import {testFortressStore} from "./src/Helpers/TransferToMultiAccount";
 
 // Sentry.init({
 //   dsn: "https://fabaa650eabd4833a0f4cd8eea438ccf@o4505502003625984.ingest.sentry.io/4505502019747840",

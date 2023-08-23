@@ -22,9 +22,13 @@ class FortressStore {
     });
   }
 
-  addFortressAccount(username) {
+  addFortressAccount(username, resourceStore = null, buildingStore = null) {
     if (this.accountsUsed < this.accountsAllowable) {
       const fortressAccount = new FortressAccount(username);
+
+      if (resourceStore) fortressAccount.resourceStore = resourceStore
+      if (buildingStore) fortressAccount.buildingStore = buildingStore
+
       this.fortressAccounts.push(fortressAccount);
       this.updateAccountsUsed();
       this.setActiveFortressAccount(this.fortressAccounts.length - 1);
