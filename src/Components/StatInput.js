@@ -52,7 +52,11 @@ const StatInput = forwardRef(
         <View style={{ minWidth: "60%" }}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Text>{icon}</Text>
-            <Text style={{ marginLeft: 10, fontWeight: "bold" }}>{label}</Text>
+            <Text
+              style={{ marginLeft: 10, fontWeight: "bold", color: "black" }}
+            >
+              {label}
+            </Text>
           </View>
           <TextInput
             ref={ref}
