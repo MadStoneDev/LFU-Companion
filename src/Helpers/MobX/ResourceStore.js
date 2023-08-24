@@ -49,6 +49,7 @@ class ResourceStore {
     warehouse: 0,
     chests: {
       1000: 0,
+      100: 0,
       50: 0,
       20: 0,
       10: 0,
