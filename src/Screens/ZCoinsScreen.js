@@ -41,19 +41,10 @@ const ZCoinsScreen = observer(() => {
                 label={quantity + " ZCoins Chest"}
                 value={amount.toString()}
                 onChangeValue={(text) => {
-                  if (text.length < 1) text = 0;
+                  if (text.length < 1) text = "0";
                   handleChestsChange("zCoins", quantity, cleanUpNumber(text));
                 }}
                 selectTextOnFocus
-                // onFocus={() => {
-                //   const inputRef = inputRefs[index];
-                //   inputRef.setNativeProps({
-                //     selection: {
-                //       start: inputRef.current.value.length,
-                //       end: inputRef.current.value.length,
-                //     },
-                //   });
-                // }}
                 icon={
                   amount.toString().length < 1 ? null : (
                     <FontAwesome5
@@ -84,8 +75,6 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 40,
     minHeight: "100%",
-    borderWidth: 1,
-    backgroundColor: "#eee",
   },
 });
 

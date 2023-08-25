@@ -129,7 +129,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
-    // backgroundColor: "#b5c1c5",
     backgroundColor: "#eee",
   },
   headerTitle: {

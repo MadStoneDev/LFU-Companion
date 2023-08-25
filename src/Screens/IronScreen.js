@@ -41,19 +41,10 @@ const IronScreen = observer(() => {
                 label={quantity + " Iron Chest"}
                 value={amount.toString()}
                 onChangeValue={(text) => {
-                  if (text.length < 1) text = 0;
+                  if (text.length < 1) text = "0";
                   handleChestsChange("iron", quantity, cleanUpNumber(text));
                 }}
                 selectTextOnFocus
-                // onFocus={() => {
-                //   const inputRef = inputRefs[index];
-                //   inputRef.setNativeProps({
-                //     selection: {
-                //       start: inputRef.current.value.length,
-                //       end: inputRef.current.value.length,
-                //     },
-                //   });
-                // }}
                 icon={
                   amount.toString().length < 1 ? null : (
                     <MaterialCommunityIcons
@@ -74,42 +65,6 @@ const IronScreen = observer(() => {
             );
           })}
       </View>
-      {/*<FlatList*/}
-      {/*  data={Object.entries(iron.chests).reverse()}*/}
-      {/*  ref={(ref) => {*/}
-      {/*    this.flatlistRef = ref;*/}
-      {/*  }}*/}
-      {/*  renderItem={(data) => {*/}
-      {/*    const [quantity, amount] = data.item;*/}
-
-      {/*    return (*/}
-      {/*      <StatInput*/}
-      {/*        key={data.index}*/}
-      {/*        label={quantity + " Iron Chest"}*/}
-      {/*        value={amount.toString()}*/}
-      {/*        onChangeValue={(text) => {*/}
-      {/*          if (text.length < 1) text = 0;*/}
-      {/*          handleChestsChange("iron", quantity, cleanUpNumber(text));*/}
-      {/*        }}*/}
-      {/*        onFocus={() => {*/}
-      {/*          console.log(data.index);*/}
-      {/*          scrollToIndex(data.index);*/}
-      {/*        }}*/}
-      {/*        icon={*/}
-      {/*          amount.toString().length < 1 ? null : (*/}
-      {/*            <MaterialCommunityIcons*/}
-      {/*              style={{ position: "absolute", left: 10, top: 16 }}*/}
-      {/*              name="gold"*/}
-      {/*              size={20}*/}
-      {/*              color="black"*/}
-      {/*            />*/}
-      {/*          )*/}
-      {/*        }*/}
-      {/*      />*/}
-      {/*    );*/}
-      {/*  }}*/}
-      {/*  style={styles.container}*/}
-      {/*/>*/}
     </KeyboardAwareScrollView>
   );
 });
@@ -118,7 +73,6 @@ const styles = StyleSheet.create({
   container: {
     paddingVertical: 20,
     paddingHorizontal: 40,
-    backgroundColor: "#eee",
   },
 });
 
