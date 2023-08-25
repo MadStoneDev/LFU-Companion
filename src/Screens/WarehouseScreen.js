@@ -37,7 +37,7 @@ const WarehouseScreen = observer(() => {
           label={"Stone in Warehouse"}
           value={stone.warehouse.toString()}
           onChangeValue={(text) => {
-            if (text.length < 1) text = 0;
+            if (text.length < 1) text = "0";
             handleWarehouseChange("stone", cleanUpNumber(text));
           }}
           selectTextOnFocus
@@ -60,7 +60,7 @@ const WarehouseScreen = observer(() => {
           label={"Iron in Warehouse"}
           value={iron.warehouse.toString()}
           onChangeValue={(text) => {
-            if (text.length < 1) text = 0;
+            if (text.length < 1) text = "0";
             handleWarehouseChange("iron", cleanUpNumber(text));
           }}
           selectTextOnFocus
@@ -83,7 +83,7 @@ const WarehouseScreen = observer(() => {
           label={"ZCoins in Warehouse"}
           value={zCoins.warehouse.toString()}
           onChangeValue={(text) => {
-            if (text.length < 1) text = 0;
+            if (text.length < 1) text = "0";
             handleWarehouseChange("zCoins", cleanUpNumber(text));
           }}
           selectTextOnFocus
@@ -106,7 +106,7 @@ const WarehouseScreen = observer(() => {
           label={"Diamonds in Warehouse"}
           value={diamonds.warehouse.toString()}
           onChangeValue={(text) => {
-            if (text.length < 1) text = 0;
+            if (text.length < 1) text = "0";
             handleWarehouseChange("diamonds", cleanUpNumber(text));
           }}
           selectTextOnFocus

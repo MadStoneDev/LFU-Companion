@@ -1,13 +1,9 @@
 const cleanUpNumber = (value) => {
-  if (value === 0) return 0;
-
-  let num;
+  // Remove Non-Numbers
+  let num = value.replace(/[^0-9]/g, "");
 
   // Remove Leading Zeroes
-  value = value > 0 ? value.replace(/^0+/, "") : value;
-
-  // Remove Non-Numbers
-  num = value.replace(/[^0-9]/g, "");
+  num = parseInt(num, 10).toString();
 
   return num;
 };

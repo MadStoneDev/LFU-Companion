@@ -40,7 +40,7 @@ const DiamondsScreen = observer(() => {
                 label={quantity + " Diamond Chest"}
                 value={amount.toString()}
                 onChangeValue={(text) => {
-                  if (text.length < 1) text = 0;
+                  if (text.length < 1) text = "0";
                   handleChestsChange("diamonds", quantity, cleanUpNumber(text));
                 }}
                 selectTextOnFocus
