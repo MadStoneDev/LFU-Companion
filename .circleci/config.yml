@@ -41,7 +41,15 @@ workflows:
   version: 2
   build:
     jobs:
+      - build
+      - hold:
+          type: approval
+          requires: 
+            - build
+
       - build-and-deploy:
           filters:
             branches:
               only: main
+          requires: 
+              - hold
