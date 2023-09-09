@@ -1,0 +1,47 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/configuration-reference
+# For a detailed guide to building and testing on iOS, read the docs:
+# https://circleci.com/docs/testing-ios/
+version: 2.1
+
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/configuration-reference/#jobs
+jobs:
+  build-and-deploy:
+    docker:
+      - image: circleci/node:14
+
+    steps:
+      - checkout
+      - run:
+          name: Install EAS Cli
+          command: npm install -g eas-cli
+
+      - run:
+          name: Install Dependencies
+          command: npm install
+
+      - run:
+          name: EAS Login
+          command: echo $EXP_PASSWORD | eas login -u $EXPO_USERNAME --non-interactive
+      
+      - run:
+          name: Increment iOS Build Number
+          command: node scripts/increment-ios-build.js
+
+      - run:
+          name: Build iOS
+          command: eas build --platform ios --auto-submit --non-interactive
+
+      - run:
+          name: Build Android
+          command: eas build --platform android
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-and-deploy:
+          filters:
+            branches:
+              only: main
